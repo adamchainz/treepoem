@@ -59,29 +59,14 @@ EPS_TEMPLATE = """\
 """ + BASE_PS
 
 
-def _gs_command():
-    if sys.platform != 'win32':
-        return 'gs'
+GS_COMMAND = 'gs'
 
-    # On Windows, command `gs` is replaced by either `gswin32c` or `gswin64c`.
-    # See https://ghostscript.com/doc/current/Use.htm#MS_Windows
-    try:
-        # Has executable been defined by 'gssetgs.bat'?
-        return os.environ['GSC']
-    except KeyError:
-        pass
-
-    # Try launching 64bit version. If that fails, assume 32bit.
-    cmd = 'gswin64c'
-    try:
-        subprocess.check_call([cmd, '-dBATCH', '-q'])
-    except OSError:
-        cmd = 'gswin32c'
-
-    return cmd
+if sys.platform.startswith('win'):
+    from PIL.EpsImagePlugin import gs_windows_binary
+    GS_COMMAND = gs_windows_binary
 
 
-BBOX_COMMAND = [_gs_command(), '-sDEVICE=bbox', '-dBATCH', '-dSAFER', '-']
+BBOX_COMMAND = [GS_COMMAND, '-sDEVICE=bbox', '-dBATCH', '-dSAFER', '-']
 
 
 class TreepoemError(RuntimeError):
