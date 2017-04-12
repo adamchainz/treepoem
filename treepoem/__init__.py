@@ -63,24 +63,22 @@ def _gs_command():
     if sys.platform != 'win32':
         return 'gs'
 
-    # platform is Windows
+    # On Windows, command `gs` is replaced by either `gswin32c` or `gswin64c`.
+    # See https://ghostscript.com/doc/current/Use.htm#MS_Windows
     try:
-        # has executable been defined by 'gssetgs.bat'?
-        cmd = os.environ['GSC']
+        # Has executable been defined by 'gssetgs.bat'?
+        return os.environ['GSC']
     except KeyError:
         pass
-    else:
-        return cmd
 
+    # Try launching 64bit version. If that fails, assume 32bit.
     cmd = 'gswin64c'
     try:
         subprocess.check_call([cmd, '-dBATCH'])
-    except Exception:
-        pass
-    else:
-        return cmd
+    except OSError:
+        cmd = 'gswin32c'
 
-    return 'gswin32c'
+    return cmd
 
 
 BBOX_COMMAND = [_gs_command(), '-sDEVICE=bbox', '-dBATCH', '-dSAFER', '-']
