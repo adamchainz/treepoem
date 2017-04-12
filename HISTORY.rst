@@ -3,6 +3,8 @@
 History
 -------
 
+* Support Windows.
+
 1.0.1
 ------------------
 
