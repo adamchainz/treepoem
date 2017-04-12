@@ -58,6 +58,7 @@ EPS_TEMPLATE = """\
 
 """ + BASE_PS
 
+
 def _gs_command():
     if sys.platform != 'win32':
         return 'gs'
@@ -80,7 +81,7 @@ def _gs_command():
         return cmd
 
     return 'gswin32c'
-        
+
 
 BBOX_COMMAND = [_gs_command(), '-sDEVICE=bbox', '-dBATCH', '-dSAFER', '-']
 
