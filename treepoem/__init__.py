@@ -74,7 +74,7 @@ def _gs_command():
     # Try launching 64bit version. If that fails, assume 32bit.
     cmd = 'gswin64c'
     try:
-        subprocess.check_call([cmd, '-dBATCH'])
+        subprocess.check_call([cmd, '-dBATCH', '-q'])
     except OSError:
         cmd = 'gswin32c'
 
