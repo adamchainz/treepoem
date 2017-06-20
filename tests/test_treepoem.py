@@ -69,3 +69,9 @@ def test_get_ghostscript_binary_windows_missing(pretend_windows):
     with pytest.raises(treepoem.TreepoemError) as excinfo:
         treepoem._get_ghostscript_binary()
     assert 'Cannot determine path to ghostscript' in str(excinfo.value)
+
+
+def test_fake_barcode_type():
+    with pytest.raises(NotImplementedError) as excinfo:
+        treepoem.generate_barcode('INVALID', 'INVALID', {})
+    assert 'unsupported barcode type' in str(excinfo.value)

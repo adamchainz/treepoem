@@ -9,7 +9,9 @@ import sys
 
 from PIL import EpsImagePlugin
 
-__all__ = ['generate_barcode', 'TreepoemError']
+from .barcode_types import barcode_types
+
+__all__ = ['generate_barcode', 'TreepoemError', 'barcode_types']
 __version__ = '1.1.0'
 
 BASE_DIR = os.path.normpath(os.path.abspath(os.path.dirname(__file__)))
@@ -133,6 +135,8 @@ def _format_code(barcode_type, data, options):
 
 
 def generate_barcode(barcode_type, data, options):
+    if barcode_type not in barcode_types:
+        raise NotImplementedError('unsupported barcode type {!r}'.format(barcode_type))
     code = _format_code(barcode_type, data, options)
     bbox_lines = _get_bbox(code)
     full_code = EPS_TEMPLATE.format(bbox=bbox_lines, bwipp=BWIPP, code=code)
