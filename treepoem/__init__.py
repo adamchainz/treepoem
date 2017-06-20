@@ -9,7 +9,7 @@ import sys
 
 from PIL import EpsImagePlugin
 
-from .barcode_types import barcode_types
+from .data import barcode_types
 
 __all__ = ['generate_barcode', 'TreepoemError', 'barcode_types']
 __version__ = '1.1.0'

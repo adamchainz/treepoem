@@ -56,8 +56,8 @@ but these types are specifically verified in the tests:
 
 * ``code39`` - `Code 39`_
 
-The set of supported barcode types is available in ``treepoem.barcode_types``.
-
+The set of supported barcode types is available as a set at
+``treepoem.barcode_types``.
 
 Example
 -------
