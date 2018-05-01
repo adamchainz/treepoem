@@ -8,6 +8,10 @@ History
 
 * Make the ``options`` argument to ``generate_barcode`` optional
 * Add a CLI ``treepoem``
+* Upgrade BWIPP from 2017-07-10 to 2017-10-19. This has a few bug fixes and
+  performance improvements. You can read its changelog in the vendored copy in
+  the `treepoem repo
+  <https://github.com/YPlan/treepoem/blob/master/treepoem/postscriptbarcode/CHANGES>`__.
 
 1.3.2 (2017-10-22)
 ------------------

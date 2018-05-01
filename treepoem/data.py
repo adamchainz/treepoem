@@ -100,6 +100,7 @@ barcode_types = {
     'symbol',
     'telepen',
     'telepennumeric',
+    'ultracode',
     'upca',
     'upcacomposite',
     'upce',
