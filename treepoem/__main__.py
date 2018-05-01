@@ -35,7 +35,7 @@ def main():
     args = parser.parse_args()
 
     if args.type not in barcode_types:
-        parser.error('Barcode type "{}" is not supported. %s'.format(args.type, supported_barcode_types))
+        parser.error('Barcode type "{}" is not supported. {}'.format(args.type, supported_barcode_types))
 
     try:
         stdout_binary = sys.stdout.buffer

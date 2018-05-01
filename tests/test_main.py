@@ -57,7 +57,7 @@ def test_unsupported_barcode_type(tmpdir, monkeypatch, capsys):
     assert tmpdir.join('test.png').check(exists=False)
     out, err = capsys.readouterr()
     assert out == ''
-    assert 'Barcode type "invalid-barcode-type" is not supported.' in err
+    assert 'Barcode type "invalid-barcode-type" is not supported. Supported barcode types are:' in err
 
 
 def test_unsupported_file_format(tmpdir, monkeypatch, capsys):

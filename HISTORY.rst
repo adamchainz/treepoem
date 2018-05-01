@@ -6,11 +6,13 @@ History
 
 .. Insert new release notes below this line
 
+* Fix formatting bug in CLI output.
+
 1.4.0 (2018-05-01)
 ------------------
 
-* Make the ``options`` argument to ``generate_barcode`` optional
-* Add a CLI ``treepoem``
+* Make the ``options`` argument to ``generate_barcode`` optional.
+* Add a CLI ``treepoem``.
 * Upgrade BWIPP from 2017-07-10 to 2017-10-19. This has a few bug fixes and
   performance improvements. You can read its changelog in the vendored copy in
   the `treepoem repo
