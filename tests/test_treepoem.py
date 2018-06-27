@@ -13,6 +13,7 @@ import treepoem
 @pytest.mark.parametrize('barcode_type,barcode_data', [
     ('qrcode', "This is qrcode barcode."),
     ('azteccode', "This is azteccode barcode."),
+    ('azteccode', b"This is azteccode barcode."),
     ('pdf417', "This is pdf417 barcode."),
     ('interleaved2of5', "0123456789"),
     ('code128', "This is code128 barcode."),

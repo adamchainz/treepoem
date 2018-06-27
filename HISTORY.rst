@@ -6,6 +6,11 @@ History
 
 .. Insert new release notes below this line
 
+Development
+-----------
+
+* Support binary barcode data.
+
 1.4.1 (2018-05-01)
 ------------------
 

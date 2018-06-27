@@ -112,6 +112,8 @@ def _get_ghostscript_binary():
 
 
 def _encode(data):
+    if isinstance(data, str):
+        data = data.encode('utf8')
     return codecs.encode(data.encode('utf8'), 'hex_codec').decode('ascii')
 
 
