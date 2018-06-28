@@ -51,8 +51,8 @@ Generates a barcode and returns it as a PIL image file object (specifically, a
 
 ``barcode_type`` is the name of the barcode type to generate (see below).
 
-``data`` is the string of data to embed in the barcode - the amount that can be
-embedded varies by type.
+``data`` is a string or a byte sequence (``bytes``) of data to embed in the
+barcode - the amount that can be embedded varies by type.
 
 ``options`` is a dictionary of strings-to-strings of extra options to be passed
 to BWIPP_, as per its docs.
