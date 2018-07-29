@@ -30,9 +30,9 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Christian Muirhead",
     author_email='xtian@babbageclunk.com',
-    maintainer="Julius Seporaitis",
-    maintainer_email="julius@yplanapp.com",
-    url='https://github.com/YPlan/treepoem',
+    maintainer="Adam Johnson",
+    maintainer_email='me@adamj.eu',
+    url='https://github.com/adamchainz/treepoem',
     packages=find_packages(exclude=['tests', 'tests.*']),
     package_dir={
         'treepoem': 'treepoem',

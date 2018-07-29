@@ -5,8 +5,8 @@ Treepoem
 .. image:: https://img.shields.io/pypi/v/treepoem.svg
            :target: https://pypi.python.org/pypi/treepoem
 
-.. image:: https://img.shields.io/travis/YPlan/treepoem.svg
-           :target: https://travis-ci.org/YPlan/treepoem
+.. image:: https://img.shields.io/travis/adamchainz/treepoem.svg
+           :target: https://travis-ci.org/adamchainz/treepoem
 
 
 A cleverly named, but very simple python barcode renderer wrapping the
