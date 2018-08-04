@@ -76,12 +76,22 @@ coloring, converting the ``Image`` object to monochrome as shown above
 ``barcode_types``
 -----------------
 
-This is a ``dict`` of the ~100 names of the barcode types that the vendored version
-of BWIPP_ supports; its keys are the encoder names and the corresponding values are
-a custom type with `type_code` and `description` as attributes. If you're looking
-for whether a specific type is supported, check here.
+This is a ``dict`` of the ~100 names of the barcode types that the vendored
+version of BWIPP_ supports: its keys are ``str``\s of the barcode type encoder
+names, and the values are instances of ``BarcodeType``.
 
-The library is tested with these specific, common types:
+``BarcodeType``
+---------------
+
+A class representing meta information on the types. It has two attributes:
+
+* ``type_code`` - the value needed for the ``barcode_type`` argument of
+  ``generate_barcode()`` to use this type.
+
+* ``description`` - the human level description of the type
+  which has two ``str``.
+
+Only these common types are used in the test suite:
 
 * ``qrcode`` - `QR Code`_
 
