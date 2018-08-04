@@ -7,6 +7,7 @@ import os
 import subprocess
 import sys
 
+import six
 from PIL import EpsImagePlugin
 
 from .data import BarcodeType, barcode_types
@@ -112,8 +113,8 @@ def _get_ghostscript_binary():
 
 
 def _encode(data):
-    if isinstance(data, str):
-        data = data.encode('utf8')
+    if isinstance(data, six.text_type):
+        data = data.encode('utf-8')
     return codecs.encode(data, 'hex_codec').decode('ascii')
 
 
