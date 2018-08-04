@@ -9,9 +9,9 @@ import sys
 
 from PIL import EpsImagePlugin
 
-from .data import barcode_types
+from .data import BarcodeType, barcode_types
 
-__all__ = ['generate_barcode', 'TreepoemError', 'barcode_types']
+__all__ = ['generate_barcode', 'TreepoemError', 'BarcodeType', 'barcode_types']
 __version__ = '1.4.1'
 
 BASE_DIR = os.path.normpath(os.path.abspath(os.path.dirname(__file__)))

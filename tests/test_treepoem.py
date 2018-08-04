@@ -77,3 +77,10 @@ def test_unsupported_barcode_type():
     with pytest.raises(NotImplementedError) as excinfo:
         treepoem.generate_barcode('invalid-barcode-type', '')
     assert 'unsupported barcode type' in str(excinfo.value)
+
+
+def test_barcode_types():
+    for code, barcode_type in treepoem.barcode_types.items():
+        assert isinstance(code, type('a'))
+        assert barcode_type.type_code == code
+        assert isinstance(barcode_type.description, type('a'))
