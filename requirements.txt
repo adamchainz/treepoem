@@ -24,6 +24,6 @@ py==1.7.0                 # via pytest
 pycodestyle==2.4.0        # via flake8
 pyflakes==2.0.0           # via flake8
 pygments==2.2.0
-pytest==3.10.0
+pytest==4.0.0
 scandir==1.9.0            # via pathlib2
 six==1.11.0
