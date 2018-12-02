@@ -17,7 +17,7 @@ isort==4.3.4
 mccabe==0.6.1             # via flake8
 more-itertools==4.3.0     # via pytest
 multilint==2.4.0
-pathlib2==2.3.2           # via pytest
+pathlib2==2.3.3           # via pytest
 pillow==5.3.0
 pluggy==0.8.0             # via pytest
 py==1.7.0                 # via pytest
