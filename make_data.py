@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-# -*- encoding:utf-8 -*-
-from __future__ import absolute_import, division, print_function, unicode_literals
-
 import os
 
 BASE_DIR = os.path.dirname(__file__)
@@ -37,9 +34,6 @@ def load_barcode_types():
 
 def write_out_barcode_types(all_barcode_types):
     with open(BARCODE_TYPES_PATH, 'w') as fp:
-        fp.write('# -*- encoding:utf-8 -*-\n')
-        fp.write('from __future__ import absolute_import, division, print_function, unicode_literals\n')
-        fp.write('\n\n')
         fp.write('class BarcodeType(object):\n')
         fp.write('    def __init__(self, type_code, description):\n')
         fp.write('        self.type_code = type_code\n')

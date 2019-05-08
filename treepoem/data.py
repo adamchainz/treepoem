@@ -1,7 +1,3 @@
-# -*- encoding:utf-8 -*-
-from __future__ import absolute_import, division, print_function, unicode_literals
-
-
 class BarcodeType(object):
     def __init__(self, type_code, description):
         self.type_code = type_code

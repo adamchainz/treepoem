@@ -10,8 +10,7 @@ Treepoem
 
 
 A cleverly named, but very simple python barcode renderer wrapping the
-BWIPP_ library and ``ghostscript`` command line tool, Python 2.7 and 3.3+
-compatible.
+BWIPP_ library and ``ghostscript`` command line tool.
 
 ------------
 Installation
@@ -22,6 +21,8 @@ Install from **pip**:
 .. code-block:: sh
 
     pip install treepoem
+
+Python 3.4+ supported.
 
 You'll also need Ghostscript installed. On Ubuntu/Debian this can be installed
 with:

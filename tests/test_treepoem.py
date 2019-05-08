@@ -1,11 +1,7 @@
-# -*- coding:utf-8 -*-
-from __future__ import absolute_import, division, print_function, unicode_literals
-
 import sys
 from os import path
 
 import pytest
-import six
 from PIL import EpsImagePlugin, Image, ImageChops
 
 import treepoem
@@ -83,6 +79,6 @@ def test_unsupported_barcode_type():
 
 def test_barcode_types():
     for code, barcode_type in treepoem.barcode_types.items():
-        assert isinstance(code, six.text_type)
+        assert isinstance(code, str)
         assert barcode_type.type_code == code
-        assert isinstance(barcode_type.description, six.text_type)
+        assert isinstance(barcode_type.description, str)
