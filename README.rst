@@ -40,6 +40,11 @@ On Mac OS X use:
 Otherwise refer to your distribution's package manager, though it's likely to
 be called ``ghostscript`` too.
 
+There's a known issue with rendering on Ghostscript 9.22+ where images are
+smeared. See
+`GitHub Issue #124 <https://github.com/adamchainz/treepoem/issues/124>`_ and
+its associated links for more details.
+
 ---
 API
 ---
