@@ -14,7 +14,10 @@ matrix:
   - python: 3.7
 
 install:
-- sudo apt-get install ghostscript
+# Install latest ghostscript from binary on https://www.ghostscript.com/download/gsdnld.html
+- wget https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs927/ghostscript-9.27-linux-x86_64.tgz
+- tar xvf ghostscript-9.27-linux-x86_64.tgz
+- sudo mv ghostscript-9.27-linux-x86_64/gs-927-linux-x86_64 /usr/bin/gs
 - pip install tox-travis
 
 script: tox
