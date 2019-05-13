@@ -38,7 +38,7 @@ setup(
     install_requires=[
         'Pillow',
     ],
-    python_requires='>=3.4',
+    python_requires='>=3.5',
     license="MIT",
     zip_safe=False,
     keywords='barcode bwipp postscript ghostscript qr qrcode aztec azteccode pdf417 interleaved2of5 i25 code128 code39',
@@ -48,9 +48,8 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
 )

@@ -1,15 +1,20 @@
-sudo: required
 dist: xenial
+sudo: required
 
 notifications:
   email: false
 
 language: python
-python: '3.6'
 cache: pip
 
+matrix:
+  include:
+  - python: 3.5
+  - python: 3.6
+  - python: 3.7
+
 install:
-  - sudo apt-get install ghostscript
-  - pip install tox
-script:
-  - tox
+- sudo apt-get install ghostscript
+- pip install tox-travis
+
+script: tox
