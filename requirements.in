@@ -6,3 +6,4 @@ multilint
 Pillow
 Pygments
 pytest
+twine
