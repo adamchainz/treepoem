@@ -45,7 +45,15 @@ be called ``ghostscript`` too.
 There's a known issue with rendering on Ghostscript 9.22+ where images are
 smeared. See
 `GitHub Issue #124 <https://github.com/adamchainz/treepoem/issues/124>`_ and
-its associated links for more details.
+its associated links for more details. Ghostscript merged a fix in version
+9.26 and common barcodes seem to work from then on, though still with some
+smearing.
+
+You can check your Ghostscript version with:
+
+.. code-block:: sh
+
+    gs --version
 
 ---
 API
