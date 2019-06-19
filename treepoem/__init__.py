@@ -8,11 +8,11 @@ from PIL import EpsImagePlugin
 
 from .data import BarcodeType, barcode_types
 
-__all__ = ['generate_barcode', 'TreepoemError', 'BarcodeType', 'barcode_types']
-__version__ = '3.0.0'
+__all__ = ["generate_barcode", "TreepoemError", "BarcodeType", "barcode_types"]
+__version__ = "3.0.0"
 
 BASE_DIR = os.path.normpath(os.path.abspath(os.path.dirname(__file__)))
-BWIPP_PATH = os.path.join(BASE_DIR, 'postscriptbarcode', 'barcode.ps')
+BWIPP_PATH = os.path.join(BASE_DIR, "postscriptbarcode", "barcode.ps")
 
 BASE_PS = """\
 {bwipp}
@@ -29,8 +29,10 @@ grestore
 showpage
 """
 
-# Error handling from https://github.com/bwipp/postscriptbarcode/wiki/Developing-a-Frontend-to-BWIPP#use-bwipps-error-reporting
-BBOX_TEMPLATE = """\
+# Error handling from:
+# https://github.com/bwipp/postscriptbarcode/wiki/Developing-a-Frontend-to-BWIPP#use-bwipps-error-reporting  # noqa: B950
+BBOX_TEMPLATE = (
+    """\
 %!PS
 
 errordict begin
@@ -49,13 +51,18 @@ errordict begin
 }} bind def
 end
 
-""" + BASE_PS
+"""
+    + BASE_PS
+)
 
-EPS_TEMPLATE = """\
+EPS_TEMPLATE = (
+    """\
 %!PS-Adobe-3.0 EPSF-3.0
 {bbox}
 
-""" + BASE_PS
+"""
+    + BASE_PS
+)
 
 
 class TreepoemError(RuntimeError):
@@ -77,7 +84,7 @@ def _get_bbox(code):
     full_code = BBOX_TEMPLATE.format(bwipp=BWIPP, code=code)
     ghostscript = _get_ghostscript_binary()
     gs_process = subprocess.Popen(
-        [ghostscript,  '-sDEVICE=bbox', '-dBATCH', '-dSAFER', '-'],
+        [ghostscript, "-sDEVICE=bbox", "-dBATCH", "-dSAFER", "-"],
         universal_newlines=True,
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
@@ -88,21 +95,21 @@ def _get_bbox(code):
     # Unfortunately the error-handling in the postscript means that
     # returncode is 0 even if there was an error, but this gives
     # better error messages.
-    if gs_process.returncode != 0 or 'BWIPP ERROR:' in err_output:
-        if err_output.startswith('BWIPP ERROR: '):
-            err_output = err_output.replace('BWIPP ERROR: ', '', 1)
+    if gs_process.returncode != 0 or "BWIPP ERROR:" in err_output:
+        if err_output.startswith("BWIPP ERROR: "):
+            err_output = err_output.replace("BWIPP ERROR: ", "", 1)
         raise TreepoemError(err_output)
     return err_output
 
 
 def _get_ghostscript_binary():
-    binary = 'gs'
+    binary = "gs"
 
-    if sys.platform.startswith('win'):
+    if sys.platform.startswith("win"):
         binary = EpsImagePlugin.gs_windows_binary
         if not binary:
             raise TreepoemError(
-                'Cannot determine path to ghostscript, is it installed?',
+                "Cannot determine path to ghostscript, is it installed?"
             )
 
     return binary
@@ -110,8 +117,8 @@ def _get_ghostscript_binary():
 
 def _encode(data):
     if isinstance(data, str):
-        data = data.encode('utf-8')
-    return codecs.encode(data, 'hex_codec').decode('ascii')
+        data = data.encode("utf-8")
+    return codecs.encode(data, "hex_codec").decode("ascii")
 
 
 def _format_options(options):
@@ -121,12 +128,12 @@ def _format_options(options):
             if value:
                 items.append(name)
         else:
-            items.append('{}={}'.format(name, value))
-    return ' '.join(items)
+            items.append("{}={}".format(name, value))
+    return " ".join(items)
 
 
 def _format_code(barcode_type, data, options):
-    return '<{data}> <{options}> <{barcode_type}> cvn'.format(
+    return "<{data}> <{options}> <{barcode_type}> cvn".format(
         data=_encode(data),
         options=_encode(_format_options(options)),
         barcode_type=_encode(barcode_type),
@@ -135,10 +142,10 @@ def _format_code(barcode_type, data, options):
 
 def generate_barcode(barcode_type, data, options=None):
     if barcode_type not in barcode_types:
-        raise NotImplementedError('unsupported barcode type {!r}'.format(barcode_type))
+        raise NotImplementedError("unsupported barcode type {!r}".format(barcode_type))
     if options is None:
         options = {}
     code = _format_code(barcode_type, data, options)
     bbox_lines = _get_bbox(code)
     full_code = EPS_TEMPLATE.format(bbox=bbox_lines, bwipp=BWIPP, code=code)
-    return EpsImagePlugin.EpsImageFile(io.BytesIO(full_code.encode('utf8')))
+    return EpsImagePlugin.EpsImageFile(io.BytesIO(full_code.encode("utf8")))

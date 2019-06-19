@@ -8,6 +8,8 @@ Treepoem
 .. image:: https://img.shields.io/travis/adamchainz/treepoem.svg
            :target: https://travis-ci.org/adamchainz/treepoem
 
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+    :target: https://github.com/python/black
 
 A cleverly named, but very simple python barcode renderer wrapping the
 BWIPP_ library and ``ghostscript`` command line tool.
