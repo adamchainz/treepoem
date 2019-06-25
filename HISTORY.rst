@@ -7,6 +7,10 @@ History
 .. Insert new release notes below this line
 
 * Update Python support to 3.5-3.7, as 3.4 has reached its end of life.
+* Upgrade BWIPP from 2017-07-27 to 2019-04-24. This has a few bug fixes and
+  performance improvements. You can read its changelog in the vendored copy in
+  the `treepoem repo
+  <https://github.com/adamchainz/treepoem/blob/master/treepoem/postscriptbarcode/CHANGES>`__.
 
 3.0.0 (2019-05-08)
 ------------------
