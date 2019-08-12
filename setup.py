@@ -29,6 +29,9 @@ setup(
     maintainer="Adam Johnson",
     maintainer_email="me@adamj.eu",
     url="https://github.com/adamchainz/treepoem",
+    project_urls={
+        "Changelog": "https://github.com/adamchainz/treepoem/blob/master/HISTORY.rst"
+    },
     packages=find_packages(exclude=["tests", "tests.*"]),
     package_dir={"treepoem": "treepoem"},
     entry_points={"console_scripts": ["treepoem=treepoem.__main__:main"]},
