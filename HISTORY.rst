@@ -11,6 +11,12 @@ History
   the `treepoem repo
   <https://github.com/adamchainz/treepoem/blob/master/treepoem/postscriptbarcode/CHANGES>`__.
 
+* Converted setuptools metadata to configuration file. This meant removing the
+  ``__version__`` attribute from the package. If you want to inspect the
+  installed version, use
+  ``pkg_resources.get_distribution("treepoem").version``
+  (`docs <https://setuptools.readthedocs.io/en/latest/pkg_resources.html#getting-or-creating-distributions>`__).
+
 3.1.0 (2019-06-25)
 ------------------
 
