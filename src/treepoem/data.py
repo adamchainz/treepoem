@@ -103,6 +103,7 @@ barcode_types = {
     "ismn": BarcodeType("ismn", "ISMN"),
     "issn": BarcodeType("issn", "ISSN"),
     "itf14": BarcodeType("itf14", "ITF-14"),
+    "jabcode": BarcodeType("jabcode", "JAB Code (Beta)"),
     "japanpost": BarcodeType("japanpost", "Japan Post 4 State Customer Code"),
     "kix": BarcodeType("kix", "Royal Dutch TPG Post KIX"),
     "leitcode": BarcodeType("leitcode", "Deutsche Post Leitcode"),
