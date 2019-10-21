@@ -2,8 +2,8 @@
 import os
 
 BASE_DIR = os.path.dirname(__file__)
-BWIPP_PATH = os.path.join(BASE_DIR, 'treepoem', 'postscriptbarcode', 'barcode.ps')
-BARCODE_TYPES_PATH = os.path.join(BASE_DIR, 'treepoem', 'data.py')
+BWIPP_PATH = os.path.join(BASE_DIR, 'src', 'treepoem', 'postscriptbarcode', 'barcode.ps')
+BARCODE_TYPES_PATH = os.path.join(BASE_DIR, 'src', 'treepoem', 'data.py')
 
 
 def main():
