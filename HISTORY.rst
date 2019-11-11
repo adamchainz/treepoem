@@ -10,13 +10,13 @@ History
   performance improvements. You can read its changelog in the vendored copy in
   the `treepoem repo
   <https://github.com/adamchainz/treepoem/blob/master/treepoem/postscriptbarcode/CHANGES>`__.
-
 * Converted setuptools metadata to configuration file. This meant removing the
   ``__version__`` attribute from the package. If you want to inspect the
   installed version, use
   ``importlib.metadata.version("treepoem")``
   (`docs <https://docs.python.org/3.8/library/importlib.metadata.html#distribution-versions>`__ /
   `backport <https://pypi.org/project/importlib-metadata/>`__).
+* Update Python support to 3.5-3.8.
 
 3.1.0 (2019-06-25)
 ------------------
