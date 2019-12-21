@@ -1,3 +1,33 @@
+2019-11-08
+
+* The encoders were amended to workaround a non-standard operator on Harlequin RIPs.
+
+
+2019-10-31
+
+* A distict encoder was added for Data Matrix Rectangular Extension.
+
+
+2019-10-29
+
+* The Data Matrix encoder was enhanced to include the ISO formats for DMRE.
+
+
+2019-10-13
+
+* A crash with a certain encoding of data in GS1 Databar Expanded based symbologies was fixed.
+
+
+2019-10-10
+
+* A bug in the Code 128 encoder when composite component linkage flags were used with data terminating in mode C was fixed.
+
+
+2019-09-24
+
+* An encoder for the Royal Mail Mailmark symbology was added.
+
+
 2019-08-05
 
 * The performance of the renmatrix renderer was slightly optimised.
