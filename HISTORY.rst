@@ -2,6 +2,11 @@
 History
 -------
 
+Pending
+-------
+
+* Update allowed barcode list to add missing types from new versions of BWIPP.
+
 3.3.0 (2019-12-21)
 ------------------
 

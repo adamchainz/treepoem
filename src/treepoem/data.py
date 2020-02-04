@@ -63,6 +63,9 @@ barcode_types = {
     "datamatrixrectangular": BarcodeType(
         "datamatrixrectangular", "Data Matrix Rectangular"
     ),
+    "datamatrixrectangularextension": BarcodeType(
+        "datamatrixrectangularextension", "Data Matrix Rectangular Extension"
+    ),
     "dotcode": BarcodeType("dotcode", "DotCode"),
     "ean13": BarcodeType("ean13", "EAN-13"),
     "ean13composite": BarcodeType("ean13composite", "EAN-13 Composite"),
@@ -107,6 +110,7 @@ barcode_types = {
     "japanpost": BarcodeType("japanpost", "Japan Post 4 State Customer Code"),
     "kix": BarcodeType("kix", "Royal Dutch TPG Post KIX"),
     "leitcode": BarcodeType("leitcode", "Deutsche Post Leitcode"),
+    "mailmark": BarcodeType("mailmark", "Royal Mail Mailmark"),
     "matrix2of5": BarcodeType("matrix2of5", "Matrix 2 of 5"),
     "maxicode": BarcodeType("maxicode", "MaxiCode"),
     "micropdf417": BarcodeType("micropdf417", "MicroPDF417"),
