@@ -22,7 +22,7 @@ Install from **pip**:
 
 .. code-block:: sh
 
-    pip install treepoem
+    python -m pip install treepoem
 
 Python 3.5 to 3.8 supported.
 

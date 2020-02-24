@@ -20,6 +20,6 @@ install:
 - wget https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs950/ghostscript-9.50-linux-x86_64.tgz
 - tar xvf ghostscript-9.50-linux-x86_64.tgz
 - sudo mv ghostscript-9.50-linux-x86_64/gs-950-linux-x86_64 /usr/bin/gs
-- pip install tox-travis
+- python -m pip install tox-travis
 
 script: tox
