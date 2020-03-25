@@ -36,7 +36,7 @@ def load_barcode_types():
 
 def write_out_barcode_types(all_barcode_types):
     with open(BARCODE_TYPES_PATH, "w") as fp:
-        fp.write("class BarcodeType(object):\n")
+        fp.write("class BarcodeType:\n")
         fp.write("    def __init__(self, type_code, description):\n")
         fp.write("        self.type_code = type_code\n")
         fp.write("        self.description = description\n")

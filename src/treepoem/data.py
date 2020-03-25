@@ -1,4 +1,4 @@
-class BarcodeType(object):
+class BarcodeType:
     def __init__(self, type_code, description):
         self.type_code = type_code
         self.description = description
