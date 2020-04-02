@@ -5,8 +5,8 @@ Treepoem
 .. image:: https://img.shields.io/pypi/v/treepoem.svg
            :target: https://pypi.python.org/pypi/treepoem
 
-.. image:: https://img.shields.io/travis/adamchainz/treepoem.svg
-           :target: https://travis-ci.org/adamchainz/treepoem
+.. image:: https://github.com/adamchainz/treepoem/workflows/CI/badge.svg?branch=master
+           :target: https://github.com/adamchainz/treepoem/actions?workflow=CI
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
     :target: https://github.com/python/black
