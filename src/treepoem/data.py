@@ -129,6 +129,9 @@ barcode_types = {
     "qrcode": BarcodeType("qrcode", "QR Code"),
     "rationalizedCodabar": BarcodeType("rationalizedCodabar", "Codabar"),
     "raw": BarcodeType("raw", "Custom 1D symbology"),
+    "rectangularmicroqrcode": BarcodeType(
+        "rectangularmicroqrcode", "Rectangular Micro QR Code"
+    ),
     "royalmail": BarcodeType("royalmail", "Royal Mail 4 State Customer Code"),
     "sscc18": BarcodeType("sscc18", "SSCC-18"),
     "symbol": BarcodeType("symbol", "Miscellaneous symbols"),
