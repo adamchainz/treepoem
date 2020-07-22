@@ -45,9 +45,7 @@ def write_out_barcode_types(all_barcode_types):
         fp.write("barcode_types = {\n")
         for type_code, description in all_barcode_types:
             fp.write(
-                "    {type_code!r}: BarcodeType({type_code!r}, {description!r}),\n".format(
-                    type_code=type_code, description=description,
-                )
+                f"    {type_code!r}: BarcodeType({type_code!r}, {description!r}),\n"
             )
         fp.write("}\n")
 
