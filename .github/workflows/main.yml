@@ -40,6 +40,8 @@ jobs:
         tar xvf ghostscript-9.52-linux-x86_64.tgz
         mv ghostscript-9.52-linux-x86_64/gs-952-linux-x86_64 ./gs
     - name: Install dependencies
-      run: python -m pip install --upgrade tox tox-gh-actions
+      run: python -m pip install --upgrade tox
     - name: Run tox targets for ${{ matrix.python-version }}
-      run: python -m tox
+      run: |
+        ENV_PREFIX=$(tr -C -d "0-9" <<< "${{ matrix.python-version }}")
+        TOXENV=$(tox --listenvs | grep "^py$ENV_PREFIX" | tr '\n' ',') python -m tox
