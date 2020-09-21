@@ -1,3 +1,28 @@
+2020-09-13
+
+* A bug in Data Matrix for ECI checks at end of data was fixed.
+
+
+2020-09-11
+
+* ECI support was added to Data Matrix, Aztec Code, QR Code, PDF417, MicroPDF417, Maxicode and DotCode.
+* GS1 DataBar Limited was updated to include a righthand whitespace guard.
+* Code 32 was fixed to avoid overwriting the provided barcode string.
+
+
+2020-07-20
+
+* A new encoder for Swiss QR Code was added.
+* The Codablock F encoding was optimised potentially resulting in smaller symbols.
+
+
+2020-07-09
+
+* The GS1 DataBar Stacked, GS1 DataBar Stacked Omnidirectional and GS1 DataBar Expanded Stacked separator patterns were fixed.
+* A bug in GS1-128 that sometimes prevented encoding with a Composite Component was fixed.
+* Bugs in GS1 Composite Component encoding were fixed.
+
+
 2020-04-01
 
 * The GS1 QR Code encoder was fixed.
@@ -1775,3 +1800,4 @@
 
 * This release adds support for printing the EAN-13 barcode format.
 * The software now supports EAN-13, Code 128-B, Code 39, Interleaved 2 of 5, Code 2 of 5, and Codabar.
+
