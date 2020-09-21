@@ -1800,4 +1800,3 @@
 
 * This release adds support for printing the EAN-13 barcode format.
 * The software now supports EAN-13, Code 128-B, Code 39, Interleaved 2 of 5, Code 2 of 5, and Codabar.
-
