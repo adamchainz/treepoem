@@ -1,3 +1,14 @@
+2020-10-11
+
+* A bug in leaving punctuation mode in Aztec Code was fixed.
+
+
+2020-10-02
+
+* An inefficiency in the QR Code encoding was fixed.
+* ECI support was added to Code One.
+
+
 2020-09-13
 
 * A bug in Data Matrix for ECI checks at end of data was fixed.
@@ -1800,3 +1811,4 @@
 
 * This release adds support for printing the EAN-13 barcode format.
 * The software now supports EAN-13, Code 128-B, Code 39, Interleaved 2 of 5, Code 2 of 5, and Codabar.
+
