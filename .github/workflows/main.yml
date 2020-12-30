@@ -35,9 +35,9 @@ jobs:
     - name: Install Ghostscript
       run: |
         # From binary on https://www.ghostscript.com/download/gsdnld.html
-        wget --quiet https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs952/ghostscript-9.52-linux-x86_64.tgz
-        tar xvf ghostscript-9.52-linux-x86_64.tgz
-        mv ghostscript-9.52-linux-x86_64/gs-952-linux-x86_64 ./gs
+        wget --quiet https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs953/ghostscript-9.53-linux-x86_64.tgz
+        tar xvf ghostscript-9.53-linux-x86_64.tgz
+        mv ghostscript-9.53-linux-x86_64/gs-953-linux-x86_64 ./gs
     - name: Install dependencies
       run: python -m pip install --upgrade tox
     - name: Run tox targets for ${{ matrix.python-version }}
