@@ -1,3 +1,35 @@
+2020-12-28
+
+* A convenience encoder for GS1 DotCode was added.
+
+
+2020-12-26
+
+* GS1 Composite Component symbols were fixed.
+
+
+2020-12-25
+
+* Linting was added to GS1 Composite Components.
+
+
+2020-12-24
+
+* Linting for GS1 AI syntax data was added.
+
+
+2020-12-09
+
+* A bug in the compact encoding methods 0110X for GS1 DataBar Expanded formats was fixed.
+
+
+2020-10-23
+
+* The parse and parsefnc options are now processed by a single routine that allows their escape patterns to coexist in the input data.
+* Bugs in ECI processing with PDF417 and MicroPDF417 were fixed.
+* A bug in the seperator pattern for GS1 DataBar Expanded Stacked Composite was fixed.
+
+
 2020-10-11
 
 * A bug in leaving punctuation mode in Aztec Code was fixed.

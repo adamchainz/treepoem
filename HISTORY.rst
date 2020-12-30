@@ -2,6 +2,10 @@
 History
 =======
 
+* Upgrade vendored BWIPP to its 2020-12-28 release. You can read its changelog
+  in the `treepoem repo
+  <https://github.com/adamchainz/treepoem/blob/master/src/treepoem/postscriptbarcode/CHANGES>`__.
+
 3.7.0 (2020-12-13)
 ------------------
 
@@ -14,7 +18,7 @@ History
 * Upgrade BWIPP from 2020-09-13 to 2020-10-11. This has a few bug fixes and
   performance improvements. You can read its changelog in the vendored copy in
   the `treepoem repo
-  <https://github.com/adamchainz/treepoem/blob/master/treepoem/postscriptbarcode/CHANGES>`__.
+  <https://github.com/adamchainz/treepoem/blob/master/src/treepoem/postscriptbarcode/CHANGES>`__.
 
 3.5.0 (2020-09-21)
 ------------------
@@ -22,7 +26,7 @@ History
 * Upgrade BWIPP from 2020-04-01 to 2020-09-13. This has a few bug fixes and
   performance improvements. You can read its changelog in the vendored copy in
   the `treepoem repo
-  <https://github.com/adamchainz/treepoem/blob/master/treepoem/postscriptbarcode/CHANGES>`__.
+  <https://github.com/adamchainz/treepoem/blob/master/src/treepoem/postscriptbarcode/CHANGES>`__.
 
 3.4.0 (2020-06-21)
 ------------------
@@ -30,7 +34,7 @@ History
 * Upgrade BWIPP from 2019-11-08 to 2020-04-01. This has a few bug fixes and
   performance improvements. You can read its changelog in the vendored copy in
   the `treepoem repo
-  <https://github.com/adamchainz/treepoem/blob/master/treepoem/postscriptbarcode/CHANGES>`__.
+  <https://github.com/adamchainz/treepoem/blob/master/src/treepoem/postscriptbarcode/CHANGES>`__.
 
 3.3.1 (2020-02-04)
 ------------------
@@ -43,7 +47,7 @@ History
 * Upgrade BWIPP from 2019-08-05 to 2019-11-08. This has a few bug fixes and
   performance improvements. You can read its changelog in the vendored copy in
   the `treepoem repo
-  <https://github.com/adamchainz/treepoem/blob/master/treepoem/postscriptbarcode/CHANGES>`__.
+  <https://github.com/adamchainz/treepoem/blob/master/src/treepoem/postscriptbarcode/CHANGES>`__.
 
 3.2.0 (2019-12-19)
 ------------------

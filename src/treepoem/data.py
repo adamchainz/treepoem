@@ -82,6 +82,7 @@ barcode_types = {
     "gs1datamatrixrectangular": BarcodeType(
         "gs1datamatrixrectangular", "GS1 Data Matrix Rectangular"
     ),
+    "gs1dotcode": BarcodeType("gs1dotcode", "GS1 DotCode"),
     "gs1northamericancoupon": BarcodeType(
         "gs1northamericancoupon", "GS1 North American Coupon"
     ),
@@ -134,6 +135,7 @@ barcode_types = {
     ),
     "royalmail": BarcodeType("royalmail", "Royal Mail 4 State Customer Code"),
     "sscc18": BarcodeType("sscc18", "SSCC-18"),
+    "swissqrcode": BarcodeType("swissqrcode", "Swiss QR Code"),
     "symbol": BarcodeType("symbol", "Miscellaneous symbols"),
     "telepen": BarcodeType("telepen", "Telepen"),
     "telepennumeric": BarcodeType("telepennumeric", "Telepen Numeric"),
