@@ -2,7 +2,7 @@
 Treepoem
 ========
 
-.. image:: https://img.shields.io/github/workflow/status/adamchainz/treepoem/CI/master?style=for-the-badge
+.. image:: https://img.shields.io/github/workflow/status/adamchainz/treepoem/CI/main?style=for-the-badge
    :target: https://github.com/adamchainz/treepoem/actions?workflow=CI
 
 .. image:: https://img.shields.io/pypi/v/treepoem.svg?style=for-the-badge
