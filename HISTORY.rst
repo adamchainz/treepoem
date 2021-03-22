@@ -2,6 +2,10 @@
 History
 =======
 
+* Upgrade vendored BWIPP to its 2021-02-06 release. You can read its changelog
+  in the `treepoem repo
+  <https://github.com/adamchainz/treepoem/blob/main/src/treepoem/postscriptbarcode/CHANGES>`__.
+
 * Stop distributing tests to reduce package size. Tests are not intended to be
   run outside of the tox setup in the repository. Repackagers can use GitHub's
   tarballs per tag.
