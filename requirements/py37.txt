@@ -8,9 +8,9 @@ attrs==20.3.0 \
     --hash=sha256:31b2eced602aa8423c2aea9c76a724617ed67cf9513173fd3a4f03e3a929c7e6 \
     --hash=sha256:832aa3cde19744e49938b91fea06d69ecb9e649c93ba974535d08ad92164f700
     # via pytest
-importlib-metadata==3.7.3 \
-    --hash=sha256:742add720a20d0467df2f444ae41704000f50e1234f46174b51f9c6031a1bd71 \
-    --hash=sha256:b74159469b464a99cb8cc3e21973e4d96e05d3024d337313fedb618a6e86e6f4
+importlib-metadata==3.8.1 \
+    --hash=sha256:eb83dfc8d87a64d42fb2904312d632bb8d57e47c5b435f8d4d5523d2b0efc3d0 \
+    --hash=sha256:fc605f818ff2389df65d893ccefcd5310678c48c2855c42619464ed48556ff08
     # via
     #   pluggy
     #   pytest
