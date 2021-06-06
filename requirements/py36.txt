@@ -8,9 +8,9 @@ attrs==21.2.0 \
     --hash=sha256:149e90d6d8ac20db7a955ad60cf0e6881a3f20d37096140088356da6c716b0b1 \
     --hash=sha256:ef6aaac3ca6cd92904cdd0d83f629a15f18053ec84e6432106f7a4d04ae4f5fb
     # via pytest
-importlib-metadata==4.0.1 \
-    --hash=sha256:8c501196e49fb9df5df43833bdb1e4328f64847763ec8a50703148b73784d581 \
-    --hash=sha256:d7eb1dea6d6a6086f8be21784cc9e3bcfa55872b52309bc5fad53a8ea444465d
+importlib-metadata==4.5.0 \
+    --hash=sha256:833b26fb89d5de469b24a390e9df088d4e52e4ba33b01dc5e0e4f41b81a16c00 \
+    --hash=sha256:b142cc1dd1342f31ff04bb7d022492b09920cb64fed867cd3ea6f80fe3ebd139
     # via
     #   pluggy
     #   pytest
@@ -42,6 +42,7 @@ pillow==8.2.0 \
     --hash=sha256:63728564c1410d99e6d1ae8e3b810fe012bc440952168af0a2877e8ff5ab96b9 \
     --hash=sha256:66cc56579fd91f517290ab02c51e3a80f581aba45fd924fcdee01fa06e635812 \
     --hash=sha256:6c32cc3145928c4305d142ebec682419a6c0a8ce9e33db900027ddca1ec39178 \
+    --hash=sha256:8b56553c0345ad6dcb2e9b433ae47d67f95fc23fe28a0bde15a120f25257e291 \
     --hash=sha256:8bb1e155a74e1bfbacd84555ea62fa21c58e0b4e7e6b20e4447b8d07990ac78b \
     --hash=sha256:95d5ef984eff897850f3a83883363da64aae1000e79cb3c321915468e8c6add5 \
     --hash=sha256:a013cbe25d20c2e0c4e85a9daf438f85121a4d0344ddc76e33fd7e3965d9af4b \
