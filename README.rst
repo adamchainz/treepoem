@@ -86,14 +86,14 @@ to BWIPP_, as per its docs.
 For example, this generates a QR code image, and saves it to a file using
 standard PIL ``Image.save()``:
 
-.. code-block:: python
+.. code-block:: pycon
 
    >>> import treepoem
    >>> image = treepoem.generate_barcode(
-   ...     barcode_type='qrcode',  # One of the BWIPP supported codes.
-   ...     data='barcode payload',
+   ...     barcode_type="qrcode",  # One of the BWIPP supported codes.
+   ...     data="barcode payload",
    ... )
-   >>> image.convert('1').save('barcode.png')
+   >>> image.convert("1").save("barcode.png")
 
 If your barcode image is monochrome, with no additional text or
 coloring, converting the ``Image`` object to monochrome as shown above
