@@ -9,10 +9,10 @@ BARCODE_TYPES_PATH = os.path.join(BASE_DIR, "src", "treepoem", "data.py")
 
 
 def main():
-    print("Loading barcode types from {}".format(BWIPP_PATH))
+    print(f"Loading barcode types from {BWIPP_PATH}")
     all_barcode_types = load_barcode_types()
 
-    print("Writing out {}".format(BARCODE_TYPES_PATH))
+    print(f"Writing out {BARCODE_TYPES_PATH}")
     write_out_barcode_types(all_barcode_types)
 
     print("Done")

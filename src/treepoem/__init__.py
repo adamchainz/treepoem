@@ -127,7 +127,7 @@ def _format_options(options):
             if value:
                 items.append(name)
         else:
-            items.append("{}={}".format(name, value))
+            items.append(f"{name}={value}")
     return " ".join(items)
 
 
@@ -141,7 +141,7 @@ def _format_code(barcode_type, data, options):
 
 def generate_barcode(barcode_type, data, options=None):
     if barcode_type not in barcode_types:
-        raise NotImplementedError("unsupported barcode type {!r}".format(barcode_type))
+        raise NotImplementedError(f"unsupported barcode type {barcode_type!r}")
     if options is None:
         options = {}
     code = _format_code(barcode_type, data, options)

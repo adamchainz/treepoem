@@ -65,7 +65,7 @@ def main():
         image.convert("1").save(args.output, args.format)
     except KeyError as e:
         if e.args[0] == args.format.upper():
-            parser.error('Image format "{}" is not supported'.format(args.format))
+            parser.error(f'Image format "{args.format}" is not supported')
         else:
             raise
 
