@@ -1,11 +1,14 @@
+from typing import Dict
+
+
 class BarcodeType:
-    def __init__(self, type_code, description):
+    def __init__(self, type_code: str, description: str) -> None:
         self.type_code = type_code
         self.description = description
 
 
 # All supported barcode types, extracted from barcode.ps
-barcode_types = {
+barcode_types: Dict[str, BarcodeType] = {
     "auspost": BarcodeType("auspost", "AusPost 4 State Customer Code"),
     "azteccode": BarcodeType("azteccode", "Aztec Code"),
     "azteccodecompact": BarcodeType("azteccodecompact", "Compact Aztec Code"),

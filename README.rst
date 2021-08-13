@@ -68,17 +68,16 @@ Check out my book `Speed Up Your Django Tests <https://gumroad.com/l/suydt>`__ w
 API
 ===
 
-``generate_barcode(barcode_type, data, options=None)``
-------------------------------------------------------
+``generate_barcode(barcode_type: str, data: str | bytes, options: dict[str, str | bool] | None=None) -> EpsImageFile``
+----------------------------------------------------------------------------------------------------------------------
 
 Generates a barcode and returns it as a PIL image file object (specifically, a
 ``PIL.EpsImagePlugin.EpsImageFile``).
 
 ``barcode_type`` is the name of the barcode type to generate (see below).
 
-``data`` is a ``str`` (Python 2 ``unicode``) or ``bytes`` (Python 2 ``bytes``)
-of data to embed in the barcode - the amount that can be embedded varies by
-type.
+``data`` is a ``str`` or ``bytes`` of data to embed in the barcode - the amount
+that can be embedded varies by type.
 
 ``options`` is a dictionary of strings-to-strings of extra options to be passed
 to BWIPP_, as per its docs.
@@ -99,8 +98,8 @@ If your barcode image is monochrome, with no additional text or
 coloring, converting the ``Image`` object to monochrome as shown above
 (``image.convert('1')``) will likely reduce its file size.
 
-``barcode_types``
------------------
+``barcode_types: dict[str, BarcodeType]``
+-----------------------------------------
 
 This is a ``dict`` of the ~100 names of the barcode types that the vendored
 version of BWIPP_ supports: its keys are ``str``\s of the barcode type encoder

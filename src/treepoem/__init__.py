@@ -3,6 +3,7 @@ import io
 import os
 import subprocess
 import sys
+from typing import Dict, Optional, Union
 
 from PIL import EpsImagePlugin
 
@@ -71,7 +72,7 @@ class TreepoemError(RuntimeError):
 # Inline the BWIPP code rather than using the run operator to execute
 # it because the EpsImagePlugin runs Ghostscript with the SAFER flag,
 # which disables file operations in the PS code.
-def _read_file(file_path):
+def _read_file(file_path: str) -> str:
     with open(file_path) as f:
         return f.read()
 
@@ -79,7 +80,7 @@ def _read_file(file_path):
 BWIPP = _read_file(BWIPP_PATH)
 
 
-def _get_bbox(code):
+def _get_bbox(code: str) -> str:
     full_code = BBOX_TEMPLATE.format(bwipp=BWIPP, code=code)
     ghostscript = _get_ghostscript_binary()
     gs_process = subprocess.Popen(
@@ -101,7 +102,7 @@ def _get_bbox(code):
     return err_output
 
 
-def _get_ghostscript_binary():
+def _get_ghostscript_binary() -> str:
     binary = "gs"
 
     if sys.platform.startswith("win"):
@@ -114,13 +115,13 @@ def _get_ghostscript_binary():
     return binary
 
 
-def _encode(data):
+def _encode(data: Union[str, bytes]) -> str:
     if isinstance(data, str):
         data = data.encode("utf-8")
     return codecs.encode(data, "hex_codec").decode("ascii")
 
 
-def _format_options(options):
+def _format_options(options: Dict[str, Union[str, bool]]) -> str:
     items = []
     for name, value in options.items():
         if isinstance(value, bool):
@@ -131,7 +132,11 @@ def _format_options(options):
     return " ".join(items)
 
 
-def _format_code(barcode_type, data, options):
+def _format_code(
+    barcode_type: str,
+    data: Union[str, bytes],
+    options: Dict[str, Union[str, bool]],
+) -> str:
     return "<{data}> <{options}> <{barcode_type}> cvn".format(
         data=_encode(data),
         options=_encode(_format_options(options)),
@@ -139,7 +144,11 @@ def _format_code(barcode_type, data, options):
     )
 
 
-def generate_barcode(barcode_type, data, options=None):
+def generate_barcode(
+    barcode_type: str,
+    data: Union[str, bytes],
+    options: Optional[Dict[str, Union[str, bool]]] = None,
+) -> EpsImagePlugin.EpsImageFile:
     if barcode_type not in barcode_types:
         raise NotImplementedError(f"unsupported barcode type {barcode_type!r}")
     if options is None:
@@ -147,4 +156,4 @@ def generate_barcode(barcode_type, data, options=None):
     code = _format_code(barcode_type, data, options)
     bbox_lines = _get_bbox(code)
     full_code = EPS_TEMPLATE.format(bbox=bbox_lines, bwipp=BWIPP, code=code)
-    return EpsImagePlugin.EpsImageFile(io.BytesIO(full_code.encode("utf8")))
+    return EpsImagePlugin.EpsImageFile(io.BytesIO(full_code.encode()))

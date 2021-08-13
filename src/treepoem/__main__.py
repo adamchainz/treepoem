@@ -1,6 +1,7 @@
 import argparse
 import sys
 from textwrap import fill
+from typing import BinaryIO, Dict, Optional, Tuple, Union, cast
 
 from . import generate_barcode
 from .data import barcode_types
@@ -10,12 +11,12 @@ supported_barcode_types = "Supported barcode types are:\n" + fill(
 )
 
 
-def parse_opt(x):
+def parse_opt(x: str) -> Tuple[str, Union[str, bool]]:
     if "=" in x:
-        return x.split("=", 1)
+        return cast(Tuple[str, str], tuple(x.split("=", 1)))
     else:
         # binary option
-        return [x, True]
+        return (x, True)
 
 
 parser = argparse.ArgumentParser(epilog=supported_barcode_types)
@@ -37,35 +38,36 @@ parser.add_argument(
 )
 
 
-def main():
+def main() -> None:
     args = parser.parse_args()
+    type_: str = args.type
+    format_: Optional[str] = args.format
+    output: Union[Optional[str], BinaryIO] = args.output
+    data: str = args.data
+    options: Dict[str, Union[str, bool]] = dict(args.options)
 
-    if args.type not in barcode_types:
+    if type_ not in barcode_types:
         parser.error(
             'Barcode type "{}" is not supported. {}'.format(
-                args.type, supported_barcode_types
+                type_, supported_barcode_types
             )
         )
 
-    try:
-        stdout_binary = sys.stdout.buffer
-    except AttributeError:
-        stdout_binary = sys.stdout  # Python 2
-
-    if args.output is None:
-        args.output = stdout_binary
+    stdout_binary = sys.stdout.buffer
+    if output is None:
+        output = stdout_binary
 
     # PIL needs an explicit format when it doesn't have a filename to guess from
-    if args.output is stdout_binary and args.format is None:
-        args.format = "xbm"
+    if output is stdout_binary and format_ is None:
+        format_ = "xbm"
 
-    image = generate_barcode(args.type, args.data, dict(args.options))
+    image = generate_barcode(type_, data, options)
 
     try:
-        image.convert("1").save(args.output, args.format)
+        image.convert("1").save(output, format_)
     except KeyError as e:
-        if e.args[0] == args.format.upper():
-            parser.error(f'Image format "{args.format}" is not supported')
+        if format_ is not None and e.args[0] == format_.upper():
+            parser.error(f'Image format "{format_}" is not supported')
         else:
             raise
 
