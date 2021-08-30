@@ -11,5 +11,4 @@ exclude .editorconfig
 exclude .pre-commit-config.yaml
 exclude make_data.py
 include pyproject.toml
-exclude pytest.ini
 exclude tox.ini
