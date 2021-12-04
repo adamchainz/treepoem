@@ -81,9 +81,9 @@ pytest==6.2.5 \
     # via
     #   -r requirements.in
     #   pytest-randomly
-pytest-randomly==3.10.2 \
-    --hash=sha256:2c0a332c4b124e372e2473803bcc91ec87797664f4955afef2b844c0021662b1 \
-    --hash=sha256:cbd5c50b7c41491c202c71a3df33a75619d610a4f5c34aa2bd02ac30fce7cd43
+pytest-randomly==3.10.3 \
+    --hash=sha256:22154cdcff7ba44e0599596490e6b75278ca973a33812ea6a54bf14d0b042ef1 \
+    --hash=sha256:b05a7a45f54cae2b5095752c6a10cb559df84448421b0420ae492dd2fb1727ef
     # via -r requirements.in
 toml==0.10.2 \
     --hash=sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b \
