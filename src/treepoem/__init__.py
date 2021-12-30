@@ -30,7 +30,7 @@ showpage
 """
 
 # Error handling from:
-# https://github.com/bwipp/postscriptbarcode/wiki/Developing-a-Frontend-to-BWIPP#use-bwipps-error-reporting  # noqa: B950
+# https://github.com/bwipp/postscriptbarcode/wiki/Developing-a-Frontend-to-BWIPP#use-bwipps-error-reporting  # noqa: E501
 BBOX_TEMPLATE = (
     """\
 %!PS
