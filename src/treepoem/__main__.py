@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 import argparse
 import sys
 from textwrap import fill
-from typing import BinaryIO, Dict, Optional, Tuple, Union, cast
+from typing import BinaryIO, Tuple, cast
 
 from . import generate_barcode
 from .data import barcode_types
@@ -11,7 +13,7 @@ supported_barcode_types = "Supported barcode types are:\n" + fill(
 )
 
 
-def parse_opt(x: str) -> Tuple[str, Union[str, bool]]:
+def parse_opt(x: str) -> tuple[str, str | bool]:
     if "=" in x:
         return cast(Tuple[str, str], tuple(x.split("=", 1)))
     else:
@@ -41,10 +43,10 @@ parser.add_argument(
 def main() -> None:
     args = parser.parse_args()
     type_: str = args.type
-    format_: Optional[str] = args.format
-    output: Union[Optional[str], BinaryIO] = args.output
+    format_: str | None = args.format
+    output: str | None | BinaryIO = args.output
     data: str = args.data
-    options: Dict[str, Union[str, bool]] = dict(args.options)
+    options: dict[str, str | bool] = dict(args.options)
 
     if type_ not in barcode_types:
         parser.error(

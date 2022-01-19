@@ -1,9 +1,10 @@
+from __future__ import annotations
+
 import codecs
 import io
 import os
 import subprocess
 import sys
-from typing import Dict, Optional, Union
 
 from PIL import EpsImagePlugin
 
@@ -115,13 +116,13 @@ def _get_ghostscript_binary() -> str:
     return binary
 
 
-def _encode(data: Union[str, bytes]) -> str:
+def _encode(data: str | bytes) -> str:
     if isinstance(data, str):
         data = data.encode("utf-8")
     return codecs.encode(data, "hex_codec").decode("ascii")
 
 
-def _format_options(options: Dict[str, Union[str, bool]]) -> str:
+def _format_options(options: dict[str, str | bool]) -> str:
     items = []
     for name, value in options.items():
         if isinstance(value, bool):
@@ -134,8 +135,8 @@ def _format_options(options: Dict[str, Union[str, bool]]) -> str:
 
 def _format_code(
     barcode_type: str,
-    data: Union[str, bytes],
-    options: Dict[str, Union[str, bool]],
+    data: str | bytes,
+    options: dict[str, str | bool],
 ) -> str:
     return "<{data}> <{options}> <{barcode_type}> cvn".format(
         data=_encode(data),
@@ -146,8 +147,8 @@ def _format_code(
 
 def generate_barcode(
     barcode_type: str,
-    data: Union[str, bytes],
-    options: Optional[Dict[str, Union[str, bool]]] = None,
+    data: str | bytes,
+    options: dict[str, str | bool] | None = None,
 ) -> EpsImagePlugin.EpsImageFile:
     if barcode_type not in barcode_types:
         raise NotImplementedError(f"unsupported barcode type {barcode_type!r}")

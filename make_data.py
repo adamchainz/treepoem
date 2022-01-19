@@ -1,6 +1,7 @@
 #!/usr/bin/env python
+from __future__ import annotations
+
 import os
-from typing import List, Optional, Tuple
 
 BASE_DIR = os.path.dirname(__file__)
 BWIPP_PATH = os.path.join(
@@ -19,10 +20,10 @@ def main() -> None:
     print("Done")
 
 
-def load_barcode_types() -> List[Tuple[str, str]]:
-    barcode_types: List[Tuple[str, str]] = []
-    type_code: Optional[str] = None
-    description: Optional[str] = None
+def load_barcode_types() -> list[tuple[str, str]]:
+    barcode_types: list[tuple[str, str]] = []
+    type_code: str | None = None
+    description: str | None = None
     with open(BWIPP_PATH) as fp:
         for line in fp:
             if line.startswith("% --BEGIN ENCODER ") and line.endswith("--\n"):
@@ -38,7 +39,7 @@ def load_barcode_types() -> List[Tuple[str, str]]:
     return sorted(barcode_types)
 
 
-def write_out_barcode_types(all_barcode_types: List[Tuple[str, str]]) -> None:
+def write_out_barcode_types(all_barcode_types: list[tuple[str, str]]) -> None:
     with open(BARCODE_TYPES_PATH, "w") as fp:
         fp.write("from typing import Dict\n")
         fp.write("\n")
