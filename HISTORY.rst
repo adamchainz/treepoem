@@ -6,6 +6,8 @@ History
   in the `treepoem repo
   <https://github.com/adamchainz/treepoem/blob/main/src/treepoem/postscriptbarcode/CHANGES>`__.
 
+  This includes some fixes for the rendering of certain barcode formats.
+
 3.15.0 (2022-05-11)
 -------------------
 
