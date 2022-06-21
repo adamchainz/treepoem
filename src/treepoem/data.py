@@ -115,6 +115,7 @@ barcode_types: dict[str, BarcodeType] = {
     "kix": BarcodeType("kix", "Royal Dutch TPG Post KIX"),
     "leitcode": BarcodeType("leitcode", "Deutsche Post Leitcode"),
     "mailmark": BarcodeType("mailmark", "Royal Mail Mailmark"),
+    "mands": BarcodeType("mands", "Marks & Spencer"),
     "matrix2of5": BarcodeType("matrix2of5", "Matrix 2 of 5"),
     "maxicode": BarcodeType("maxicode", "MaxiCode"),
     "micropdf417": BarcodeType("micropdf417", "MicroPDF417"),

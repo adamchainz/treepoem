@@ -41,7 +41,7 @@ def load_barcode_types() -> list[tuple[str, str]]:
 
 def write_out_barcode_types(all_barcode_types: list[tuple[str, str]]) -> None:
     with open(BARCODE_TYPES_PATH, "w") as fp:
-        fp.write("from typing import Dict\n")
+        fp.write("from __future__ import annotations\n")
         fp.write("\n")
         fp.write("\n")
         fp.write("class BarcodeType:\n")
@@ -50,7 +50,7 @@ def write_out_barcode_types(all_barcode_types: list[tuple[str, str]]) -> None:
         fp.write("        self.description = description\n")
         fp.write("\n\n")
         fp.write("# All supported barcode types, extracted from barcode.ps\n")
-        fp.write("barcode_types: Dict[str, BarcodeType] = {\n")
+        fp.write("barcode_types: dict[str, BarcodeType] = {\n")
         for type_code, description in all_barcode_types:
             fp.write(
                 f"    {type_code!r}: BarcodeType({type_code!r}, {description!r}),\n"
