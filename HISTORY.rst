@@ -2,6 +2,16 @@
 History
 =======
 
+UNRELEASED
+----------
+
+* Upgrade vendored BWIPP to its 2022-07-29 release, which includes new helper
+  encoders for GS1 Digital Link URIs included in QR Code and Data Matrix
+  symbols, improve validation of GS1 syntax data and a friendly escape
+  mechanism for ASCII control characters. You can read its changelog in the
+  `treepoem repo
+  <https://github.com/adamchainz/treepoem/blob/main/src/treepoem/postscriptbarcode/CHANGES>`__.
+
 3.16.0 (2022-06-21)
 -------------------
 

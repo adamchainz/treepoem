@@ -85,6 +85,8 @@ barcode_types: dict[str, BarcodeType] = {
     "gs1datamatrixrectangular": BarcodeType(
         "gs1datamatrixrectangular", "GS1 Data Matrix Rectangular"
     ),
+    "gs1dldatamatrix": BarcodeType("gs1dldatamatrix", "GS1 Digital Link Data Matrix"),
+    "gs1dlqrcode": BarcodeType("gs1dlqrcode", "GS1 Digital Link QR Code"),
     "gs1dotcode": BarcodeType("gs1dotcode", "GS1 DotCode"),
     "gs1northamericancoupon": BarcodeType(
         "gs1northamericancoupon", "GS1 North American Coupon"
