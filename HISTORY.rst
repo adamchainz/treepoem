@@ -5,6 +5,7 @@ History
 UNRELEASED
 ----------
 
+
 * Upgrade vendored BWIPP to its 2022-07-29 release, which includes new helper
   encoders for GS1 Digital Link URIs included in QR Code and Data Matrix
   symbols, improve validation of GS1 syntax data and a friendly escape
