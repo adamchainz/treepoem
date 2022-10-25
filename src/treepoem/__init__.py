@@ -149,7 +149,7 @@ def generate_barcode(
     barcode_type: str,
     data: str | bytes,
     options: dict[str, str | bool] | None = None,
-    template_options: dict[str, str ] | None = None
+    template_options: dict[str, str] | None = None,
 ) -> EpsImagePlugin.EpsImageFile:
     if barcode_type not in barcode_types:
         raise NotImplementedError(f"unsupported barcode type {barcode_type!r}")
@@ -157,8 +157,10 @@ def generate_barcode(
         options = {}
     if template_options is None:
         template_options = {"scale_x": "2", "scale_y": "2"}
-    
+
     code = _format_code(barcode_type, data, options)
     bbox_lines = _get_bbox(code, template_options)
-    full_code = EPS_TEMPLATE.format(bbox=bbox_lines, bwipp=BWIPP, code=code, **template_options)
+    full_code = EPS_TEMPLATE.format(
+        bbox=bbox_lines, bwipp=BWIPP, code=code, **template_options
+    )
     return EpsImagePlugin.EpsImageFile(io.BytesIO(full_code.encode()))
