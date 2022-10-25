@@ -6,8 +6,10 @@ from os import path
 import pytest
 from PIL import EpsImagePlugin, Image, ImageChops
 
-import treepoem
+import math
 
+# import treepoem
+from src import treepoem
 
 @pytest.mark.parametrize(
     "barcode_type,barcode_data",
@@ -23,6 +25,13 @@ import treepoem
 )
 def test_barcode(barcode_type, barcode_data):
     actual = treepoem.generate_barcode(barcode_type, barcode_data)
+    actual_resized = treepoem.generate_barcode(
+        barcode_type, 
+        barcode_data, 
+        template_options={"scale_x": "4", "scale_y": "4"}
+    )
+    assert  math.ceil(actual.size[0]/2) == math.ceil(actual_resized.size[0]/4) \
+        and math.ceil(actual.size[1]/2) == math.ceil(actual_resized.size[1]/4)
 
     fixture_path = "{dirname}/fixtures/{barcode_type}.png".format(
         dirname=path.dirname(__file__), barcode_type=barcode_type
@@ -38,9 +47,9 @@ def test_barcode(barcode_type, barcode_data):
         expected = Image.open(fixture)
         bbox = ImageChops.difference(actual, expected).getbbox()
         assert bbox is None
-
     actual.close()
 
+    print(expected.size)
 
 @pytest.fixture
 def pretend_windows():
