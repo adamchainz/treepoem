@@ -7,8 +7,7 @@ from os import path
 import pytest
 from PIL import EpsImagePlugin, Image, ImageChops
 
-# import treepoem
-from src import treepoem
+import treepoem
 
 
 @pytest.mark.parametrize(
