@@ -20,7 +20,7 @@ BASE_PS = """\
 
 /Helvetica findfont 10 scalefont setfont
 gsave
-2 2 scale
+{scale_x} {scale_y} scale
 10 10 moveto
 
 {code}
@@ -81,8 +81,8 @@ def _read_file(file_path: str) -> str:
 BWIPP = _read_file(BWIPP_PATH)
 
 
-def _get_bbox(code: str) -> str:
-    full_code = BBOX_TEMPLATE.format(bwipp=BWIPP, code=code)
+def _get_bbox(code: str, template_options: dict[str, str]) -> str:
+    full_code = BBOX_TEMPLATE.format(bwipp=BWIPP, code=code, **template_options)
     ghostscript = _get_ghostscript_binary()
     gs_process = subprocess.Popen(
         [ghostscript, "-sDEVICE=bbox", "-dBATCH", "-dSAFER", "-"],
@@ -149,12 +149,16 @@ def generate_barcode(
     barcode_type: str,
     data: str | bytes,
     options: dict[str, str | bool] | None = None,
+    template_options: dict[str, str ] | None = None
 ) -> EpsImagePlugin.EpsImageFile:
     if barcode_type not in barcode_types:
         raise NotImplementedError(f"unsupported barcode type {barcode_type!r}")
     if options is None:
         options = {}
+    if template_options is None:
+        template_options = {"scale_x": "2", "scale_y": "2"}
+    
     code = _format_code(barcode_type, data, options)
-    bbox_lines = _get_bbox(code)
-    full_code = EPS_TEMPLATE.format(bbox=bbox_lines, bwipp=BWIPP, code=code)
+    bbox_lines = _get_bbox(code, template_options)
+    full_code = EPS_TEMPLATE.format(bbox=bbox_lines, bwipp=BWIPP, code=code, **template_options)
     return EpsImagePlugin.EpsImageFile(io.BytesIO(full_code.encode()))
