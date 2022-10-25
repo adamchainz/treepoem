@@ -23,6 +23,14 @@ def parse_opt(x: str) -> tuple[str, str | bool]:
         return (x, True)
 
 
+def check_scale(value: str) -> int:
+    if not value.isnumeric() or int(value) <= 0:
+        raise argparse.ArgumentTypeError(
+            f'Scale should be a positive integer value. Found "{value}" instead.'
+        )
+    return int(value)
+
+
 parser = argparse.ArgumentParser(epilog=supported_barcode_types)
 parser.add_argument(
     "-t", "--type", default="qrcode", help="Barcode type (default %(default)s)"
@@ -36,6 +44,13 @@ parser.add_argument(
     ),
 )
 parser.add_argument("-o", "--output", help="Output file (default is stdout)")
+parser.add_argument(
+    "-s",
+    "--scale",
+    type=check_scale,
+    default="2",
+    help="Factor scaling the output image size (default is 2).",
+)
 parser.add_argument("data", help="Barcode data")
 parser.add_argument(
     "options", nargs="*", type=parse_opt, help="List of BWIPP options (e.g. width=1.5)"
@@ -47,6 +62,7 @@ def main() -> None:
     type_: str = args.type
     format_: str | None = args.format
     output: str | None | BinaryIO = args.output
+    scale: int | None = args.scale
     data: str = args.data
     options: dict[str, str | bool] = dict(args.options)
 
@@ -65,7 +81,7 @@ def main() -> None:
     if output is stdout_binary and format_ is None:
         format_ = "xbm"
 
-    image = generate_barcode(type_, data, options)
+    image = generate_barcode(type_, data, options, scale)
 
     try:
         image.convert("1").save(output, format_)

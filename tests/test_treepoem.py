@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import sys
 from os import path
 
@@ -42,6 +43,25 @@ def test_barcode(barcode_type, barcode_data):
         assert bbox is None
 
     actual.close()
+
+
+@pytest.mark.parametrize(
+    "barcode_type,barcode_data",
+    [
+        ("qrcode", "This is qrcode barcode."),
+        ("azteccode", "This is azteccode barcode."),
+        ("azteccode", b"This is azteccode barcode."),
+        ("pdf417", "This is pdf417 barcode."),
+        ("interleaved2of5", "0123456789"),
+        ("code128", "This is code128 barcode."),
+        ("code39", "THIS IS CODE39 BARCODE."),
+    ],
+)
+def test_scale(barcode_type, barcode_data):
+    actual = treepoem.generate_barcode(barcode_type, barcode_data)
+    actual_resized = treepoem.generate_barcode(barcode_type, barcode_data, scale=4)
+    assert math.ceil(actual.size[0] / 2) == math.ceil(actual_resized.size[0] / 4)
+    assert math.ceil(actual.size[1] / 2) == math.ceil(actual_resized.size[1] / 4)
 
 
 @pytest.fixture

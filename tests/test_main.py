@@ -95,3 +95,38 @@ def test_unsupported_file_format(tmp_path, monkeypatch, capsys):
     out, err = capsys.readouterr()
     assert out == ""
     assert "Image format 'invalid-image-format' is not supported" in err
+
+
+def test_scale(tmpdir, monkeypatch):
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        ["treepoem", "-o", str(tmpdir.join("test.png")), "--scale", "4", "barcodedata"],
+    )
+    main()
+    assert tmpdir.join("test.png").check(exists=True)
+
+
+def test_unsupported_scale(tmpdir, monkeypatch, capsys):
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "treepoem",
+            "-o",
+            str(tmpdir.join("test.png")),
+            "-s",
+            "unsupported-scale",
+            "barcodedata",
+        ],
+    )
+    with pytest.raises(SystemExit) as excinfo:
+        main()
+    assert excinfo.value.code == 2
+    assert tmpdir.join("test.bin").check(exists=False)
+    out, err = capsys.readouterr()
+    assert out == ""
+    assert (
+        'Scale should be a positive integer value. Found "unsupported-scale" instead.'
+        in err
+    )

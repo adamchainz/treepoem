@@ -2,6 +2,8 @@
 Changelog
 =========
 
+* Added an option ``scale`` to treepoem, that allows to increase or decrease the dimensions of the generated EpsImageFile proportionally.
+
 3.21.0 (2023-07-24)
 -------------------
 

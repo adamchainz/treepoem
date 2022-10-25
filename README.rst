@@ -68,7 +68,7 @@ Improve your skills with `one of my books <https://adamj.eu/books/>`__.
 API
 ===
 
-``generate_barcode(barcode_type: str, data: str | bytes, options: dict[str, str | bool] | None=None) -> EpsImageFile``
+``generate_barcode(barcode_type: str, data: str | bytes, options: dict[str, str | bool] | None=None, scale: int = 2) -> EpsImageFile``
 ----------------------------------------------------------------------------------------------------------------------
 
 Generates a barcode and returns it as a PIL image file object (specifically, a
