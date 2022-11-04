@@ -3,7 +3,9 @@ from __future__ import annotations
 import argparse
 import sys
 from textwrap import fill
-from typing import BinaryIO, Tuple, cast
+from typing import BinaryIO
+from typing import cast
+from typing import Tuple
 
 from . import generate_barcode
 from .data import barcode_types

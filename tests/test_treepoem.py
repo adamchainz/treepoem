@@ -4,7 +4,9 @@ import sys
 from os import path
 
 import pytest
-from PIL import EpsImagePlugin, Image, ImageChops
+from PIL import EpsImagePlugin
+from PIL import Image
+from PIL import ImageChops
 
 import treepoem
 
