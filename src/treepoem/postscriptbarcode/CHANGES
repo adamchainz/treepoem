@@ -1,3 +1,49 @@
+2022-10-19
+
+* The GS1 North American Coupon Code symbology was fixed.
+
+
+2022-10-15
+
+* The text positioning options for renlinear and renmatrix were fixed.
+
+
+2022-10-14
+
+* The value type validation of the options parser has been further improved.
+
+
+2022-10-13
+
+* The vertical position of the left whitespace guard was fixed.
+* User input validation was added to JapanPost and Code 93.
+
+
+2022-10-10
+
+* The options parser has improved value type validation.
+
+
+2022-09-28
+
+* Documentation updates only, to reflect GS1 example data ranges.
+
+
+2022-09-26
+
+* No user-visible changes.
+
+
+2022-09-18
+
+* The Composite symbologies now honour the dontdraw option.
+
+
+2022-08-21
+
+* The codeword generation for QR Code and Micro QR Code symbols was optimised.
+
+
 2022-07-29
 
 * GS1 data processing was significantly refactored.
