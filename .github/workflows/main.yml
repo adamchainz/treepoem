@@ -42,8 +42,8 @@ jobs:
       run: |
         # From binary on https://www.ghostscript.com/download/gsdnld.html
         wget --quiet https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostscript-10.0.0-linux-x86_64.tgz
-        tar xvf ghostscript-9.10.0-linux-x86_64.tgz
-        sudo mv ghostscript-9.10.0-linux-x86_64/gs-1000-linux-x86_64 /usr/local/bin/gs
+        tar xvf ghostscript-10.0.0-linux-x86_64.tgz
+        sudo mv ghostscript-10.0.0-linux-x86_64/gs-1000-linux-x86_64 /usr/local/bin/gs
 
     - name: Run tox targets for ${{ matrix.python-version }}
       run: tox run -f py$(echo ${{ matrix.python-version }} | tr -d .)
