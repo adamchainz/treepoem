@@ -17,15 +17,14 @@ def test_help(monkeypatch, capsys):
     assert err == ""
 
 
-def test_simple(tmpdir, monkeypatch):
-    monkeypatch.setattr(
-        sys, "argv", ["treepoem", "-o", str(tmpdir.join("test.png")), "barcodedata"]
-    )
+def test_simple(tmp_path, monkeypatch):
+    test_png = tmp_path / "test.png"
+    monkeypatch.setattr(sys, "argv", ["treepoem", "-o", str(test_png), "barcodedata"])
     main()
-    assert tmpdir.join("test.png").check(exists=True)
+    assert test_png.exists()
 
 
-def test_stdout(tmpdir, monkeypatch, capsys):
+def test_stdout(monkeypatch, capsys):
     monkeypatch.setattr(sys, "argv", ["treepoem", "barcodedata"])
     main()
     out, err = capsys.readouterr()
@@ -41,7 +40,7 @@ def test_stdout(tmpdir, monkeypatch, capsys):
     assert err == ""
 
 
-def test_stdout_with_format(tmpdir, monkeypatch, capfdbinary):
+def test_stdout_with_format(monkeypatch, capfdbinary):
     monkeypatch.setattr(sys, "argv", ["treepoem", "-f", "png", "barcodedata"])
     main()
     out, err = capfdbinary.readouterr()
@@ -49,7 +48,8 @@ def test_stdout_with_format(tmpdir, monkeypatch, capfdbinary):
     assert err == b""
 
 
-def test_unsupported_barcode_type(tmpdir, monkeypatch, capsys):
+def test_unsupported_barcode_type(tmp_path, monkeypatch, capsys):
+    test_png = tmp_path / "test.png"
     monkeypatch.setattr(
         sys,
         "argv",
@@ -58,14 +58,14 @@ def test_unsupported_barcode_type(tmpdir, monkeypatch, capsys):
             "-t",
             "invalid-barcode-type",
             "-o",
-            str(tmpdir.join("test.png")),
+            str(test_png),
             "barcodedata",
         ],
     )
     with pytest.raises(SystemExit) as excinfo:
         main()
     assert excinfo.value.code == 2
-    assert tmpdir.join("test.png").check(exists=False)
+    assert not test_png.exists()
     out, err = capsys.readouterr()
     assert out == ""
     assert (
@@ -74,7 +74,8 @@ def test_unsupported_barcode_type(tmpdir, monkeypatch, capsys):
     ) in err
 
 
-def test_unsupported_file_format(tmpdir, monkeypatch, capsys):
+def test_unsupported_file_format(tmp_path, monkeypatch, capsys):
+    test_png = tmp_path / "test.png"
     monkeypatch.setattr(
         sys,
         "argv",
@@ -83,14 +84,14 @@ def test_unsupported_file_format(tmpdir, monkeypatch, capsys):
             "-f",
             "invalid-image-format",
             "-o",
-            str(tmpdir.join("test.bin")),
+            str(test_png),
             "barcodedata",
         ],
     )
     with pytest.raises(SystemExit) as excinfo:
         main()
     assert excinfo.value.code == 2
-    assert tmpdir.join("test.bin").check(exists=False)
+    assert not test_png.exists()
     out, err = capsys.readouterr()
     assert out == ""
     assert 'Image format "invalid-image-format" is not supported' in err
