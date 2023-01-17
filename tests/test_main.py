@@ -94,4 +94,4 @@ def test_unsupported_file_format(tmp_path, monkeypatch, capsys):
     assert not test_png.exists()
     out, err = capsys.readouterr()
     assert out == ""
-    assert 'Image format "invalid-image-format" is not supported' in err
+    assert "Image format 'invalid-image-format' is not supported" in err
