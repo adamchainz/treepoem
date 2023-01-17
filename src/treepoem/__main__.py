@@ -71,7 +71,7 @@ def main() -> None:
         image.convert("1").save(output, format_)
     except KeyError as e:
         if format_ is not None and e.args[0] == format_.upper():
-            parser.error(f'Image format "{format_}" is not supported')
+            parser.error(f"Image format {format_!r} is not supported")
         else:
             raise
 
