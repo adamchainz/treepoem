@@ -27,7 +27,7 @@ Install from **pip**:
 
     python -m pip install treepoem
 
-Python 3.7 to 3.11 supported.
+Python 3.7 to 3.12 supported.
 
 You'll also need Ghostscript installed. On Ubuntu/Debian this can be installed
 with:
