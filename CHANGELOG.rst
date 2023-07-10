@@ -2,6 +2,8 @@
 Changelog
 =========
 
+* Drop Python 3.7 support.
+
 * Upgrade vendored BWIPP to its 2023-07-05 release.
   This version includes a bunch of improvements, including more validation and changing Aztec Code to generate only full-range symbols by default.
   You can read its changelog in the `treepoem repo <https://github.com/adamchainz/treepoem/blob/main/src/treepoem/postscriptbarcode/CHANGES>`__.
