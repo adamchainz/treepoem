@@ -1,3 +1,68 @@
+2023-07-05
+
+* The renlinear renderer was changed so that any border is plotted outside of the zone defined by the border{left,right,top,bottom} options and so that inkspread is applied to the border.
+* Border support was added to the renmatrix renderer.
+
+
+2023-06-22
+
+* The MaxiCode encoder was amended to apply hexagon size reduction which can be adjusted by inkspread.
+* The MicroPDF417 encoder was improved to provide automatic Macro 05/06 compression of structured data.
+
+
+2023-04-11
+
+* Input validation fixes where applied to the Australia Post 4-State barcode, KIX, Code 11, Japan Post, Code 39, Code 39 Extended, Code 2 of 5, DataBar family, EAN-14, SSCC-18, Plessey, Posicode, Codabar, Composite Component, DAFT and HIBC symbologies.
+
+
+2023-04-03
+
+* The MSI symbology was fixed to permit the madmod11 options with the mod11 check type.
+* The Data Matrix encoder was fixed.
+* The PDF417 symbology was fixed to perform ECC levels from 0 to 8.
+* The Code 49 symbology option concat was renamed to append.
+
+
+2023-04-01
+
+* User option validation was added to Code 93 Extended, Codablock F, GS1-128, US Postal Service Intelligent Mail, Code 16K, Code 49, MSI, Code One, GS1 Composite Components, Hanxin, DotCode, GS1 DataBar Omnidirectional and GS1 DataBar Expanded.
+* The GS1 AI linter was realigned with the latest release of the GS1 Syntax Dictionary, including the addition of a linter for AIDC media types.
+
+
+2023-03-26
+
+* User option validation was added to PDF417 and MicroPDF417.
+
+
+2023-03-24
+
+* User option validation was added to Maxicode and the Australian Postal 4-state barcode.
+
+
+2023-03-23
+
+* The version information for QR Code version 33 symbols was fixed.
+* User option validation was added to the Telepen and Japan Post QR Code.
+* A font sizes less than or equal to zero is now forbidden.
+
+
+2023-03-20
+
+* User option validation was added to the QR Code, Aztec Code and Data Matrix encoders.
+* Aztec Code was amended to generate only full-range symbols by default.
+* Support for legacy DIN DMRE models was removed from Data Matrix.
+
+
+2023-03-16
+
+* User input validation was added to the setting of RGB and CMYK colours.
+
+
+2023-02-16
+
+* The mailmark option in the Data Matrix encoder was replaced with a generic c40headerlength option.
+
+
 2022-10-19
 
 * The GS1 North American Coupon Code symbology was fixed.

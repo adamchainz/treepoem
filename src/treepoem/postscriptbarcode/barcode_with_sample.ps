@@ -1,9 +1,9 @@
 %!PS
 
-% Barcode Writer in Pure PostScript - Version 2022-10-19
+% Barcode Writer in Pure PostScript - Version 2023-07-05
 % https://bwipp.terryburton.co.uk
 %
-% Copyright (c) 2004-2022 Terry Burton
+% Copyright (c) 2004-2023 Terry Burton
 %
 % Permission is hereby granted, free of charge, to any
 % person obtaining a copy of this software and associated
@@ -32,7 +32,7 @@
 % --BEGIN TEMPLATE--
 
 % --BEGIN RESOURCE preamble--
-%%BeginResource: Category uk.co.terryburton.bwipp 0.0 2022101900 29629 32838
+%%BeginResource: Category uk.co.terryburton.bwipp 0.0 2023070500 29733 32838
 %%BeginData:          6 ASCII Lines
 currentglobal
 true setglobal
@@ -46,7 +46,7 @@ setglobal
 
 % --BEGIN RESOURCE loadctx--
 % --REQUIRES preamble--
-%%BeginResource: uk.co.terryburton.bwipp loadctx 0.0 2022101900 41297 40951
+%%BeginResource: uk.co.terryburton.bwipp loadctx 0.0 2023070500 41297 40927
 %%BeginData:         30 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 1 dict
@@ -84,7 +84,7 @@ end
 
 % --BEGIN RESOURCE unloadctx--
 % --REQUIRES preamble--
-%%BeginResource: uk.co.terryburton.bwipp unloadctx 0.0 2022101900 38938 38637
+%%BeginResource: uk.co.terryburton.bwipp unloadctx 0.0 2023070500 38938 38741
 %%BeginData:         14 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 1 dict
@@ -106,7 +106,7 @@ end
 
 % --BEGIN RESOURCE raiseerror--
 % --REQUIRES preamble--
-%%BeginResource: uk.co.terryburton.bwipp raiseerror 0.0 2022101900 39029 38756
+%%BeginResource: uk.co.terryburton.bwipp raiseerror 0.0 2023070500 39029 38860
 %%BeginData:         15 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -129,7 +129,7 @@ end
 
 % --BEGIN RESOURCE processoptions--
 % --REQUIRES preamble raiseerror--
-%%BeginResource: uk.co.terryburton.bwipp processoptions 0.0 2022101900 48428 48503
+%%BeginResource: uk.co.terryburton.bwipp processoptions 0.0 2023070500 48428 48479
 %%BeginData:         50 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -187,7 +187,7 @@ end
 
 % --BEGIN RESOURCE parseinput--
 % --REQUIRES preamble loadctx unloadctx raiseerror--
-%%BeginResource: uk.co.terryburton.bwipp parseinput 0.0 2022101900 69945 69294
+%%BeginResource: uk.co.terryburton.bwipp parseinput 0.0 2023070500 73457 69318
 %%BeginData:        174 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -369,8 +369,8 @@ end
 
 % --BEGIN RESOURCE gs1process--
 % --REQUIRES preamble loadctx unloadctx parseinput raiseerror--
-%%BeginResource: uk.co.terryburton.bwipp gs1process 0.0 2022101900 547397 598972
-%%BeginData:       2909 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp gs1process 0.0 2023070500 548201 598155
+%%BeginData:       2941 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -1555,6 +1555,7 @@ begin
                 << /cset /N  /min 13  /max 13  /opt false  /linters [ /lintcsum /lintkey ] >>
             ]
             /req    [ [ (8020) ] ]
+            /dlpkey [ [ (8020) ] ]
         >>
         (415) exch dup
         pop
@@ -2036,6 +2037,24 @@ begin
 
         <<
             /parts [
+                << /cset /N  /min  2  /max  2  /opt false  /linters [ /lintmediatype ] >>
+            ]
+            /req    [ [ (8017) (8018) ] ]
+        >>
+        (7241) exch dup
+        pop
+
+        <<
+            /parts [
+                << /cset /X  /min  1  /max 25  /opt false  /linters [] >>
+            ]
+            /req    [ [ (8017) (8018) ] ]
+        >>
+        (7242) exch dup
+        pop
+
+        <<
+            /parts [
                 << /cset /N  /min  4  /max  4  /opt false  /linters [ /lintnonzero ] >>
                 << /cset /N  /min  5  /max  5  /opt false  /linters [ /lintnonzero ] >>
                 << /cset /N  /min  3  /max  3  /opt false  /linters [ /lintnonzero ] >>
@@ -2161,8 +2180,9 @@ begin
 
         <<
             /parts [
-                << /cset /N  /min 18  /max 18  /opt false  /linters [ /lintcsum ] >>
+                << /cset /N  /min 18  /max 18  /opt false  /linters [ /lintcsum /lintkey ] >>
             ]
+            /ex     [ (8018) ]
             /dlpkey [ [ (8019) ] ]
         >>
         (8017) exch dup
@@ -2170,7 +2190,7 @@ begin
 
         <<
             /parts [
-                << /cset /N  /min 18  /max 18  /opt false  /linters [ /lintcsum ] >>
+                << /cset /N  /min 18  /max 18  /opt false  /linters [ /lintcsum /lintkey ] >>
             ]
             /ex     [ (8017) ]
             /dlpkey [ [ (8019) ] ]
@@ -3132,6 +3152,18 @@ begin
         pop
     } def
 
+{
+    /aidcmediatype << [
+        /01 /02 /03 /04 /05 /06 /07 /08 /09 /10
+        /80 /81 /82 /83 /84 /85 /86 /87 /88 /89
+        /90 /91 /92 /93 /94 /95 /96 /97 /98 /99
+    ] {dup} forall >> def
+} ctxdef
+
+    /lintmediatype {
+        aidcmediatype exch known not { pop /bwipp.GS1UnknownMediaType (Unknown AIDC media type) false exit } if
+    } def
+
     dontlint not {
 
         % Validate AI contents
@@ -3286,8 +3318,8 @@ end
 
 % --BEGIN RENDERER renlinear--
 % --REQUIRES preamble raiseerror processoptions--
-%%BeginResource: uk.co.terryburton.bwipp renlinear 0.0 2022101900 75449 74435
-%%BeginData:        216 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp renlinear 0.0 2023070500 79346 78418
+%%BeginData:        232 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -3336,6 +3368,10 @@ begin
     {def} forall
     opt currentdict /opt undef //processoptions exec pop
 
+    textsize 0 le {
+        /bwipp.renlinearBadTextsize (The font size must be greater than zero) //raiseerror exec
+    } if
+
     % Create bar elements and put them into the bars array
     /bars sbs length 1 add 2 idiv array def
     /pixx 0 def /pixy 0 def
@@ -3371,27 +3407,35 @@ begin
     % Set RGB or CMYK color depending on length of given hex string
     /setanycolor {
         /anycolor exch def
-        anycolor length 6 eq {
-            (<      >) 8 string copy dup 1 anycolor putinterval cvx exec {255 div} forall setrgbcolor
+        anycolor length dup 6 ne exch 8 ne and {
+            /bwipp.renlinearBadColorLength (Colors must be 6 or 8 characters) //raiseerror exec
         } if
-        anycolor length 8 eq {
-            (<        >) 10 string copy dup 1 anycolor putinterval cvx exec {255 div} forall setcmykcolor
-        } if
+        anycolor {
+            dup     dup 48 ge exch  59 le and  % 0-9
+            1 index dup 65 ge exch  70 le and  % A-F
+            2 index dup 97 ge exch 102 le and  % a-f
+            or or exch pop not {
+                /bwipp.renlinearBadColorCharacter (Colors must be in hexadecimal notation) //raiseerror exec
+            } if
+        } forall
+        anycolor length 6 eq { (<      >) } { (<        >) } ifelse dup length string copy
+        dup 1 anycolor putinterval cvx exec {255 div} forall
+        anycolor length 6 eq { setrgbcolor } { setcmykcolor } ifelse
     } def
 
     % Display the border and background
     newpath
-    borderleft neg borderbottom neg moveto
-    pixx borderleft add borderright add 0 rlineto
-    0 pixy borderbottom add bordertop add rlineto
-    pixx borderleft add borderright add neg 0 rlineto
-    0 pixy borderbottom add bordertop add neg rlineto
+    borderleft borderwidth 2 div add neg borderbottom borderwidth 2 div add neg moveto
+    pixx borderleft add borderright add borderwidth add 0 rlineto
+    0 pixy borderbottom add bordertop add borderwidth add rlineto
+    pixx borderleft add borderright add borderwidth add neg 0 rlineto
+    0 pixy borderbottom add bordertop add borderwidth add neg rlineto
     closepath
     backgroundcolor (unset) ne { gsave backgroundcolor setanycolor fill grestore } if
     showborder {
         gsave
         bordercolor (unset) ne { bordercolor setanycolor } if
-        borderwidth setlinewidth stroke
+        borderwidth inkspread 2 mul sub setlinewidth stroke
         grestore
     } if
 
@@ -3421,8 +3465,12 @@ begin
         textxalign (unset) eq textyalign (unset) eq and alttext () eq and {
             /s 0 def /fn () def
             txt {
-                {} forall
+                aload pop
                 2 copy s ne exch fn ne or {
+                    dup 0 le {
+                        pop pop pop pop pop
+                        /bwipp.renlinearFontTooSmall (The font size is too small) //raiseerror exec
+                    } if
                     2 copy /s exch def /fn exch def
                     selectfont
                 } {
@@ -3510,8 +3558,8 @@ end
 
 % --BEGIN RENDERER renmatrix--
 % --REQUIRES preamble raiseerror processoptions--
-%%BeginResource: uk.co.terryburton.bwipp renmatrix 0.0 2022101900 90524 89622
-%%BeginData:        287 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp renmatrix 0.0 2023070500 97526 96476
+%%BeginData:        328 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -3524,6 +3572,7 @@ begin
     % Default options
     /width 1.0 def
     /height 1.0 def
+    /bordercolor (unset) def
     /barcolor (unset) def
     /backgroundcolor (unset) def
     /colormap (unset) def
@@ -3542,12 +3591,22 @@ begin
     /textyoffset 0.0 def
     /textgaps 0.0 def
     /alttext () def
+    /showborder false def
+    /borderleft 0.0 def
+    /borderright 0.0 def
+    /bordertop 0.0 def
+    /borderbottom 0.0 def
+    /borderwidth 0.5 def
 
     {def} forall
     opt currentdict /opt undef //processoptions exec pop
 
     inkspread 0 ne {/inkspreadh inkspread def} if
     inkspread 0 ne {/inkspreadv inkspread def} if
+
+    textsize 0 le {
+        /bwipp.renmatrixBadTextsize (The font size must be greater than zero) //raiseerror exec
+    } if
 
     /xyget { pixx mul add pixs exch get} def
     /cget { pixx mul add cache exch get and} def
@@ -3604,12 +3663,20 @@ begin
     % Set RGB or CMYK color depending on length of given hex string
     /setanycolor {
         /anycolor exch def
-        anycolor length 6 eq {
-            (<      >) 8 string copy dup 1 anycolor putinterval cvx exec {255 div} forall setrgbcolor
+        anycolor length dup 6 ne exch 8 ne and {
+            /bwipp.renmatrixBadColorLength (Colors must be 6 or 8 characters) //raiseerror exec
         } if
-        anycolor length 8 eq {
-            (<        >) 10 string copy dup 1 anycolor putinterval cvx exec {255 div} forall setcmykcolor
-        } if
+        anycolor {
+            dup     dup 48 ge exch  59 le and  % 0-9
+            1 index dup 65 ge exch  70 le and  % A-F
+            2 index dup 97 ge exch 102 le and  % a-f
+            or or exch pop not {
+                /bwipp.renmatrixBadColorCharacter (Colors must be in hexadecimal notation) //raiseerror exec
+            } if
+        } forall
+        anycolor length 6 eq { (<      >) } { (<        >) } ifelse dup length string copy
+        dup 1 anycolor putinterval cvx exec {255 div} forall
+        anycolor length 6 eq { setrgbcolor } { setcmykcolor } ifelse
     } def
 
     % Plot a layer of single colour
@@ -3708,21 +3775,39 @@ begin
 
     gsave
 
-    % Draw the image
+    currentpoint translate
+
     /inkspread  inkspread  2 div def
     /inkspreadh inkspreadh 2 div def
     /inkspreadv inkspreadv 2 div def
-    currentpoint translate
-    width pixx div 72 mul height pixy div 72 mul scale
-    0 0 moveto pixx 0 lineto pixx pixy lineto 0 pixy lineto closepath
-    backgroundcolor (unset) ne { gsave backgroundcolor setanycolor fill grestore } if
 
+    % Force symbol to given width
+    width pixx div 72 mul height pixy div 72 mul scale
+
+    % Display the border and background
+    newpath
+    borderleft borderwidth 2 div add neg borderbottom borderwidth 2 div add neg moveto
+    pixx borderleft add borderright add borderwidth add 0 rlineto
+    0 pixy borderbottom add bordertop add borderwidth add rlineto
+    pixx borderleft add borderright add borderwidth add neg 0 rlineto
+    0 pixy borderbottom add bordertop add borderwidth add neg rlineto
+    closepath
+
+    backgroundcolor (unset) ne { gsave backgroundcolor setanycolor fill grestore } if
+    showborder {
+        gsave
+        bordercolor (unset) ne { bordercolor setanycolor } if
+        borderwidth inkspread 2 mul sub setlinewidth stroke
+        grestore
+    } if
+
+    % Display the matrix
     colormap (unset) eq {
         /colormap << 1 barcolor >> def
     } if
 
     colormap {
-        setanycolor
+        dup (unset) ne { setanycolor } { pop } ifelse
         /key exch def
         [
             pixs { key eq {1} {0} ifelse } forall
@@ -3737,6 +3822,10 @@ begin
             txt {
                 {} forall
                 2 copy s ne exch fn ne or {
+                    dup 0 le {
+                        pop pop pop pop pop
+                        /bwipp.renmatrixFontTooSmall (The font size is too small) //raiseerror exec
+                    } if
                     2 copy /s exch def /fn exch def
                     selectfont
                 } {
@@ -3779,7 +3868,7 @@ begin
             textxalign (offleft) eq { /textxpos textwidth textxoffset add neg def } if
             textxalign (offright) eq { /textxpos pixx textxoffset add def } if
             textxalign (justify) eq textwidth pixx lt and {
-                /textxpos 0 def
+                /textxpos 0.0 def
                 /textgaps pixx textwidth sub tstr length 1 sub div def
             } if
             /textypos textyoffset textascent add 1 add neg def
@@ -3805,8 +3894,8 @@ end
 
 % --BEGIN RENDERER renmaximatrix--
 % --REQUIRES preamble raiseerror processoptions--
-%%BeginResource: uk.co.terryburton.bwipp renmaximatrix 0.0 2022101900 52627 52485
-%%BeginData:         76 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp renmaximatrix 0.0 2023070500 56943 56619
+%%BeginData:         87 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -3819,6 +3908,7 @@ begin
     % Default options
     /barcolor (unset) def
     /backgroundcolor (unset) def
+    /inkspread 0.0 def
 
     {def} forall
     opt currentdict /opt undef //processoptions exec pop
@@ -3826,12 +3916,20 @@ begin
     % Set RGB or CMYK color depending on length of given hex string
     /setanycolor {
         /anycolor exch def
-        anycolor length 6 eq {
-            (<      >) 8 string copy dup 1 anycolor putinterval cvx exec {255 div} forall setrgbcolor
+        anycolor length dup 6 ne exch 8 ne and {
+            /bwipp.renmaximatrixBadColorLength (Colors must be 6 or 8 characters) //raiseerror exec
         } if
-        anycolor length 8 eq {
-            (<        >) 10 string copy dup 1 anycolor putinterval cvx exec {255 div} forall setcmykcolor
-        } if
+        anycolor {
+            dup     dup 48 ge exch  59 le and  % 0-9
+            1 index dup 65 ge exch  70 le and  % A-F
+            2 index dup 97 ge exch 102 le and  % a-f
+            or or exch pop not {
+                /bwipp.renmaximatrixBadColorCharacter (Colors must be in hexadecimal notation) //raiseerror exec
+            } if
+        } forall
+        anycolor length 6 eq { (<      >) } { (<        >) } ifelse dup length string copy
+        dup 1 anycolor putinterval cvx exec {255 div} forall
+        anycolor length 6 eq { setrgbcolor } { setcmykcolor } ifelse
     } def
 
     gsave
@@ -3844,6 +3942,8 @@ begin
     backgroundcolor (unset) ne { gsave backgroundcolor setanycolor fill grestore } if
     barcolor (unset) ne { barcolor setanycolor } if
 
+    /g 0.06 inkspread add def
+
     0.5 0.5774 translate
 
     newpath
@@ -3854,24 +3954,24 @@ begin
         y 2 mod 0 eq {x} {x 0.5 add} ifelse
         32 y sub 0.8661 mul
         moveto
-        0     0.5774 rmoveto
-        -0.5 -0.2887 rlineto
-        0    -0.5774 rlineto
-        0.5  -0.2887 rlineto
-        0.5   0.2887 rlineto
-        0     0.5774 rlineto
-        -0.5  0.2887 rlineto
+        0              0.5774 g       sub rmoveto
+       -0.5 g add     -0.2887 g 2 div add rlineto
+        0             -0.5774 g       add rlineto
+        0.5 g sub     -0.2887 g 2 div add rlineto
+        0.5 g sub      0.2887 g 2 div sub rlineto
+        0              0.5774 g       sub rlineto
+       -0.5 g add      0.2887 g 2 div sub rlineto
         closepath
     } forall
     fill
 
     % Plot the locator symbol
-    newpath 14 13.8576 0.5774 0 360 arc closepath
-    14 13.8576 1.3359 360 0 arcn closepath fill
-    newpath 14 13.8576 2.1058 0 360 arc closepath
-    14 13.8576 2.8644 360 0 arcn closepath fill
-    newpath 14 13.8576 3.6229 0 360 arc closepath
-    14 13.8576 4.3814 360 0 arcn closepath fill
+    newpath 14 13.8576 0.5774 inkspread add 0 360 arc closepath
+            14 13.8576 1.3359 inkspread sub 360 0 arcn closepath fill
+    newpath 14 13.8576 2.1058 inkspread add 0 360 arc closepath
+            14 13.8576 2.8644 inkspread sub 360 0 arcn closepath fill
+    newpath 14 13.8576 3.6229 inkspread add 0 360 arc closepath
+            14 13.8576 4.3814 inkspread sub 360 0 arcn closepath fill
 
     grestore
 
@@ -3893,7 +3993,7 @@ end
 % --EXAM: 90200
 % --EXOP: includetext guardwhitespace
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp ean5 0.0 2022101900 64068 67308
+%%BeginResource: uk.co.terryburton.bwipp ean5 0.0 2023070500 67564 67372
 %%BeginData:        131 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -4009,9 +4109,9 @@ begin
         /txt txt
     } if
     /opt options
-    /guardrightpos 10
+    /guardrightpos 10.0
     /guardrightypos textyoffset 4 add
-    /bordertop 10
+    /bordertop 10.0
     >>
 
     dontdraw not //renlinear if
@@ -4036,7 +4136,7 @@ end
 % --EXAM: 05
 % --EXOP: includetext guardwhitespace
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp ean2 0.0 2022101900 62731 65898
+%%BeginResource: uk.co.terryburton.bwipp ean2 0.0 2023070500 66211 66050
 %%BeginData:        117 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -4138,9 +4238,9 @@ begin
         /txt txt
     } if
     /opt options
-    /guardrightpos 10
+    /guardrightpos 10.0
     /guardrightypos textyoffset 4 add
-    /bordertop 10
+    /bordertop 10.0
     >>
 
     dontdraw not //renlinear if
@@ -4165,7 +4265,7 @@ end
 % --EXAM: 9520123456788
 % --EXOP: includetext guardwhitespace
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp ean13 0.0 2022101900 85136 84839
+%%BeginResource: uk.co.terryburton.bwipp ean13 0.0 2023070500 85312 81607
 %%BeginData:        205 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -4324,7 +4424,7 @@ begin
         /bbs [30{0}repeat] def
         /txt [] def
     } ifelse
-    /guardrightypos 0 def
+    /guardrightypos 0.0 def
 
     % Append the addon
     addon () ne {
@@ -4355,9 +4455,9 @@ begin
     /bbs bbs
     /txt txt
     /opt options
-    /guardrightpos 10
+    /guardrightpos 10.0
     /guardrightypos guardrightypos
-    /borderbottom 5
+    /borderbottom 5.0
     >>
 
     dontdraw not //renlinear if
@@ -4382,7 +4482,7 @@ end
 % --EXAM: 95200002
 % --EXOP: includetext guardwhitespace
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp ean8 0.0 2022101900 82374 81978
+%%BeginResource: uk.co.terryburton.bwipp ean8 0.0 2023070500 82598 78874
 %%BeginData:        186 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -4521,7 +4621,7 @@ begin
         /bbs [22{0}repeat] def
         /txt [] def
     } ifelse
-    /guardrightypos 0 def
+    /guardrightypos 0.0 def
 
     % Append the addon
     addon () ne {
@@ -4552,10 +4652,10 @@ begin
     /bbs bbs
     /txt txt
     /opt options
-    /guardleftpos 10
-    /guardrightpos 10
+    /guardleftpos 10.0
+    /guardrightpos 10.0
     /guardrightypos guardrightypos
-    /borderbottom 5
+    /borderbottom 5.0
     >>
 
     dontdraw not //renlinear if
@@ -4580,7 +4680,7 @@ end
 % --EXAM: 012345000058
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp upca 0.0 2022101900 90129 89878
+%%BeginResource: uk.co.terryburton.bwipp upca 0.0 2023070500 90185 86374
 %%BeginData:        238 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -4772,7 +4872,7 @@ begin
         /bbs [30{0}repeat] def
         /txt [] def
     } ifelse
-    /guardrightypos 0 def
+    /guardrightypos 0.0 def
 
     % Append the addon
     addon () ne {
@@ -4803,9 +4903,9 @@ begin
     /bbs bbs
     /txt txt
     /opt options
-    /guardrightpos 10
+    /guardrightpos 10.0
     /guardrightypos guardrightypos
-    /borderbottom 5
+    /borderbottom 5.0
     >>
 
     dontdraw not //renlinear if
@@ -4830,7 +4930,7 @@ end
 % --EXAM: 01234558
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp upce 0.0 2022101900 94654 94342
+%%BeginResource: uk.co.terryburton.bwipp upce 0.0 2023070500 94814 90966
 %%BeginData:        277 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -5061,7 +5161,7 @@ begin
         /bbs [17{0}repeat] def
         /txt [] def
     } ifelse
-    /guardrightypos 0 def
+    /guardrightypos 0.0 def
 
     % Append the addon
     addon () ne {
@@ -5092,9 +5192,9 @@ begin
     /bbs bbs
     /txt txt
     /opt options
-    /guardrightpos 10
+    /guardrightpos 10.0
     /guardrightypos guardrightypos
-    /borderbottom 5
+    /borderbottom 5.0
     >>
 
     dontdraw not //renlinear if
@@ -5119,7 +5219,7 @@ end
 % --EXAM: 978-1-56581-231-4 90000
 % --EXOP: includetext guardwhitespace
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp isbn 0.0 2022101900 94582 93829
+%%BeginResource: uk.co.terryburton.bwipp isbn 0.0 2023070500 94478 93829
 %%BeginData:        238 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -5330,7 +5430,7 @@ begin
     % Add the ISBN text
     includetext {
         isbntextxoffset null eq {
-            /isbntextxoffset isbn length 9 eq {-1} {-12} ifelse def
+            /isbntextxoffset isbn length 9 eq {-1.0} {-12.0} ifelse def
         } if
         isbntextyoffset null eq {
             /isbntextyoffset height 72 mul 3 add def
@@ -5369,7 +5469,7 @@ end
 % --EXAM: 979-0-2605-3211-3
 % --EXOP: includetext guardwhitespace
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp ismn 0.0 2022101900 91050 90390
+%%BeginResource: uk.co.terryburton.bwipp ismn 0.0 2023070500 91154 90390
 %%BeginData:        217 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -5559,7 +5659,7 @@ begin
     % Add the ISMN text
     includetext {
         ismntextxoffset null eq {
-            /ismntextxoffset ismntxt length 18 eq {-1} {-12} ifelse def
+            /ismntextxoffset ismntxt length 18 eq {-1.0} {-12.0} ifelse def
         } if
         ismntextyoffset null eq {
             /ismntextyoffset height 72 mul 3 add def
@@ -5598,7 +5698,7 @@ end
 % --EXAM: 0311-175X 00 17
 % --EXOP: includetext guardwhitespace
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp issn 0.0 2022101900 82378 81818
+%%BeginResource: uk.co.terryburton.bwipp issn 0.0 2023070500 82498 81962
 %%BeginData:        160 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -5734,7 +5834,7 @@ begin
 
     % Add the ISSN text
     includetext {
-        issntextxoffset null eq {/issntextxoffset 10 def} if
+        issntextxoffset null eq {/issntextxoffset 10.0 def} if
         issntextyoffset null eq {/issntextyoffset height 72 mul 3 add def} if
         args (txt) known {
             /txt args (txt) get def
@@ -5770,7 +5870,7 @@ end
 % --EXAM: 0642118
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp mands 0.0 2022101900 72503 72302
+%%BeginResource: uk.co.terryburton.bwipp mands 0.0 2023070500 72503 72302
 %%BeginData:         73 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -5855,7 +5955,7 @@ end
 % --EXAM: Count01234567!
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp code128 0.0 2022101900 129825 126173
+%%BeginResource: uk.co.terryburton.bwipp code128 0.0 2023070500 126393 129397
 %%BeginData:        424 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -6291,8 +6391,8 @@ end
 % --EXAM: (01)09521234543213(3103)000123
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp gs1-128 0.0 2022101900 80284 79945
-%%BeginData:         98 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp gs1-128 0.0 2023070500 80703 80334
+%%BeginData:        102 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -6322,6 +6422,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    linkagea linkagec and {
+        /bwipp.gs1128badLinkage (linkagea and linkagec cannot be used together) //raiseerror exec
+    } if
 
     /text barcode def
 
@@ -6401,7 +6505,7 @@ end
 % --EXAM: (01) 0 952 8765 43210 8
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp ean14 0.0 2022101900 72750 72334
+%%BeginResource: uk.co.terryburton.bwipp ean14 0.0 2023070500 72646 72462
 %%BeginData:         92 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -6434,11 +6538,11 @@ begin
     /hasspace text length barcode length ne def
 
     % Validate the input
-    barcode 0 4 getinterval (\(01\)) ne {
-        /bwipp.ean14badAI (GS1-14 must begin with (01) application identifier) //raiseerror exec
-    } if
     barcode length 17 ne barcode length 18 ne and {
         /bwipp.ean14badLength (GS1-14 must be 13 or 14 digits) //raiseerror exec
+    } if
+    barcode 0 4 getinterval (\(01\)) ne {
+        /bwipp.ean14badAI (GS1-14 must begin with (01) application identifier) //raiseerror exec
     } if
     barcode 4 barcode length 4 sub getinterval {
         dup 48 lt exch 57 gt or {
@@ -6505,7 +6609,7 @@ end
 % --EXAM: (00) 0 9528765 432101234 6
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp sscc18 0.0 2022101900 72762 72341
+%%BeginResource: uk.co.terryburton.bwipp sscc18 0.0 2023070500 72658 72469
 %%BeginData:         92 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -6538,11 +6642,11 @@ begin
     /hasspace text length barcode length ne def
 
     % Validate the input
-    barcode 0 4 getinterval (\(00\)) ne {
-        /bwipp.sscc18badAI (SSCC-18 must begin with (00) application identifier) //raiseerror exec
-    } if
     barcode length 21 ne barcode length 22 ne and {
         /bwipp.sscc18badLength (SSCC-18 must be 17 or 18 digits) //raiseerror exec
+    } if
+    barcode 0 4 getinterval (\(00\)) ne {
+        /bwipp.sscc18badAI (SSCC-18 must begin with (00) application identifier) //raiseerror exec
     } if
     barcode 4 barcode length 4 sub getinterval {
         dup 48 lt exch 57 gt or {
@@ -6609,8 +6713,8 @@ end
 % --EXAM: THIS IS CODE 39
 % --EXOP: includetext includecheck includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp code39 0.0 2022101900 69106 72347
-%%BeginData:        137 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp code39 0.0 2023070500 73033 72685
+%%BeginData:        141 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -6637,6 +6741,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.code39emptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /code39 //loadctx exec
 
@@ -6758,7 +6866,7 @@ end
 % --EXAM: Code39 Ext!
 % --EXOP: includetext includecheck includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp code39ext 0.0 2022101900 68241 71557
+%%BeginResource: uk.co.terryburton.bwipp code39ext 0.0 2023070500 72136 72100
 %%BeginData:         99 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -6822,8 +6930,8 @@ begin
         /i exch def
         /extchar extencs barcode i get get def
         newcode j extchar putinterval
-        newtext j barcode i get put
-        extchar length 1 ne {newtext j 1 add ( ) putinterval} if
+        newtext j barcode i get dup dup 32 lt exch 127 eq or { pop 32 } if put
+        extchar length 1 ne { newtext j 1 add 32 put } if
         /j j extchar length add def
     } for
     /newcode newcode 0 j getinterval def
@@ -6869,7 +6977,7 @@ end
 % --EXAM: 01234567
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp code32 0.0 2022101900 67769 67498
+%%BeginResource: uk.co.terryburton.bwipp code32 0.0 2023070500 67745 67498
 %%BeginData:         87 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -6968,7 +7076,7 @@ end
 % --EXAM: 123456
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp pzn 0.0 2022101900 67616 67270
+%%BeginResource: uk.co.terryburton.bwipp pzn 0.0 2023070500 67592 67270
 %%BeginData:         87 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -7067,7 +7175,7 @@ end
 % --EXAM: THIS IS CODE 93
 % --EXOP: includetext includecheck
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp code93 0.0 2022101900 72767 69073
+%%BeginResource: uk.co.terryburton.bwipp code93 0.0 2023070500 69335 72377
 %%BeginData:        134 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -7213,8 +7321,8 @@ end
 % --EXAM: Code93 Ext!
 % --EXOP: includetext includecheck
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp code93ext 0.0 2022101900 72031 71770
-%%BeginData:        103 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp code93ext 0.0 2023070500 73092 72924
+%%BeginData:        107 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -7276,11 +7384,15 @@ begin
     /j 0 def /k 0 def
     0 1 barlen 1 sub {
         /i exch def
-        /extchar extencs barcode i get get def
+        barcode i get
+        dup 127 gt {
+            pop /bwipp.code93extbadCharacter (Code 93 Extended only support ASCII characters with values 0 to 127) //raiseerror exec
+        } if
+        extencs exch get /extchar exch def
         /extlen extchar length def
         newcode j extchar putinterval
-        newtext k barcode i get put
-        extlen 1 ne {newtext k 1 add ( ) putinterval} if
+        newtext k barcode i get dup dup 32 lt exch 127 eq or { pop 32 } if put
+        extlen 1 ne { newtext k 1 add 32 put } if
         /j j extlen add def
         /k k extlen 1 eq {1} {2} ifelse add def
     } for
@@ -7328,7 +7440,7 @@ end
 % --EXAM: 2401234567
 % --EXOP: height=0.5 includecheck includetext includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp interleaved2of5 0.0 2022101900 67589 70698
+%%BeginResource: uk.co.terryburton.bwipp interleaved2of5 0.0 2023070500 71069 70746
 %%BeginData:        147 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -7460,8 +7572,8 @@ begin
     includetext {
         /txt txt
     } if
-    /barratio 2
-    /spaceratio 2
+    /barratio 2.0
+    /spaceratio 2.0
     /opt options
     >>
 
@@ -7487,7 +7599,7 @@ end
 % --EXAM: 0 952 1234 54321 3
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp itf14 0.0 2022101900 69783 69535
+%%BeginResource: uk.co.terryburton.bwipp itf14 0.0 2023070500 69679 69535
 %%BeginData:         93 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -7592,7 +7704,7 @@ end
 % --EXAM: 563102430313
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp identcode 0.0 2022101900 66534 66390
+%%BeginResource: uk.co.terryburton.bwipp identcode 0.0 2023070500 66534 66390
 %%BeginData:         78 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -7682,7 +7794,7 @@ end
 % --EXAM: 21348075016401
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp leitcode 0.0 2022101900 66526 66386
+%%BeginResource: uk.co.terryburton.bwipp leitcode 0.0 2023070500 66526 66386
 %%BeginData:         78 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -7772,8 +7884,8 @@ end
 % --EXAM: (01)09521234543213
 % --EXOP:
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databaromni 0.0 2022101900 115665 111239
-%%BeginData:        424 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp databaromni 0.0 2023070500 116951 115871
+%%BeginData:        431 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 20 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -7785,7 +7897,7 @@ dup /renmatrix dup /uk.co.terryburton.bwipp findresource put
 begin
 /databaromni {
 
-    20 dict begin            % Confine variables to local scope
+    20 dict begin
 
     /ctx null def
     /dontdraw false def
@@ -7797,22 +7909,29 @@ begin
     //processoptions exec /options exch def
     /barcode exch def
 
-    format (truncated) eq {/height 13.0 72 div def} if
-
-    /databaromni //loadctx exec
-
-    % Validate the input
-    barcode 0 4 getinterval (\(01\)) ne {
-        /bwipp.databaromniBadAI (GS1 DataBar Omnidirectional must begin with (01) application identifier) //raiseerror exec
-    } if
     barcode length 17 ne barcode length 18 ne and {
         /bwipp.databaromniBadLength (GS1 DataBar Omnidirectional must be 13 or 14 digits) //raiseerror exec
+    } if
+    barcode 0 4 getinterval (\(01\)) ne {
+        /bwipp.databaromniBadAI (GS1 DataBar Omnidirectional must begin with (01) application identifier) //raiseerror exec
     } if
     barcode 4 barcode length 4 sub getinterval {
         dup 48 lt exch 57 gt or {
             /bwipp.databaromniBadCharacter (GS1 DataBar Omnidirectional must contain only digits) //raiseerror exec
         } if
     } forall
+
+    barxmult 33 lt {
+        /bwipp.databarStackedOmniBarXmult (GS1 DataBar Stacked Omnidirectional must have a barxmult of at least 33) //raiseerror exec
+    } if
+
+    format (omni) ne format (stacked) ne and format (stackedomni) ne and format (truncated) ne and {
+        /bwipp.databaromniBadFormat (Valid formats are omni, stacked, stackedomni and truncated) //raiseerror exec
+    } if
+
+    format (truncated) eq {/height 13.0 72 div def} if
+
+    /databaromni //loadctx exec
 
     % Calculate checksum and add to end of barcode
     /checksum 0 def
@@ -8208,7 +8327,7 @@ end
 % --EXAM: (01)09521234543213
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databarstacked 0.0 2022101900 64582 67829
+%%BeginResource: uk.co.terryburton.bwipp databarstacked 0.0 2023070500 67862 67677
 %%BeginData:         66 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -8228,11 +8347,11 @@ begin
     /barcode exch def
 
     % Validate the input
-    barcode 0 4 getinterval (\(01\)) ne {
-        /bwipp.databarstackedBadAI (GS1 DataBar Stacked must begin with (01) application identifier) //raiseerror exec
-    } if
     barcode length 17 ne barcode length 18 ne and {
         /bwipp.databarstackedBadLength (GS1 DataBar Stacked must be 13 or 14 digits) //raiseerror exec
+    } if
+    barcode 0 4 getinterval (\(01\)) ne {
+        /bwipp.databarstackedBadAI (GS1 DataBar Stacked must begin with (01) application identifier) //raiseerror exec
     } if
     barcode 4 barcode length 4 sub getinterval {
         dup 48 lt exch 57 gt or {
@@ -8286,7 +8405,7 @@ end
 % --EXAM: (01)24012345678905
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databarstackedomni 0.0 2022101900 64682 67909
+%%BeginResource: uk.co.terryburton.bwipp databarstackedomni 0.0 2023070500 68114 67909
 %%BeginData:         66 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -8364,7 +8483,7 @@ end
 % --EXAM: (01)09521234543213
 % --EXOP:
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databartruncated 0.0 2022101900 64608 67845
+%%BeginResource: uk.co.terryburton.bwipp databartruncated 0.0 2023070500 67888 67693
 %%BeginData:         66 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -8384,11 +8503,11 @@ begin
     /barcode exch def
 
     % Validate the input
-    barcode 0 4 getinterval (\(01\)) ne {
-        /bwipp.databartruncatedBadAI (GS1 DataBar Truncated must begin with (01) application identifier) //raiseerror exec
-    } if
     barcode length 17 ne barcode length 18 ne and {
         /bwipp.databartruncatedBadLength (GS1 DataBar Truncated must be 13 or 14 digits) //raiseerror exec
+    } if
+    barcode 0 4 getinterval (\(01\)) ne {
+        /bwipp.databartruncatedBadAI (GS1 DataBar Truncated must begin with (01) application identifier) //raiseerror exec
     } if
     barcode 4 barcode length 4 sub getinterval {
         dup 48 lt exch 57 gt or {
@@ -8442,7 +8561,7 @@ end
 % --EXAM: (01)09521234543213
 % --EXOP:
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp databarlimited 0.0 2022101900 88076 90667
+%%BeginResource: uk.co.terryburton.bwipp databarlimited 0.0 2023070500 91344 90491
 %%BeginData:        279 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 20 dict
@@ -8467,11 +8586,11 @@ begin
     /databarlimited //loadctx exec
 
     % Validate the input
-    barcode 0 4 getinterval (\(01\)) ne {
-        /bwipp.databarlimitedBadAI (GS1 DataBar Limited must begin with (01) application identifier) //raiseerror exec
-    } if
     barcode length 17 ne barcode length 18 ne and {
         /bwipp.databarlimitedBadLength (GS1 DataBar Limited must be 13 or 14 digits) //raiseerror exec
+    } if
+    barcode 0 4 getinterval (\(01\)) ne {
+        /bwipp.databarlimitedBadAI (GS1 DataBar Limited must begin with (01) application identifier) //raiseerror exec
     } if
     barcode 4 get dup 48 lt exch 49 gt or {
         /bwipp.databarlimitedBadStartDigit (GS1 DataBar Limited must begin with 0 or 1) //raiseerror exec
@@ -8733,8 +8852,8 @@ end
 % --EXAM: (01)09521234543213(3103)000123
 % --EXOP:
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databarexpanded 0.0 2022101900 246521 244843
-%%BeginData:        849 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp databarexpanded 0.0 2023070500 247755 245976
+%%BeginData:        857 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -8764,6 +8883,14 @@ begin
     /barcode exch def
 
     /databarexpanded //loadctx exec
+
+    barxmult 34 lt {
+        /bwipp.databarStackedOmniBarXmult (GS1 DataBar Expanded Stacked must have a barxmult of at least 34) //raiseerror exec
+    } if
+
+    format (expanded) ne format (expandedstacked) ne and {
+        /bwipp.databarexpandedBadFormat (Valid formats are expanded and expandedstacked) //raiseerror exec
+    } if
 
     segments -1 eq {
         /segments format (expandedstacked) eq {4} {22} ifelse def
@@ -9594,7 +9721,7 @@ end
 % --EXAM: (01)09521234543213(3103)000123
 % --EXOP: segments=4
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databarexpandedstacked 0.0 2022101900 72875 69377
+%%BeginResource: uk.co.terryburton.bwipp databarexpandedstacked 0.0 2023070500 72851 72833
 %%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -9642,7 +9769,7 @@ end
 % --EXAM: (8110)106141416543213500110000310123196000
 % --EXOP: includetext segments=8
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp gs1northamericancoupon 0.0 2022101900 83824 86975
+%%BeginResource: uk.co.terryburton.bwipp gs1northamericancoupon 0.0 2023070500 83864 86991
 %%BeginData:         90 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -9705,7 +9832,7 @@ begin
     % Add the coupon text
     includetext {
         coupontextxoffset null eq {
-            /coupontextxoffset 0 def
+            /coupontextxoffset 0.0 def
         } if
         coupontextyoffset null eq {
             /coupontextyoffset args (height) get 72 mul 3 add def
@@ -9744,7 +9871,7 @@ end
 % --EXAM: 117480
 % --EXOP: showborder
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp pharmacode 0.0 2022101900 55259 58352
+%%BeginResource: uk.co.terryburton.bwipp pharmacode 0.0 2023070500 55259 54944
 %%BeginData:         79 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -9835,7 +9962,7 @@ end
 % --EXAM: 117480
 % --EXOP: includetext showborder
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp pharmacode2 0.0 2022101900 56506 59754
+%%BeginResource: uk.co.terryburton.bwipp pharmacode2 0.0 2023070500 56506 56322
 %%BeginData:         87 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -9910,7 +10037,7 @@ begin
     /sbs [encstr length 2 mul {spc} repeat]
     /txt txt
     /textxalign (center)
-    /textyoffset 4
+    /textyoffset 4.0
     /opt options
     >>
 
@@ -9934,8 +10061,8 @@ end
 % --EXAM: 01234567
 % --EXOP: includetext includecheck includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp code2of5 0.0 2022101900 69709 72691
-%%BeginData:        150 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp code2of5 0.0 2023070500 73534 73053
+%%BeginData:        154 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -9962,6 +10089,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.code2of5emptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /code2of5 //loadctx exec
 
@@ -10096,8 +10227,8 @@ end
 % --EXAM: 01234567
 % --EXOP: includetext includecheck includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp industrial2of5 0.0 2022101900 60942 60804
-%%BeginData:         42 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp industrial2of5 0.0 2023070500 60262 60228
+%%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -10111,12 +10242,6 @@ begin
 
     /ctx null def
     /dontdraw false def
-    /includetext false def    % Enable/disable text
-    /textfont /Courier def
-    /textsize 10.0 def
-    /textxoffset 0.0 def
-    /textyoffset -7.0 def
-    /height 1.0 def
 
     //processoptions exec /options exch def
     /barcode exch def
@@ -10150,8 +10275,8 @@ end
 % --EXAM: 01234567
 % --EXOP: includetext includecheck includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp iata2of5 0.0 2022101900 60912 60780
-%%BeginData:         42 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp iata2of5 0.0 2023070500 60232 60204
+%%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -10165,12 +10290,6 @@ begin
 
     /ctx null def
     /dontdraw false def
-    /includetext false def    % Enable/disable text
-    /textfont /Courier def
-    /textsize 10.0 def
-    /textxoffset 0.0 def
-    /textyoffset -7.0 def
-    /height 1.0 def
 
     //processoptions exec /options exch def
     /barcode exch def
@@ -10204,8 +10323,8 @@ end
 % --EXAM: 01234567
 % --EXOP: includetext includecheck includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp matrix2of5 0.0 2022101900 60922 60788
-%%BeginData:         42 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp matrix2of5 0.0 2023070500 60242 60212
+%%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -10219,12 +10338,6 @@ begin
 
     /ctx null def
     /dontdraw false def
-    /includetext false def    % Enable/disable text
-    /textfont /Courier def
-    /textsize 10.0 def
-    /textxoffset 0.0 def
-    /textyoffset -7.0 def
-    /height 1.0 def
 
     //processoptions exec /options exch def
     /barcode exch def
@@ -10258,8 +10371,8 @@ end
 % --EXAM: 01234567
 % --EXOP: includetext includecheck includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp coop2of5 0.0 2022101900 60912 60780
-%%BeginData:         42 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp coop2of5 0.0 2023070500 60232 60204
+%%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -10273,12 +10386,6 @@ begin
 
     /ctx null def
     /dontdraw false def
-    /includetext false def    % Enable/disable text
-    /textfont /Courier def
-    /textsize 10.0 def
-    /textxoffset 0.0 def
-    /textyoffset -7.0 def
-    /height 1.0 def
 
     //processoptions exec /options exch def
     /barcode exch def
@@ -10312,8 +10419,8 @@ end
 % --EXAM: 01234567
 % --EXOP: includetext includecheck includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp datalogic2of5 0.0 2022101900 60937 60800
-%%BeginData:         42 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp datalogic2of5 0.0 2023070500 60257 60224
+%%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -10327,12 +10434,6 @@ begin
 
     /ctx null def
     /dontdraw false def
-    /includetext false def    % Enable/disable text
-    /textfont /Courier def
-    /textsize 10.0 def
-    /textxoffset 0.0 def
-    /textyoffset -7.0 def
-    /height 1.0 def
 
     //processoptions exec /options exch def
     /barcode exch def
@@ -10366,8 +10467,8 @@ end
 % --EXAM: 0123456789
 % --EXOP: includetext includecheck includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp code11 0.0 2022101900 71123 74028
-%%BeginData:        154 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp code11 0.0 2023070500 74842 74494
+%%BeginData:        158 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -10393,6 +10494,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.code11emptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /code11 //loadctx exec
 
@@ -10532,8 +10637,8 @@ end
 % --EXAM: BC412SEMI
 % --EXOP: semi includetext includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp bc412 0.0 2022101900 71951 74881
-%%BeginData:        188 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp bc412 0.0 2023070500 75901 75475
+%%BeginData:        192 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -10561,6 +10666,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.bc412emptyData (The data must not be empty) //raiseerror exec
+    } if
 
     semi {
         % Implies includecheck and includecheckintext also
@@ -10666,10 +10775,10 @@ begin
     includestartstop {
         sbs 0 encs 35 get putinterval
         /pos 2 def
-        /txtpos 3 def
+        /txtpos 3.0 def
     } {
         /pos 0 def
-        /txtpos 0 def
+        /txtpos 0.0 def
     } ifelse
 
     0 1 barlen 1 sub {
@@ -10732,8 +10841,8 @@ end
 % --EXAM: A0123456789B
 % --EXOP: includetext includecheck includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp rationalizedCodabar 0.0 2022101900 71804 74688
-%%BeginData:        152 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp rationalizedCodabar 0.0 2023070500 76015 75529
+%%BeginData:        156 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -10760,6 +10869,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode length 2 lt barcode length 3 lt validatecheck and or {
+        /bwipp.rationalizedCodabarBadLength (Codabar must be at least 2 characters in length excluding any check digit) //raiseerror exec
+    } if
 
     /rationalizedCodabar //loadctx exec
 
@@ -10896,8 +11009,8 @@ end
 % --EXAM: 0123456709498765432101234567891
 % --EXOP: barcolor=FF0000
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp onecode 0.0 2022101900 105733 108720
-%%BeginData:        336 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp onecode 0.0 2023070500 110210 109913
+%%BeginData:        347 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -10920,6 +11033,16 @@ begin
     /onecode //loadctx exec
 
     /barlen barcode length def
+
+    barcode {
+        dup 48 lt exch 57 gt or {
+            /bwipp.onecodeBadCharacter (The data must contain only digits) //raiseerror exec
+        } if
+    } forall
+
+    barlen 20 ne barlen 25 ne and barlen 29 ne and barlen 31 ne and {
+        /bwipp.onecodeInvalidLength (The data must be 20, 25, 29 or 31 digits) //raiseerror exec
+    } if
 
     % Create the human readable text
     /txtdict <<
@@ -10952,7 +11075,7 @@ begin
         } for
         { %loop - extend input as necessary
             num 0 get base lt {exit} if
-            /num [0 num {} forall] def
+            /num [ 0 num aload pop ] def
             num 0 num 0 get num 1 get base idiv add put
             num 1 num 1 get base mod put
         } loop
@@ -10974,18 +11097,23 @@ begin
     } def
 
     % Conversion of data fields into binary data
-    barlen 20 eq {[0]} if
-    barlen 25 eq {[1]} if
-    barlen 29 eq {[1 0 0 0 0 1]} if
-    barlen 31 eq {[1 0 0 0 1 0 0 0 0 1]} if
-    /binval exch [barcode 20 barlen 20 sub getinterval {48 sub} forall] bigadd def
-    /binval [binval {} forall barcode 0 get 48 sub] def
+{
+    /startvals <<
+        20 [0]
+        25 [1]
+        29 [1 0 0 0 0 1]
+        31 [1 0 0 0 1 0 0 0 0 1]
+    >> def
+} ctxdef
+
+    /binval startvals barlen get [barcode 20 barlen 20 sub getinterval {48 sub} forall] bigadd def
+    /binval [binval aload pop barcode 0 get 48 sub] def
     /binval [binval {5 mul} forall] [barcode 1 get 48 sub] bigadd 10 normalize def
-    /binval [binval {} forall barcode 2 18 getinterval {48 sub} forall] def
+    /binval [binval aload pop barcode 2 18 getinterval {48 sub} forall] def
 
     % Conversion of binary data into byte array
     /bytes 13 array def
-    /bintmp [binval {} forall] def
+    /bintmp binval dup length array copy def
     12 -1 0 {
         /i exch def
         0 1 bintmp length 2 sub {
@@ -11026,11 +11154,7 @@ begin
     /codewords 10 array def
     9 -1 0 {
         /i exch def
-        i 9 eq {
-            /b 636 def
-        } {
-            /b 1365 def
-        } ifelse
+        /b i 9 eq { 636 } { 1365 } ifelse def
         0 1 binval length 2 sub {
             /j exch def
             binval j 1 add 2 copy get binval j get b mod 10 mul add put
@@ -11217,7 +11341,7 @@ begin
     /txt txt
     /textxalign (left)
     /textfont /Helvetica
-    /textyoffset 1
+    /textyoffset 1.0
     /textxoffset -0.3
     /opt options
     >>
@@ -11244,7 +11368,7 @@ end
 % --EXAM: 01234
 % --EXOP: includetext includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp postnet 0.0 2022101900 67406 70525
+%%BeginResource: uk.co.terryburton.bwipp postnet 0.0 2023070500 70838 70525
 %%BeginData:        136 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -11392,7 +11516,7 @@ end
 % --EXAM: 01234567890
 % --EXOP: includetext includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp planet 0.0 2022101900 67266 70389
+%%BeginResource: uk.co.terryburton.bwipp planet 0.0 2023070500 70698 70389
 %%BeginData:        137 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -11541,8 +11665,8 @@ end
 % --EXAM: LE28HS9Z
 % --EXOP: includetext barcolor=FF0000
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp royalmail 0.0 2022101900 68133 71419
-%%BeginData:        141 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp royalmail 0.0 2023070500 72063 71677
+%%BeginData:        145 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -11567,6 +11691,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.royalmailEmptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /royalmail //loadctx exec
 
@@ -11694,8 +11822,8 @@ end
 % --EXAM: 5956439111ABA 9
 % --EXOP: includetext custinfoenc=character
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp auspost 0.0 2022101900 79049 82209
-%%BeginData:        200 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp auspost 0.0 2023070500 87272 86845
+%%BeginData:        235 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -11720,6 +11848,10 @@ begin
     //processoptions exec /options exch def
     /barcode exch def
 
+    custinfoenc (character) ne custinfoenc (numeric) ne and {
+        /bwipp.auspostBadCustinfoEncoding (Customer information encoding must be either character or numeric) //raiseerror exec
+    } if
+
     /auspost //loadctx exec
 
     % Create an array containing the character mappings
@@ -11739,15 +11871,40 @@ begin
 
     % Create a string of the available characters
     /barchars (ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz #) def
+
+    % FCC lengths
+    /fcclen << (11) 37  (45) 37  (59) 52  (62) 67 >> def
+
 } ctxdef
 
     /barlen barcode length def
-    barcode 0 2 getinterval (11) eq {37} if
-    barcode 0 2 getinterval (45) eq {37} if
-    barcode 0 2 getinterval (59) eq {52} if
-    barcode 0 2 getinterval (62) eq {67} if
-    /encstr exch string def
+    barlen 10 lt {
+        /bwipp.auspostTooShort (The data length must be at least 10) //raiseerror exec
+    } if
+
     /txt barlen 2 sub array def
+
+    fcclen barlen 2 ge { barcode 0 2 getinterval } { () } ifelse
+    2 copy known not {
+        pop pop /bwipp.auspostBadFCC (Must begin with an FCC, either 11, 45, 59 or 62) //raiseerror exec
+    } if
+    get /encstr exch string def
+
+    % Validate that the message has a complete, numeric DPID
+    true
+    1 {
+        barlen 10 lt { pop false exit } if
+        barcode 2 8 getinterval { dup 48 lt exch 57 gt or { pop false exit } if } forall
+    } repeat
+    not {
+        /bwipp.auspostIncompleteDPID (The DPID must be 8 digits) //raiseerror exec
+    } if
+
+    % Validate that the message will fit
+    barlen 10 sub custinfoenc (numeric) eq {2} {3} ifelse mul
+    encstr length 22 sub 14 sub gt {
+        /bwipp.auspostTooLong (The message is too long) //raiseerror exec
+    } if
 
     % Put start character
     encstr 0 encs 74 get putinterval
@@ -11771,7 +11928,11 @@ begin
     custinfoenc (numeric) eq {
         0 1 barlen 11 sub {
             /i exch def
-            encs barcode i 10 add 1 getinterval cvi 64 add get
+            encs barcode i 10 add get
+            dup dup 48 lt exch 57 gt or {
+                /bwipp.auspostInvalidCustinfoDigit (The customer information data contains a non-digit character) //raiseerror exec
+            } if
+            48 sub 64 add get
             encstr i 2 mul 22 add 3 2 roll putinterval
             txt i 8 add [barcode i 10 add 1 getinterval i 2 mul 22 add 3.312 mul textyoffset textfont textsize] put
         } for
@@ -11780,7 +11941,9 @@ begin
         0 1 barlen 11 sub {
             /i exch def
             barcode i 10 add 1 getinterval barchars exch search
-            pop
+            not {
+                pop /bwipp.auspostInvalidCustinfoCharacter (The customer information contains an invalid character) //raiseerror exec
+            } if
             length /indx exch def
             pop pop
             /enc encs indx get def
@@ -11906,8 +12069,8 @@ end
 % --EXAM: 1231FZ13XHS
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp kix 0.0 2022101900 63155 66382
-%%BeginData:        107 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp kix 0.0 2023070500 67079 66952
+%%BeginData:        111 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -11930,6 +12093,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.kixEmptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /kix //loadctx exec
 
@@ -12025,8 +12192,8 @@ end
 % --EXAM: 6540123789-A-K-Z
 % --EXOP: includetext includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp japanpost 0.0 2022101900 69897 73143
-%%BeginData:        167 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp japanpost 0.0 2023070500 74230 73958
+%%BeginData:        176 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -12051,6 +12218,10 @@ begin
     //processoptions exec /options exch def
     /barcode exch def
 
+    barcode () eq {
+        /bwipp.japanpostEmptyData (The data must not be empty) //raiseerror exec
+    } if
+
     /japanpost //loadctx exec
 
     % Validate the input
@@ -12058,7 +12229,7 @@ begin
         dup dup 48 ge exch 57 le and exch  % 0-9
         dup dup 65 ge exch 90 le and exch  % A-Z
         45 eq or or not {                  % "-"
-            /bwipp.japanPostBadCharacter (Japan Post must contain only digits, capital letters and the dash symbol) /raiseerror exec
+            /bwipp.japanpostBadCharacter (Japan Post must contain only digits, capital letters and the dash symbol) //raiseerror exec
         } if
     } forall
 
@@ -12085,6 +12256,7 @@ begin
 
     /checksum 0 def
     /j 0 def /i 0 def
+    true
     0 1 barlen 1 sub {
         /i exch def
         barcode i 1 getinterval barchars exch search
@@ -12092,7 +12264,7 @@ begin
         length /indx exch def                % indx is the length of pre
         pop pop                              % Discard match and post
         indx 11 ge indx 37 lt and {          % Insert escape
-            j 18 gt {exit} if                % Should fit in 20 chars
+            j 18 gt {pop false exit} if      % Should fit in 20 chars
                                              % 11-20: C1 (11)
                                              % 21-30: C2 (12)
                                              % 31-36: C3 (13)
@@ -12102,7 +12274,7 @@ begin
             digits j digit put
             /j j 1 add def
         } if
-        j 19 gt {exit} if                    % Should fit in 20 chars
+        j 19 gt {pop false exit} if          % Should fit in 20 chars
         /digit 0 def
         indx 37 eq {
             /digit 14 def                    % space (C14)
@@ -12119,6 +12291,10 @@ begin
         txt i [barcode i 1 getinterval j 3 mul 2 add 3.312 mul textyoffset textfont textsize] put
         /j j 1 add def
     } for
+
+    not {
+        /bwipp.japanpostTooLong (The input is too long) //raiseerror exec
+    } if
 
     % Fill spaces (c14) at right end
     j 1 20 1 sub {
@@ -12204,8 +12380,8 @@ end
 % --EXAM: 0123456789
 % --EXOP: includetext includecheck includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp msi 0.0 2022101900 73834 76956
-%%BeginData:        142 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp msi 0.0 2023070500 79911 79428
+%%BeginData:        168 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -12223,7 +12399,7 @@ begin
     /includecheck false def  % Enable/disable checkdigit
     /includetext false def   % Enable/disable text
     /includecheckintext false def
-    /checktype (mod10) def
+    /checktype (unset) def
     /badmod11 false def
     /textfont /Courier def
     /textsize 10.0 def
@@ -12232,6 +12408,16 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    checktype (unset) ne includecheck not and {
+        /bwipp.msiCheckTypeWithoutCheck (checktype requires includecheck) //raiseerror exec
+    } if
+
+    badmod11 checktype (mod11) ne checktype (ncrmod11) ne and checktype (mod1110) ne and checktype (ncrmod1110) ne and and {
+        /bwipp.msiBadMod11Mismatch (badmod11 requires checktype with mod11) //raiseerror exec
+    } if
+
+    checktype (unset) eq { /checktype (mod10) def } if
 
     /msi //loadctx exec
 
@@ -12271,8 +12457,12 @@ begin
         code length 1 sub code {48 sub exch dup 1 sub exch 6 mod 2 add exch} forall pop
         0 code length {3 1 roll mul add} repeat
         11 mod 11 exch sub 11 mod
-        dup 10 eq badmod11 and {
-            pop code length 2 add string dup 0 code putinterval dup code length (10) putinterval
+        dup 10 eq {
+            badmod11 {
+                pop code length 2 add string dup 0 code putinterval dup code length (10) putinterval
+            } {
+                pop /bwipp.msiBadMod11NotSpecified (mod11 check digit is 10 but badmod11 not specified) //raiseerror exec
+            } ifelse
         } {
             code length 1 add string dup 0 code putinterval dup code length 4 -1 roll 48 add put
         } ifelse
@@ -12283,22 +12473,34 @@ begin
         code length 1 sub code {48 sub exch dup 1 sub exch 8 mod 2 add exch} forall pop
         0 code length {3 1 roll mul add} repeat
         11 mod 11 exch sub 11 mod
-        dup 10 eq badmod11 and {
-            pop code length 2 add string dup 0 code putinterval dup code length (10) putinterval
+        dup 10 eq {
+            badmod11 {
+                pop code length 2 add string dup 0 code putinterval dup code length (10) putinterval
+            } {
+                pop /bwipp.msiBadMod11NotSpecified (mod11 check digit is 10 but badmod11 not specified) //raiseerror exec
+            } ifelse
         } {
             code length 1 add string dup 0 code putinterval dup code length 4 -1 roll 48 add put
         } ifelse
     } def
 
+{
+    /checkfunc <<
+        /mod10      { mod10 }
+        /mod1010    { mod10 mod10 }
+        /mod11      { mod11 }
+        /ncrmod11   { ncrmod11 }
+        /mod1110    { mod11 mod10 }
+        /ncrmod1110 { ncrmod11 mod10 }
+    >> def
+} ctxdef
+
     % Calculate checksum
     includecheck {
-        checktype (mod10) eq      {barcode mod10} if
-        checktype (mod1010) eq    {barcode mod10 mod10} if
-        checktype (mod11) eq      {barcode mod11} if
-        checktype (ncrmod11) eq   {barcode ncrmod11} if
-        checktype (mod1110) eq    {barcode mod11 mod10} if
-        checktype (ncrmod1110) eq {barcode ncrmod11 mod10} if
-        /barcode exch def
+        checkfunc checktype 2 copy known not {
+            pop pop /bwipp.msiBadCharacter (MSI checktype must be mod10, mod1010, mod11, ncrmod11, mod1110 or ncrmod1110) //raiseerror exec
+        } if
+        get barcode exch exec /barcode exch def
         /barlen barcode length def
         includecheckintext {/txtlen barlen def} if
     } if
@@ -12358,8 +12560,8 @@ end
 % --EXAM: 01234ABCD
 % --EXOP: includetext includecheckintext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp plessey 0.0 2022101900 69759 72943
-%%BeginData:        142 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp plessey 0.0 2023070500 73583 73281
+%%BeginData:        146 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -12385,6 +12587,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.plesseyEmptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /plessey //loadctx exec
 
@@ -12512,8 +12718,8 @@ end
 % --EXAM: ABCDEF
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp telepen 0.0 2022101900 75248 71551
-%%BeginData:        159 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp telepen 0.0 2023070500 74651 77695
+%%BeginData:        173 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -12551,6 +12757,10 @@ begin
     /barcode barcode fncvals //parseinput exec def
     /barlen barcode length def
     options (parse) undef
+
+    numeric barlen 2 mod 0 ne and {
+        /bwipp.telepenNumericOddLength (Telepen Numeric must have an even length) //raiseerror exec
+    } if
 
     % Create an array containing the character mappings
 {
@@ -12590,7 +12800,6 @@ begin
     ] def
 } ctxdef
 
-    /barlen barcode length def    % Length of the code
     /sbs barlen 16 mul 48 add string def
     /txt barlen array def
 
@@ -12603,23 +12812,34 @@ begin
     /i 0 def /j 0 def
     { % loop
         i barlen eq {exit} if
-        numeric {  % numeric mode: 00-99 & 0X-9X
-            barcode i get 16 gt {
+        numeric {
+            barcode i get 16 gt {  % 00-99 or 0X-9X
                 /np barcode i 2 getinterval def
-                np 1 1 getinterval (X) eq {  % X in even position amongst digits
-                    /indx np 0 1 getinterval cvi 17 add def
+                np 0 get dup 48 lt exch 57 gt or
+                np 1 get dup 48 lt 1 index 57 gt or exch 88 eq not and
+                or {
+                    -1
                 } {
-                    /indx np cvi 27 add def
+                    np 0 get 48 sub
+                    np 1 get 48 sub dup 40 ne { exch 10 mul add 10 add } { pop } ifelse
+                    17 add
                 } ifelse
+                dup -1 eq {
+                    /bwipp.telepenInvalidNumericCharacter (Telepen Numeric may contain only digits, or X in even positions) //raiseerror exec
+                } if
+                /indx exch def
                 txt j [np j 16 mul 16 add textyoffset textfont textsize] put
                 /i i 2 add def
-            } {
+            } {  % Ordinal values 0-16
                 /indx barcode i get def
                 txt j [( ) j 16 mul 16 add textyoffset textfont textsize] put
                 /i i 1 add def
             } ifelse
         } {  % ASCII mode
             /indx barcode i get def
+            indx 127 gt {
+                /bwipp.telepenInvalidAlphaCharacter (Telepen Alpha characters must have ordinal values 0 to 127) //raiseerror exec
+            } if
             indx 32 ge indx 126 le and {
                 txt j [barcode i 1 getinterval j 16 mul 16 add textyoffset textfont textsize] put
             } {
@@ -12683,8 +12903,8 @@ end
 % --EXAM: 01234567
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp telepennumeric 0.0 2022101900 63671 63765
-%%BeginData:         42 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp telepennumeric 0.0 2023070500 63095 63189
+%%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -12698,12 +12918,6 @@ begin
 
     /ctx null def
     /dontdraw false def
-    /includetext false def    % Enable/disable text
-    /textfont /Courier def
-    /textsize 10.0 def
-    /textxoffset 0.0 def
-    /textyoffset -7.0 def
-    /height 1.0 def
 
     //processoptions exec /options exch def
     /barcode exch def
@@ -12737,8 +12951,8 @@ end
 % --EXAM: ABC123
 % --EXOP: version=b inkspread=-0.5 parsefnc includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp posicode 0.0 2022101900 116327 112316
-%%BeginData:        380 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp posicode 0.0 2023070500 115447 118358
+%%BeginData:        393 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -12815,6 +13029,10 @@ begin
     ] def
 } ctxdef
 
+    version (a) ne version (b) ne and version (limiteda) ne and version (limitedb) ne and {
+        /bwipp.posicodeInvalidVersion (The version must be either a, b, limiteda or limitedb) //raiseerror exec
+    } if
+
     /charmaps version (a) eq version (b) eq or {charmapsnormal} {chapmapslimited} ifelse def
 
     % Invert charmaps to give character to value maps for each state
@@ -12833,6 +13051,15 @@ begin
     /set0 charvals 0 get def
     /set1 charvals 1 get def
     /set2 charvals 2 get def
+
+    % Validate the input if limited
+    version (limiteda) eq version (limitedb) eq or {
+        0 1 barcode length 1 sub {
+            barcode exch 1 getinterval 0 get set0 exch known not {
+                /bwipp.posicodeBadCharacter (Posicode limited must contain only digits, capital letters, and the symbols - and .) //raiseerror exec
+            } if
+        } for
+    } if
 
     raw {/encoding (raw) def} if
 
@@ -13129,8 +13356,8 @@ end
 % --EXAM: CODABLOCK F 34567890123456789010040digit
 % --EXOP: columns=8
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp codablockf 0.0 2022101900 141315 137050
-%%BeginData:        515 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp codablockf 0.0 2023070500 140002 142562
+%%BeginData:        535 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -13156,10 +13383,26 @@ begin
     //processoptions exec /options exch def
     /barcode exch def
 
-    /c columns 4 ge columns 62 le and {columns} {8} ifelse def
-    /rows rows 2 ge rows 44 le and {rows} {-1} ifelse def
+    columns 4 lt columns 62 gt or {
+        /bwipp.codablockfBadColumns (Codablock F must have 4 to 62 columns) //raiseerror exec
+    } if
+
+    rows -1 ne rows 2 lt rows 44 gt or and {
+        /bwipp.codablockfBadRows (Codablock F must have 2 to 44 rows) //raiseerror exec
+    } if
+
+    rowheight 8 lt {
+        /bwipp.codablockfBadRowHeight (Codablock F must have rowheight of at least 8) //raiseerror exec
+    } if
+
+    sepheight 1 lt {
+        /bwipp.codablockfBadSepHeight (Codablock F must have sepheight of at least 1) //raiseerror exec
+    } if
 
     /codablockf //loadctx exec
+
+    /c columns 4 ge columns 62 le and {columns} {8} ifelse def
+    /rows rows 2 ge rows 44 le and {rows} {-1} ifelse def
 
     % Convert input into bytes accounting for FNC characters
     /swa -1 def  /swb -2 def  /swc -3 def  /sft -4 def
@@ -13357,6 +13600,10 @@ begin
     /lastrow false def {
 
         lastrow {exit} if
+
+        r 44 gt {
+            /bwipp.codablockfTooBig (Maximum length exceeded) //raiseerror exec
+        } if
 
         % Add start character and code subset selector
         sta enca
@@ -13656,8 +13903,8 @@ end
 % --EXAM: Abcd-1234567890-wxyZ
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp code16k 0.0 2022101900 162952 158669
-%%BeginData:        714 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp code16k 0.0 2023070500 163491 165795
+%%BeginData:        740 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -13673,12 +13920,10 @@ begin
 
     /ctx null def
     /dontdraw false def
-    /mode -1 def
-    /pos -1 def
+    /sam -1 def
     /rows 0 def
     /rowheight 8 def
     /sepheight 1 def
-    /encoding (auto) def
     /raw false def
     /parse false def
     /parsefnc false def
@@ -13686,9 +13931,33 @@ begin
     //processoptions exec /options exch def
     /barcode exch def
 
+    rows 0 ne rows 2 lt rows 16 gt or and {
+        /bwipp.code16kBadRows (Code 16K must have 2 to 16 rows) //raiseerror exec
+    } if
+
+    rowheight 8 lt {
+        /bwipp.code16kBadRowHeight (Code 16K must have rowheight of at least 8) //raiseerror exec
+    } if
+
+    sepheight 1 lt {
+        /bwipp.code16kBadSepHeight (Code 16K must have sepheight of at least 1) //raiseerror exec
+    } if
+
+    sam -1 ne {
+        true
+        1 {
+            sam dup 12 lt exch 99 gt or { pop false exit } if
+            sam 10 mod 2 lt { pop false exit } if
+            sam 10 idiv sam 10 mod gt { pop false exit } if
+        } repeat
+        not {
+            /bwipp.code16kBadSAM (SAM must be formatted as "NM" for Nth of M symbols, from 2 to 9 symbols) //raiseerror exec
+        } if
+    } if
+
     /code16k //loadctx exec
 
-    pos -1 ne {/rows 16 def} if
+    sam -1 ne {/rows 16 def} if
 
     % Convert input into bytes accounting for FNC characters
 {
@@ -13755,22 +14024,27 @@ begin
     /setc charvals 2 get def
 } ctxdef
 
-    raw {/encoding (raw) def} if
+    raw {
 
-    encoding (raw) eq {
         /cws barcode length array def
         /i 0 def /j 0 def
         { % loop
-            i barcode length eq {exit} if
-            /cw barcode i 1 add 3 getinterval cvi def
+            i barcode length 3 sub ge {exit} if
+            barcode i get 94 ne {exit} if
+            barcode i 1 add 3 getinterval false 1 index {
+                dup 48 lt exch 57 gt or { pop true } if
+            } forall { pop exit } if
+            cvi /cw exch def
             cws j cw put
             /i i 4 add def
             /j j 1 add def
         } loop
+        i barcode length ne {
+            /bwipp.code16kBadRawFormat (raw data must be formatted as ^NNN) //raiseerror exec
+        } if
         /cws cws 0 j getinterval def
-    } if
 
-    encoding (auto) eq {
+    } {
 
         % Parse the input
         /fncvals <<
@@ -13887,10 +14161,10 @@ begin
         /i 0 def /j 0 def
         {  % common exit
             % extended data length
-            pos -1 ne {
+            sam -1 ne {
                 % encode one and two
-                cws 0 pos 10 idiv 1 sub put
-                cws 1 pos 10 mod 1 sub put
+                cws 0 sam 10 idiv 1 sub put
+                cws 1 sam 10 mod 1 sub put
                 /j 2 def
                 /cset (setb) def
                 /mode 7 def
@@ -14219,7 +14493,7 @@ begin
 
         } loop
         /cws cws 0 j getinterval def
-    } if  % auto encoding
+    } ifelse
 
     % Basic metrics for the each symbol
     %     r  dcws
@@ -14245,16 +14519,15 @@ begin
 
     % Select metrics of an appropriate symbol
     /urows rows def
-    0 1 metrics length 1 sub {
-        /i exch def
-        /m metrics i get def
+    metrics {
+        /m exch def
         /r    m 0 get def        % Columns in symbol
         /dcws m 1 get def        % Data codewords in symbol
         /okay true def
         urows 0 ne urows r ne and {/okay false def} if
         cws length dcws gt {/okay false def} if
         okay {exit} if
-    } for
+    } forall
 
     okay not {
         /bwipp.code16kNoValidSymbol (Maximum length exceeded or data too large for given options) //raiseerror exec
@@ -14311,7 +14584,7 @@ begin
     ] def
 } ctxdef
 
-    pos -1 eq pos 10 idiv 2 mod 1 eq or {
+    sam -1 eq sam 10 idiv 2 mod 1 eq or {
         /stopencs stopencsodd def
     } {
         /stopencs stopencseven def
@@ -14382,8 +14655,8 @@ end
 % --EXAM: MULTIPLE ROWS IN CODE 49
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp code49 0.0 2022101900 264778 260682
-%%BeginData:       1047 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp code49 0.0 2023070500 265309 274664
+%%BeginData:       1096 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -14399,8 +14672,8 @@ begin
 
     /ctx null def
     /dontdraw false def
-    /mode -1 def
-    /pos -1 def
+    /sam -1 def
+    /append false def
     /rows 0 def
     /rowheight 8 def
     /sepheight 1 def
@@ -14409,6 +14682,34 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    rows 0 ne rows 2 lt rows 8 gt or and {
+        /bwipp.code49badRows (Code 49 must have 2 to 8 rows) //raiseerror exec
+    } if
+
+    rowheight 8 lt {
+        /bwipp.code49badRowHeight (Code 49 must have rowheight of at least 8) //raiseerror exec
+    } if
+
+    sepheight 1 lt {
+        /bwipp.code49badSepHeight (Code 49 must have sepheight of at least 1) //raiseerror exec
+    } if
+
+    append sam -1 ne and {
+        /bwipp.code49samAndAppend (sam and append cannot be specified together) //raiseerror exec
+    } if
+
+    sam -1 ne {
+        true
+        1 {
+            sam dup 12 lt exch 99 gt or { pop false exit } if
+            sam 10 mod 2 lt { pop false exit } if
+            sam 10 idiv sam 10 mod gt { pop false exit } if
+        } repeat
+        not {
+            /bwipp.code49badSAM (SAM must be formatted as "NM" for Nth of M symbols, from 2 to 9 symbols) //raiseerror exec
+        } if
+    } if
 
     /code49 //loadctx exec
 
@@ -14426,6 +14727,12 @@ begin
     >> def
     /msg barcode fncvals //parseinput exec def
     /msglen msg length def
+
+    msg {
+        127 gt {
+            /bwipp.code49badCharacter (Code 49 can only support ASCII characters with values 0 to 127) //raiseerror exec
+        } if
+    } forall
 
 {
     % Character encodings
@@ -14511,23 +14818,10 @@ begin
         } ifelse
     } for
 
-    % Autoselect mode
-    mode -1 eq {
-        {  % common exit
-            pos -1 ne {/mode 3 def exit} if
-            numericruns 0 get 5 ge {/mode 2 def exit} if
-            charvals msg 0 get get
-            dup type /arraytype ne {pop /mode 0 def exit} if
-            0 get 43 eq {4} {5} ifelse /mode exch def
-            exit
-        } loop
-    } if
-
     /cws msglen 2 mul 1 add array def
-    /method (alpha) def /i -1 def /j -1 def
 
 {
-    /posval [
+    /samval [
         12 22
         13 23 33
         14 24 34 44
@@ -14539,17 +14833,41 @@ begin
     ] def
 } ctxdef
 
-    % Handle start for each mode
-    mode 0 eq mode 1 eq or {/method (alpha) def /i 0 def /j 0 def} if
-    mode 2 eq {/method (numeric) def /i 0 def /j 0 def} if
-    mode 3 eq {
-        cws 0 0 1 43 {dup posval exch get pos ne {pop} if} for 1 add put
-        /method (alpha) def /i 0 def /j 1 def
-    } if
-    mode 4 eq mode 5 eq or {
+    % Autoselect and encode the starting mode
+    {  % common exit
+        append {  % Concatenate alphanumeric mode
+            /mode 1 def
+            /method (alpha) def
+            /i 0 def /j 0 def
+            exit
+        } if
+        sam -1 ne {  % Group alphanumeric mode
+            /mode 3 def
+            cws 0 0 1 43 { dup samval exch get sam ne {pop} if } for 1 add put
+            /method (alpha) def
+            /i 0 def /j 1 def
+            exit
+        } if
+        numericruns 0 get 5 ge {  % Numeric mode
+            /mode 2 def
+            /method (numeric) def /i 0 def /j 0 def
+            exit
+        } if
+        charvals msg 0 get get
+        dup type /arraytype ne {  % Regular alphanumeric mode
+            pop
+            /mode 0 def
+            /method (alpha) def
+            /i 0 def /j 0 def
+            exit
+        } if
+        % Alphanumeric mode starting shift 1 (mode=4) or shift 2 (mode=5)
+        0 get 43 eq {4} {5} ifelse /mode exch def
         cws 0 charvals msg 0 get get 1 get put
-        /method (alpha) def /i 1 def /j 1 def
-    } if
+        /method (alpha) def
+        /i 1 def /j 1 def
+        exit
+    } loop
 
     % Encode remainder
     {
@@ -14595,17 +14913,19 @@ begin
 
     % Select metrics of an appropriate symbol
     /urows rows def
-    /i 0 def
-    { % loop
-        /m metrics i get def
+    metrics {
+        /m exch def
         /r    m 0 get def        % Columns in symbol
         /dcws m 1 get def        % Data codewords in symbol
         /okay true def
         urows 0 ne urows r ne and {/okay false def} if
         cws length dcws gt {/okay false def} if
         okay {exit} if
-        /i i 1 add def
-    } loop
+    } forall
+
+    okay not {
+        /bwipp.code49noValidSymbol (Maximum length exceeded) //raiseerror exec
+    } if
 
     % Extend cws to ncws codewords by addition of pad characters
     /cws [ cws aload pop dcws cws length sub {48} repeat ] def
@@ -14674,6 +14994,8 @@ begin
     % Place last row check character
     ccs ccs length 8 sub 7 getinterval 0 exch {add} forall 49 mod
     ccs ccs length 1 sub 3 -1 roll put
+
+    options /debugcws known { /bwipp.debugcws ccs //raiseerror exec } if
 
 {
     /patterns [
@@ -15441,7 +15763,7 @@ end
 % --EXAM: 3493
 % --EXOP: height=0.5 includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp channelcode 0.0 2022101900 129928 132367
+%%BeginResource: uk.co.terryburton.bwipp channelcode 0.0 2023070500 133256 132343
 %%BeginData:        250 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -15703,7 +16025,7 @@ end
 % --EXAM: 11099
 % --EXOP: inkspread=-0.25 showborder borderleft=0 borderright=0
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp flattermarken 0.0 2022101900 59151 62388
+%%BeginResource: uk.co.terryburton.bwipp flattermarken 0.0 2023070500 62583 62388
 %%BeginData:         82 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -15797,7 +16119,7 @@ end
 % --EXAM: 331132131313411122131311333213114131131221323
 % --EXOP: height=0.5
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp raw 0.0 2022101900 50104 53447
+%%BeginResource: uk.co.terryburton.bwipp raw 0.0 2023070500 50104 50015
 %%BeginData:         43 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -15852,8 +16174,8 @@ end
 % --EXAM: FATDAFTDAD
 % --EXOP:
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp daft 0.0 2022101900 53326 56642
-%%BeginData:         67 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp daft 0.0 2023070500 53715 53572
+%%BeginData:         71 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -15870,6 +16192,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.daftEmptyData (The data must not be empty) //raiseerror exec
+    } if
 
     barcode {
         dup 68 ne exch dup 65 ne exch dup 70 ne exch 84 ne and and and {
@@ -15931,7 +16257,7 @@ end
 % --EXAM: fima
 % --EXOP: backgroundcolor=DD000011
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp symbol 0.0 2022101900 54198 57369
+%%BeginResource: uk.co.terryburton.bwipp symbol 0.0 2023070500 54198 53937
 %%BeginData:         70 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -16013,8 +16339,8 @@ end
 % --EXAM: This is PDF417
 % --EXOP: columns=2
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp pdf417 0.0 2022101900 205486 200884
-%%BeginData:        896 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp pdf417 0.0 2023070500 210234 212138
+%%BeginData:        963 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -16035,7 +16361,6 @@ begin
     /columns 0 def
     /rows 0 def
     /rowmult 3.0 def
-    /encoding (auto) def
     /ccc false def
     /raw false def
     /parse false def
@@ -16043,6 +16368,34 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.pdf417emptyData (The data must not be empty) //raiseerror exec
+    } if
+
+    eclevel -1 ne eclevel 0 lt eclevel 8 gt or and {
+        /bwipp.pdf417InvalidErrorCorrectionLevel (Valid error correction levels are 0 to 8) //raiseerror exec
+    } if
+
+    ccc raw and {
+        /bwipp.pdf417cccAndRaw (Cannot combine ccc and raw) //raiseerror exec
+    } if
+
+    ccc compact and {
+        /bwipp.pdf417cccAndCompact (Cannot combine ccc and compact) //raiseerror exec
+    } if
+
+    rows 0 ne rows 3 lt rows 90 gt or and {
+        /bwipp.pdf417invalidRows (There must be between 3 and 90 rows) //raiseerror exec
+    } if
+
+    columns 0 ne columns 1 lt columns 30 gt or and {
+        /bwipp.pdf417invalidColumns (There must be between 1 and 30 columns) //raiseerror exec
+    } if
+
+    rowmult 0 le {
+        /bwipp.pdf417badRowMult (The row multiplier must be greater than zero) //raiseerror exec
+    } if
 
     /pdf417 //loadctx exec
 
@@ -16137,23 +16490,26 @@ begin
     >> def
 } ctxdef
 
-    raw {/encoding (raw) def} if
-
     % Convert input into array of codewords
-    encoding (raw) eq {
+    raw {
         /datcws barcode length array def
         /i 0 def /j 0 def
         { % loop
-            i barcode length eq {exit} if
-            /cw barcode i 1 add 3 getinterval cvi def
+            i barcode length 3 sub ge {exit} if
+            barcode i get 94 ne {exit} if
+            barcode i 1 add 3 getinterval false 1 index {
+                dup 48 lt exch 57 gt or { pop true } if
+            } forall { pop exit } if
+            cvi /cw exch def
             datcws j cw put
             /i i 4 add def
             /j j 1 add def
         } loop
+        i barcode length ne {
+            /bwipp.pdf417badRawFormat (raw data must be formatted as ^NNN) //raiseerror exec
+        } if
         /datcws datcws 0 j getinterval def
     } if
-
-    ccc {/encoding (ccc) def} if
 
     /encb {
         /in exch def
@@ -16191,15 +16547,15 @@ begin
         out
     } def
 
-    encoding (byte) eq encoding (ccc) eq or {
+    ccc {
         /barlen barcode length def
-        /datcws barlen 6 idiv 5 mul barlen 6 mod add 1 add array def
-        datcws 0 barlen 6 mod 0 eq {924} {901} ifelse put
-        datcws 1 [ barcode {} forall ] encb putinterval
-        encoding (ccc) eq {/datcws [920 datcws aload pop] def} if
+        /datcws barlen 6 idiv 5 mul barlen 6 mod add 2 add array def
+        datcws 0 920 put
+        datcws 1 barlen 6 mod 0 eq {924} {901} ifelse put
+        datcws 2 [ barcode {} forall ] encb putinterval
     } if
 
-    encoding (auto) eq {
+    raw not ccc not and {
 
         % Parse the input
         /fncvals <<
@@ -16245,7 +16601,7 @@ begin
                 /seqlen seqlen eci -1810900 le {2} {eci -1000900 le {3} {2} ifelse} ifelse add def
             } {
             /n numdigits p get def
-            n 13 ge {
+            n 13 ge n msglen eq n 8 ge and or {  % 13+ digits or all-numeric and 8+ digits
                 /seq [
                     seq aload pop
                     nl
@@ -16417,7 +16773,44 @@ begin
                     /pad al encp def
                     /submode A def
                 } {
-                    /pad ps textencfuncs submode get load exec def
+                    % Need to check whether a ps shift can be used to pad
+                    /nextecitext false def
+                    % If have one or more ECIs next followed by text sequence (array)
+                    i 1 add 1 seq length 1 sub {
+                        /ti exch def
+                        seq ti get type /arraytype ne { /nextecitext false def exit } if
+                        seq ti get 0 get -1000000 gt { exit } if
+                        /nextecitext true def
+                    } for
+                    nextecitext { % Then don't use ps as it would affect first char of text sequence
+                        submode A eq {
+                            charvals L get seq ti get 0 get known {  % Check whether to use ll or ml latch
+                                /pad ll enca def
+                                /submode L def
+                            } {
+                                /pad ml enca def
+                                /submode M def
+                            } ifelse
+                        } {
+                        submode M eq {
+                            charvals L get seq ti get 0 get known {  % Check whether to use ll, pl or al latch
+                                /pad ll encm def
+                                /submode L def
+                            } {
+                            charvals P get seq ti get 0 get known {
+                                /pad pl encm def
+                                /submode P def
+                            } {
+                                /pad al encm def
+                                /submode A def
+                            } ifelse } ifelse
+                        } {  % L
+                            /pad ml encl def  % Only latch available
+                            /submode M def
+                        } ifelse } ifelse
+                    } {  % Otherwise use standard ps shift pad
+                        /pad ps textencfuncs submode get load exec def
+                    } ifelse
                 } ifelse
                 /text [ text aload pop pad ] def
             } if
@@ -16921,7 +17314,7 @@ end
 % --EXAM: This is compact PDF417
 % --EXOP: columns=2
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp pdf417compact 0.0 2022101900 63089 63184
+%%BeginResource: uk.co.terryburton.bwipp pdf417compact 0.0 2023070500 63217 63056
 %%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -16969,8 +17362,8 @@ end
 % --EXAM: MicroPDF417
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp micropdf417 0.0 2022101900 216586 211793
-%%BeginData:        984 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp micropdf417 0.0 2023070500 229377 237798
+%%BeginData:       1099 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -16990,7 +17383,6 @@ begin
     /columns 0 def
     /rows 0 def
     /rowmult 2.0 def
-    /encoding (auto) def
     /cca false def
     /ccb false def
     /raw false def
@@ -17000,10 +17392,37 @@ begin
     //processoptions exec /options exch def
     /barcode exch def
 
+    barcode () eq {
+        /bwipp.micropdf417emptyData (The data must not be empty) //raiseerror exec
+    } if
+
+    rowmult 0 le {
+        /bwipp.micropdf417badRowMult (The row multiplier must be greater than zero) //raiseerror exec
+    } if
+
+    cca ccb and cca raw and ccb raw and or or {
+        /bwipp.micropdf417ccaAndCcb (Cannot combine cca, ccb and raw) //raiseerror exec
+    } if
+
+    % Parse version=RxC into rows and columns
     version (unset) ne {
-        version (x) search
-        pop /columns exch cvi def
-        pop /rows exch cvi def
+        version (x) search {
+            exch pop
+            2 copy 2 array astore {
+                true
+                1 index length 0 eq { pop false } if
+                exch {
+                    dup 48 lt exch 57 gt or { pop false } if
+                } forall
+                not {
+                    /bwipp.micropdf417BadVersionBadRowOrColumn (version must be formatted as RxC) //raiseerror exec
+                } if
+            } forall
+            /rows exch cvi def
+            /columns exch cvi def
+        } {
+            pop /bwipp.micropdf417badVersionFormat (version must be formatted as RxC) //raiseerror exec
+        } ifelse
     } if
 
     /micropdf417 //loadctx exec
@@ -17018,6 +17437,9 @@ begin
 
     % Special function characters for text mode
     /al -6 def  /ll -7 def  /ml -8 def  /pl -9 def  /as -10 def  /ps -11 def
+
+    % Special function characters for 05/06 macros
+    /m05 -12 def  /m06 -13 def
 
     % Character maps for each state
     /charmaps [
@@ -17095,24 +17517,26 @@ begin
     ] def
 } ctxdef
 
-    raw {/encoding (raw) def} if
-    cca {/encoding (cca) def} if
-
     % Convert input into array of codewords
-    encoding (raw) eq encoding (cca) eq or {
+    raw cca or {
         /datcws barcode length array def
         /i 0 def /j 0 def
         { % loop
-            i barcode length eq {exit} if
-            /cw barcode i 1 add 3 getinterval cvi def
+            i barcode length 3 sub ge {exit} if
+            barcode i get 94 ne {exit} if
+            barcode i 1 add 3 getinterval false 1 index {
+                dup 48 lt exch 57 gt or { pop true } if
+            } forall { pop exit } if
+            cvi /cw exch def
             datcws j cw put
             /i i 4 add def
             /j j 1 add def
         } loop
+        i barcode length ne {
+            /bwipp.micropdf417badCcaRawFormat (cca and raw data must be formatted as ^NNN) //raiseerror exec
+        } if
         /datcws datcws 0 j getinterval def
     } if
-
-    ccb {/encoding (ccb) def} if
 
     /encb {
         /in exch def
@@ -17150,24 +17574,45 @@ begin
         out
     } def
 
-    encoding (byte) eq encoding (ccb) eq or {
+    ccb {
         /barlen barcode length def
-        /datcws barlen 6 idiv 5 mul barlen 6 mod add 1 add array def
-        datcws 0 barlen 6 mod 0 eq {924} {901} ifelse put
-        datcws 1 [ barcode {} forall ] encb putinterval
-        encoding (ccb) eq {/datcws [920 datcws aload pop] def} if
+        /datcws barlen 6 idiv 5 mul barlen 6 mod add 2 add array def
+        datcws 0 920 put
+        datcws 1 barlen 6 mod 0 eq {924} {901} ifelse put
+        datcws 2 [ barcode {} forall ] encb putinterval
     } if
 
-    encoding (auto) eq {
+    raw not cca not and ccb not and {
 
         % Parse the input
         /fncvals <<
             /parse parse
             /parsefnc parsefnc
-            /eci true
+%            (MAC5) m05    Encoded automatically
+%            (MAC6) m06    Encoded automatically
             % Predates FNC non-data codewords, but supports ECI
+            /eci true
         >> def
         /msg barcode fncvals //parseinput exec def
+        /msglen msg length def
+
+        % Macro 05/06 compression of [)>{RS}05/06{GS}...{RS}{EOT} structured data
+        msglen 9 ge {
+            msg 0 7 getinterval aload pop
+            29 eq exch pop exch 48 eq and exch  % [)>{RS}0*{GS}...
+            30 eq and exch 62 eq and exch 41 eq and exch 91 eq and {
+                msg msglen 2 sub 2 getinterval aload pop
+                4 eq exch 30 eq and {           %              ...{RS}{EOT}
+                    msg 5 get 53 eq {           %      ...5...
+                        /msg [ m05 msg 7 msg length 9 sub getinterval aload pop ] def
+                    } {
+                        msg 5 get 54 eq {       %      ...6...
+                            /msg [ m06 msg 7 msg length 9 sub getinterval aload pop ] def
+                        } if
+                    } ifelse
+                } if
+            } if
+        } if
         /msglen msg length def
 
         % Determine runlengths of digits
@@ -17194,6 +17639,14 @@ begin
 
         /seq [] def /seqlen 0 def /state B def /p 0 def {  % loop
             p msglen eq {exit} if
+            p 0 eq msg p get dup m05 eq exch m06 eq or and {
+                /seq [
+                    seq aload pop
+                    msg p get m05 eq { m05 } { m06 } ifelse
+                ] def
+                /p p 1 add def
+                /seqlen seqlen 1 add def
+            } {
             iseci p get {
                 /eci msg p get def
                 /seq [
@@ -17204,7 +17657,7 @@ begin
                 /seqlen seqlen eci -1810900 le {2} {eci -1000900 le {3} {2} ifelse} ifelse add def
             } {
             /n numdigits p get def
-            n 13 ge {
+            n 13 ge n msglen eq n 8 ge and or {  % 13+ digits or all-numeric and 8+ digits
                 /seq [
                     seq aload pop
                     nl
@@ -17245,11 +17698,11 @@ begin
                 /state B def
                 /p p b add def
                 /seqlen seqlen 1 add b add def
-            } ifelse } ifelse } ifelse } ifelse
+            } ifelse } ifelse } ifelse } ifelse } ifelse
         } loop
 
         /latchcws <<
-            tl 900  bl 901  bl6 924  nl 902  bs 913
+            tl 900  bl 901  bl6 924  nl 902  bs 913  m05 916  m06 917
         >> def
 
         % Submode encoding functions
@@ -17381,7 +17834,44 @@ begin
                     /pad al encp def
                     /submode A def
                 } {
-                    /pad ps textencfuncs submode get load exec def
+                    % Need to check whether a ps shift can be used to pad
+                    /nextecitext false def
+                    % If have one or more ECIs next followed by text sequence (array)
+                    i 1 add 1 seq length 1 sub {
+                        /ti exch def
+                        seq ti get type /arraytype ne { /nextecitext false def exit } if
+                        seq ti get 0 get -1000000 gt { exit } if
+                        /nextecitext true def
+                    } for
+                    nextecitext { % Then don't use ps as it would affect first char of text sequence
+                        submode A eq {
+                            charvals L get seq ti get 0 get known {  % Check whether to use ll or ml latch
+                                /pad ll enca def
+                                /submode L def
+                            } {
+                                /pad ml enca def
+                                /submode M def
+                            } ifelse
+                        } {
+                        submode M eq {
+                            charvals L get seq ti get 0 get known {  % Check whether to use ll, pl or al latch
+                                /pad ll encm def
+                                /submode L def
+                            } {
+                            charvals P get seq ti get 0 get known {
+                                /pad pl encm def
+                                /submode P def
+                            } {
+                                /pad al encm def
+                                /submode A def
+                            } ifelse } ifelse
+                        } {  % L
+                            /pad ml encl def  % Only latch available
+                            /submode M def
+                        } ifelse } ifelse
+                    } {  % Otherwise use standard ps shift pad
+                        /pad ps textencfuncs submode get load exec def
+                    } ifelse
                 } ifelse
                 /text [ text aload pop pad ] def
             } if
@@ -17462,7 +17952,7 @@ begin
                 } {  % Encode data according to mode
                     chars encfuncs state get load exec addtocws
                 } ifelse
-            } {  % Encode the latch to new state or byte shift
+            } {  % Encode the latch to new state, byte shift or macro
                 [ latchcws chars get ] addtocws
                 chars tl eq {/state T def /submode A def} if
                 chars nl eq {/state N def} if
@@ -17470,6 +17960,22 @@ begin
                 chars bs eq {
                     /i i 1 add def
                     seq i get encb addtocws
+                } if
+                chars m05 eq {
+                    i 1 add seq length lt {
+                        seq i 1 add get nl eq {  % Latch to numeric mode is implied
+                            /i i 1 add def
+                        } if
+                    } if
+                    /state N def
+                } if
+                chars m06 eq {
+                    i 1 add seq length lt {
+                        seq i 1 add get tl eq {  % Latch to mixed text submode is implied
+                            /i i 1 add def
+                        } if
+                    } if
+                    /state T def /submode M def
                 } if
             } ifelse
             /i i 1 add def
@@ -17545,9 +18051,8 @@ begin
     % Select metrics of an appropriate symbol
     /urows rows def
     /ucols columns def
-    /i 0 def
-    { % loop
-        /m metrics i get def
+    metrics {
+        /m exch def
         /c    m 0 get def        % Columns in symbol
         /r    m 1 get def        % Rows in symbol
         /k    m 2 get def        % Error correction codewords
@@ -17560,11 +18065,14 @@ begin
         urows 0 ne urows r ne and {/okay false def} if
         ucols 0 ne ucols c ne and {/okay false def} if
         okay {exit} if
-        /i i 1 add def
-    } loop
-    /m datcws length def
+    } forall
+
+    okay not {
+        /bwipp.micropdf417noValidSymbol (Maximum length exceeded or invalid size) //raiseerror exec
+    } if
 
     % Create codewords array with one extra working space element and add padding
+    /m datcws length def
     /n c r mul k sub def
     /cws c r mul 1 add array def
     cws 0 datcws putinterval
@@ -17965,8 +18473,8 @@ end
 % --EXAM: This is Data Matrix!
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp datamatrix 0.0 2022101900 218275 220007
-%%BeginData:        925 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp datamatrix 0.0 2023070500 216516 238719
+%%BeginData:        952 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -17988,88 +18496,109 @@ begin
     /version (unset) def
     /parse false def
     /parsefnc false def
-    /encoding (auto) def
-    /mailmark false def
+    /c40headerlength -1 def
     /raw false def
-    /dmre false def      % Alias for isodmre
-    /dindmre false def
-    /isodmre false def
+    /dmre false def
 
     //processoptions exec /options exch def
     /barcode exch def
 
-    /isodmre dmre def
-
-    format (unset) eq version (unset) eq and {
-        /format isodmre dindmre or { (rectangle) } { (square) } ifelse def
+    barcode () eq {
+        /bwipp.datamatrixEmptyData (The data must not be empty) //raiseerror exec
     } if
 
+    version (unset) ne rows 0 ne columns 0 ne or and {
+        /bwipp.datamatrixVersionRowsCols (rows and columns must not be given if version is specified) //raiseerror exec
+    } if
+
+    % Parse version=RxC into rows and columns
     version (unset) ne {
-        version (x) search
-        pop /rows exch cvi def
-        pop /columns exch cvi def
+        version (x) search {
+            exch pop
+            2 copy 2 array astore {
+                true
+                1 index length 0 eq { pop false } if
+                exch {
+                    dup 48 lt exch 57 gt or { pop false } if
+                } forall
+                not {
+                    /bwipp.datamatrixVersionBadRowOrColumn (version must be formatted as RxC) //raiseerror exec
+                } if
+            } forall
+            /rows exch cvi def
+            /columns exch cvi def
+            /format rows columns eq { (square) } { (rectangle) } ifelse def
+        } {
+            pop /bwipp.datamatrixVersionFormat (version must be formatted as RxC) //raiseerror exec
+        } ifelse
+    } {
+        format (unset) eq {
+            /format dmre { (rectangle) } { (square) } ifelse def
+        } if
+    } ifelse
+
+    format (square) ne format (rectangle) ne and {
+        /bwipp.datamatrixInvalidFormat (The format must be either square or rectangle) //raiseerror exec
     } if
 
     /datamatrix //loadctx exec
 
-    % TODO make this "static"
     % Basic metrics for the each symbol
-    %                         rows  cols  regh  regv  rscw  rsbl
+    %    rows  cols  regh  regv  rscw  rsbl  dmre
+{
     /metrics [
         % Standard square symbols
-                             [  10    10     1     1     5     1 ]
-                             [  12    12     1     1     7     1 ]
-                             [  14    14     1     1    10     1 ]
-                             [  16    16     1     1    12     1 ]
-                             [  18    18     1     1    14     1 ]
-                             [  20    20     1     1    18     1 ]
-                             [  22    22     1     1    20     1 ]
-                             [  24    24     1     1    24     1 ]
-                             [  26    26     1     1    28     1 ]
-                             [  32    32     2     2    36     1 ]
-                             [  36    36     2     2    42     1 ]
-                             [  40    40     2     2    48     1 ]
-                             [  44    44     2     2    56     1 ]
-                             [  48    48     2     2    68     1 ]
-                             [  52    52     2     2    84     2 ]
-                             [  64    64     4     4   112     2 ]
-                             [  72    72     4     4   144     4 ]
-                             [  80    80     4     4   192     4 ]
-                             [  88    88     4     4   224     4 ]
-                             [  96    96     4     4   272     4 ]
-                             [ 104   104     4     4   336     6 ]
-                             [ 120   120     6     6   408     6 ]
-                             [ 132   132     6     6   496     8 ]
-                             [ 144   144     6     6   620    10 ]
+        [  10    10     1     1     5     1     0 ]
+        [  12    12     1     1     7     1     0 ]
+        [  14    14     1     1    10     1     0 ]
+        [  16    16     1     1    12     1     0 ]
+        [  18    18     1     1    14     1     0 ]
+        [  20    20     1     1    18     1     0 ]
+        [  22    22     1     1    20     1     0 ]
+        [  24    24     1     1    24     1     0 ]
+        [  26    26     1     1    28     1     0 ]
+        [  32    32     2     2    36     1     0 ]
+        [  36    36     2     2    42     1     0 ]
+        [  40    40     2     2    48     1     0 ]
+        [  44    44     2     2    56     1     0 ]
+        [  48    48     2     2    68     1     0 ]
+        [  52    52     2     2    84     2     0 ]
+        [  64    64     4     4   112     2     0 ]
+        [  72    72     4     4   144     4     0 ]
+        [  80    80     4     4   192     4     0 ]
+        [  88    88     4     4   224     4     0 ]
+        [  96    96     4     4   272     4     0 ]
+        [ 104   104     4     4   336     6     0 ]
+        [ 120   120     6     6   408     6     0 ]
+        [ 132   132     6     6   496     8     0 ]
+        [ 144   144     6     6   620    10     0 ]
         % Optional rectangular symbols
-                             [   8    18     1     1     7     1 ]
-                             [   8    32     1     2    11     1 ]
-        dindmre isodmre or { [   8    48     1     2    15     1 ] } if
-        dindmre isodmre or { [   8    64     1     4    18     1 ] } if
-                isodmre    { [   8    80     1     4    22     1 ] } if
-                isodmre    { [   8    96     1     4    28     1 ] } if
-                isodmre    { [   8   120     1     6    32     1 ] } if
-                isodmre    { [   8   144     1     6    36     1 ] } if
-                             [  12    26     1     1    14     1 ]
-                             [  12    36     1     2    18     1 ]
-        dindmre isodmre or { [  12    64     1     4    27     1 ] } if
-                isodmre    { [  12    88     1     4    36     1 ] } if
-                             [  16    36     1     2    24     1 ]
-                             [  16    48     1     2    28     1 ]
-        dindmre isodmre or { [  16    64     1     4    36     1 ] } if
-                isodmre    { [  20    36     1     2    28     1 ] } if
-                isodmre    { [  20    44     1     2    34     1 ] } if
-                isodmre    { [  20    64     1     4    42     1 ] } if
-                isodmre    { [  22    48     1     2    38     1 ] } if
-        dindmre            { [  24    32     1     2    28     1 ] } if
-        dindmre            { [  24    36     1     2    33     1 ] } if
-        dindmre isodmre or { [  24    48     1     2    41     1 ] } if
-        dindmre isodmre or { [  24    64     1     4    46     1 ] } if
-        dindmre            { [  26    32     1     2    32     1 ] } if
-        dindmre isodmre or { [  26    40     1     2    38     1 ] } if
-        dindmre isodmre or { [  26    48     1     2    42     1 ] } if
-        dindmre isodmre or { [  26    64     1     4    50     1 ] } if
+        [   8    18     1     1     7     1     0 ]
+        [   8    32     1     2    11     1     0 ]
+        [   8    48     1     2    15     1     1 ]
+        [   8    64     1     4    18     1     1 ]
+        [   8    80     1     4    22     1     1 ]
+        [   8    96     1     4    28     1     1 ]
+        [   8   120     1     6    32     1     1 ]
+        [   8   144     1     6    36     1     1 ]
+        [  12    26     1     1    14     1     0 ]
+        [  12    36     1     2    18     1     0 ]
+        [  12    64     1     4    27     1     1 ]
+        [  12    88     1     4    36     1     1 ]
+        [  16    36     1     2    24     1     0 ]
+        [  16    48     1     2    28     1     0 ]
+        [  16    64     1     4    36     1     1 ]
+        [  20    36     1     2    28     1     1 ]
+        [  20    44     1     2    34     1     1 ]
+        [  20    64     1     4    42     1     1 ]
+        [  22    48     1     2    38     1     1 ]
+        [  24    48     1     2    41     1     1 ]
+        [  24    64     1     4    46     1     1 ]
+        [  26    40     1     2    38     1     1 ]
+        [  26    48     1     2    42     1     1 ]
+        [  26    64     1     4    50     1     1 ]
     ] def
+} ctxdef
 
     % Create array of codewords remaining to make a full symbol
     /urows rows def
@@ -18083,6 +18612,7 @@ begin
         /regv m 3 get def                          % Vertical regions
         /rscw m 4 get def                          % Error correction codewords
         /rsbl m 5 get def                          % Error correction blocks
+        /doly m 6 get def                          % DMRE-only model
         /mrows rows 2 regh mul sub def             % Rows in the mapping matrix
         /mcols cols 2 regv mul sub def             % Columns in the mapping matrix
         /ncws mrows mcols mul 8 idiv rscw sub def  % Data codewords
@@ -18091,6 +18621,7 @@ begin
         ucols 0 ne ucols cols ne and {/okay false def} if
         format (square) eq rows cols ne and {/okay false def} if
         format (rectangle) eq rows cols eq and {/okay false def} if
+        dmre not doly 1 eq and {/okay false def} if
         okay {/fullcws [ fullcws aload pop ncws ] def} if
     } forall
     /numremcws [ 1558 {10000} repeat ] def
@@ -18215,9 +18746,8 @@ begin
     /A 0 def  /C 1 def  /T 2 def  /X 3 def  /E 4 def  /B 5 def
 } ctxdef
 
-    raw {/encoding (raw) def} if
+    raw {
 
-    encoding (raw) eq {
         /cws barcode length array def
         /i 0 def /j 0 def
         { % loop
@@ -18228,9 +18758,8 @@ begin
             /j j 1 add def
         } loop
         /cws cws 0 j getinterval def
-    } if  % encoding=raw
 
-    encoding (auto) eq {
+    } {
 
         % Parse the input
         /fncvals <<
@@ -18298,17 +18827,18 @@ begin
         /isFN {char 0 lt} def
         /XtermFirst {dup nextXterm exch get exch nextNonX exch get lt} def
 
+        % TODO To avoid roundoff, consider increasing the scores by a scale factor of 12 to convert to integers
         /lookup {
-            /ac 1 def /cc 2 def /tc 2 def /xc 2 def /ec 2 def /bc 2.25 def
-            mode A eq {/ac 0 def /cc 1 def /tc 1 def /xc 1 def /ec 1 def /bc 1.25 def} if
-            mode C eq {/cc 0 def} if
-            mode T eq {/tc 0 def} if
-            mode X eq {/xc 0 def} if
-            mode E eq {/ec 0 def} if
-            mode B eq {/bc 0 def} if
+            /ac 1.0 def /cc 2.0 def /tc 2.0 def /xc 2.0 def /ec 2.0 def /bc 2.25 def
+            mode A eq {/ac 0.0 def /cc 1.0 def /tc 1.0 def /xc 1.0 def /ec 1.0 def /bc 1.25 def} if
+            mode C eq {/cc 0.0 def} if
+            mode T eq {/tc 0.0 def} if
+            mode X eq {/xc 0.0 def} if
+            mode E eq {/ec 0.0 def} if
+            mode B eq {/bc 0.0 def} if
             1 {  % common exit
                 isECI i get {A exit} if  % ECI only in ASCII
-                mailmark i 45 lt and {C exit} if  % Mailmark is C40 only for 45 characters
+                c40headerlength -1 ne i c40headerlength lt and {C exit} if  % C40 only for c40headerlength characters
                 /k 0 def {  % loop
                     i k add msglen eq {
                         [/ac /cc /tc /xc /ec /bc] {dup load ceiling def} forall
@@ -18620,7 +19150,7 @@ begin
         } loop
         /cws cws 0 j getinterval def
 
-    } if  % encoding=auto
+    } ifelse
 
     % Extend codewords to fill symbol with pseudo-randomised pad characters
     /datlen cws length def
@@ -18638,14 +19168,15 @@ begin
     options /debugcws known { /bwipp.debugcws cws //raiseerror exec } if
 
     % Lookup symbol metrics based on number of codewords and user specification
-    /i 0 def { % loop
-        /m metrics i get def
+    metrics {
+        /m exch def
         /rows m 0 get def                          % Rows in symbol
         /cols m 1 get def                          % Columns in symbol
         /regh m 2 get def                          % Horizontal regions
         /regv m 3 get def                          % Vertical regions
         /rscw m 4 get def                          % Error correction codewords
         /rsbl m 5 get def                          % Error correction blocks
+        /doly m 6 get def                          % DMRE-only model
         /mrows rows 2 regh mul sub def             % Rows in the mapping matrix
         /mcols cols 2 regv mul sub def             % Columns in the mapping matrix
         /rrows mrows regh idiv def                 % Rows per region
@@ -18657,9 +19188,13 @@ begin
         ucols 0 ne ucols cols ne and {/okay false def} if
         format (square) eq rows cols ne and {/okay false def} if
         format (rectangle) eq rows cols eq and {/okay false def} if
+        dmre not doly 1 eq and {/okay false def} if
         okay {exit} if
-        /i i 1 add def
-    } loop
+    } forall
+
+    okay not {
+        /bwipp.datamatrixNoValidSymbol (Maximum length exceeded or invalid size) //raiseerror exec
+    } if
 
     % De-interleave the codewords into blocks
     /cwbs rsbl array def  % Array of data codeword blocks
@@ -18902,7 +19437,7 @@ end
 % --EXAM: 1234
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp datamatrixrectangular 0.0 2022101900 63749 63558
+%%BeginResource: uk.co.terryburton.bwipp datamatrixrectangular 0.0 2023070500 63145 63104
 %%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -18950,8 +19485,8 @@ end
 % --EXAM: 1234
 % --EXOP: version=8x96
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp datamatrixrectangularextension 0.0 2022101900 64881 64681
-%%BeginData:         44 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp datamatrixrectangularextension 0.0 2023070500 63554 63504
+%%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 20 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -18965,21 +19500,13 @@ begin
 
     /ctx null def
     /dontdraw false def
-    /dmre false def
-    /dindmre false def
 
     //processoptions exec /options exch def
     /barcode exch def
 
     % Get the result of encoding with datamatrix
     options (dontdraw) true put
-
-    dindmre dmre or not {  % Default is (ISO) DMRE
-        options (dmre) true put
-    } {  % Otherwise enable formats as given
-        options (dmre) dmre put        % ISO
-        options (dindmre) dindmre put  % DIN
-    } ifelse
+    options (dmre) true put
 
     /args barcode options //datamatrix exec def
 
@@ -19006,8 +19533,8 @@ end
 % --EXAM: JGB 012100123412345678AB19XY1A 0             www.xyz.com
 % --EXOP: type=29
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp mailmark 0.0 2022101900 66797 66682
-%%BeginData:         71 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp mailmark 0.0 2023070500 67768 67632
+%%BeginData:         74 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /raiseerror dup /uk.co.terryburton.bwipp findresource put
@@ -19039,6 +19566,9 @@ begin
     options (parse) undef
 
     % Map the given type to a format and version of Data Matrix
+    /type load dup (7) ne exch dup (9) ne exch (29) ne and and {
+        /bwipp.mailmarkBadType (Royal Mail Mailmark type must be 7, 9 or 29) //raiseerror exec
+    } if
     <<
         (7)  (24x24)
         (9)  (32x32)
@@ -19063,7 +19593,7 @@ begin
     options (dontdraw) true put
     options (version) version put
     options (format) format put
-    options (mailmark) true put
+    options (c40headerlength) 45 put
     /args barcode options //datamatrix exec def
 
     args (opt) options put
@@ -19089,8 +19619,8 @@ end
 % --EXAM: http://goo.gl/0bis
 % --EXOP: eclevel=M
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp qrcode 0.0 2022101900 348133 389299
-%%BeginData:       1357 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp qrcode 0.0 2023070500 338665 382323
+%%BeginData:       1395 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -19118,6 +19648,10 @@ begin
 
     /qrcode //loadctx exec
 
+    barcode () eq {
+        /bwipp.qrcodeEmptyData (The data must not be empty) //raiseerror exec
+    } if
+
     % If version is supplied and format is not given then set format to correspond
     version (unset) ne {
         format (unset) eq {
@@ -19130,8 +19664,30 @@ begin
         format (unset) eq { /format (full) def } if  % Default to full
     } ifelse
 
+    format (full) ne format (micro) ne format (rmqr) ne and and {
+        /bwipp.qrcodeInvalidFormat (The format must be either full, micro or rmqr) //raiseerror exec
+    } if
+
+    format (rmqr) eq version (unset) eq and {
+        /bwipp.qrcodeRMQRwithoutVersion (A version must be provided for RMQR) //raiseerror exec
+    } if
+
     % Default error correction level
     eclevel (unset) eq {/eclevel format (micro) ne {(M)} {(L)} ifelse def} if
+
+    eclevel (L) ne eclevel (M) ne eclevel (Q) ne eclevel (H) ne and and and {
+        /bwipp.qrcodeInvalidEClevel (Error correction level must be either L, M, Q, or H) //raiseerror exec
+    } if
+
+    mask -1 ne format (rmqr) eq and {
+        /bwipp.qrcodeRMQRmask (A mask cannot be supplied for RMQR) //raiseerror exec
+    } if
+
+    mask -1 ne {
+        mask 1 lt mask format (full) eq {8} {4} ifelse gt or {
+            /bwipp.qrcodeBadMask (An invalid mask was supplied) //raiseerror exec
+        } if
+    } if
 
     % Parse the input
     /fn1 -1 def
@@ -19455,28 +20011,40 @@ begin
     % Determine which groups we need to encode
 {
     /versetmap <<
-        % Full
-         0 1  9 { 10 2 string cvrs v1to9   } for
-        10 1 26 { 10 2 string cvrs v10to26 } for
-        27 1 40 { 10 2 string cvrs v27to40 } for
-
-        % Micro
-        (M1) vM1  (M2) vM2  (M3) vM3  (M4) vM4
-
-        % rMQR
-                          (R7x43)  vR7x43   (R7x59)  vR7x59   (R7x77)  vR7x77   (R7x99)  vR7x99   (R7x139)  vR7x139
-                          (R9x43)  vR9x43   (R9x59)  vR9x59   (R9x77)  vR9x77   (R9x99)  vR9x99   (R9x139)  vR9x139
-        (R11x27) vR11x27  (R11x43) vR11x43  (R11x59) vR11x59  (R11x77) vR11x77  (R11x99) vR11x99  (R11x139) vR11x139
-        (R13x27) vR13x27  (R13x43) vR13x43  (R13x59) vR13x59  (R13x77) vR13x77  (R13x99) vR13x99  (R13x139) vR13x139
-                          (R15x43) vR15x43  (R15x59) vR15x59  (R15x77) vR15x77  (R15x99) vR15x99  (R15x139) vR15x139
-                          (R17x43) vR17x43  (R17x59) vR17x59  (R17x77) vR17x77  (R17x99) vR17x99  (R17x139) vR17x139
+        (full) <<
+             0 1  9 { 10 2 string cvrs v1to9   } for
+            10 1 26 { 10 2 string cvrs v10to26 } for
+            27 1 40 { 10 2 string cvrs v27to40 } for
+        >>
+        (micro) <<
+            (M1) vM1  (M2) vM2  (M3) vM3  (M4) vM4
+        >>
+        (rmqr) <<
+                              (R7x43)  vR7x43   (R7x59)  vR7x59   (R7x77)  vR7x77   (R7x99)  vR7x99   (R7x139)  vR7x139
+                              (R9x43)  vR9x43   (R9x59)  vR9x59   (R9x77)  vR9x77   (R9x99)  vR9x99   (R9x139)  vR9x139
+            (R11x27) vR11x27  (R11x43) vR11x43  (R11x59) vR11x59  (R11x77) vR11x77  (R11x99) vR11x99  (R11x139) vR11x139
+            (R13x27) vR13x27  (R13x43) vR13x43  (R13x59) vR13x59  (R13x77) vR13x77  (R13x99) vR13x99  (R13x139) vR13x139
+                              (R15x43) vR15x43  (R15x59) vR15x59  (R15x77) vR15x77  (R15x99) vR15x99  (R15x139) vR15x139
+                              (R17x43) vR17x43  (R17x59) vR17x59  (R17x77) vR17x77  (R17x99) vR17x99  (R17x139) vR17x139
+        >>
     >> def
     /versetfull  [v1to9 v10to26 v27to40] def
     /versetmicro [vM1 vM2 vM3 vM4] def
 } ctxdef
     version (unset) ne {
         % A specific version of symbol is given so encode in just the corresponding vergrp
-        /verset versetmap version get [ exch ] def
+        versetmap format get version 2 copy known not {
+            pop pop
+            format (full) eq {
+                /bwipp.qrcodeInvalidFullVersion (Valid versions for QR Code symbols are 1 to 40) //raiseerror exec
+            } {
+            format (micro) eq {
+                /bwipp.qrcodeInvalidMicroVersion (Valid versions for Micro QR Code symbols are M1 to M4) //raiseerror exec
+            } {  % rmqr
+                /bwipp.qrcodeInvalidRMQRversion (Invalid version for an RMQR symbol) //raiseerror exec
+            } ifelse } ifelse
+        } if
+        get [ exch ] /verset exch def
     } {
         % Just the format is specified so encode in each vergrp for the type of symbol
         format (full)  eq { /verset versetfull  def } if
@@ -20411,7 +20979,7 @@ begin
         16#07c94 16#085bc 16#09a99 16#0a4d3 16#0bbf6 16#0c762 16#0d847
         16#0e60d 16#0f928 16#10b78 16#1145d 16#12a17 16#13532 16#149a6
         16#15683 16#168c9 16#177ec 16#18ec4 16#191e1 16#1afab 16#1b08e
-        16#1cc1a 16#1d33f 16#1ed75 16#1f250 16#209d5 16#216fd 16#228ba
+        16#1cc1a 16#1d33f 16#1ed75 16#1f250 16#209d5 16#216f0 16#228ba
         16#2379f 16#24b0b 16#2542e 16#26a64 16#27541 16#28c69
     ] def
 } ctxdef
@@ -20458,7 +21026,7 @@ end
 % --EXAM:
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp swissqrcode 0.0 2022101900 68877 72336
+%%BeginResource: uk.co.terryburton.bwipp swissqrcode 0.0 2023070500 72309 68672
 %%BeginData:        117 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -20587,7 +21155,7 @@ end
 % --EXAM: 1234
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp microqrcode 0.0 2022101900 63569 63644
+%%BeginResource: uk.co.terryburton.bwipp microqrcode 0.0 2023070500 63569 66948
 %%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -20635,7 +21203,7 @@ end
 % --EXAM: 1234
 % --EXOP: version=R17x139
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp rectangularmicroqrcode 0.0 2022101900 63612 63676
+%%BeginResource: uk.co.terryburton.bwipp rectangularmicroqrcode 0.0 2023070500 63612 66980
 %%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -20683,8 +21251,8 @@ end
 % --EXAM: [)>^03001^02996152382802^029840^029001^0291Z00004951^029UPSN^02906X610^029159^0291234567^0291/1^029^029Y^029634 ALPHA DR^029PITTSBURGH^029PA^029^004
 % --EXOP: mode=2 parse
 % --RNDR: renmaximatrix
-%%BeginResource: uk.co.terryburton.bwipp maxicode 0.0 2022101900 136319 132046
-%%BeginData:        594 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp maxicode 0.0 2023070500 145152 147419
+%%BeginData:        664 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -20707,6 +21275,26 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.maxicodeEmptyData (The data must not be empty) //raiseerror exec
+    } if
+
+    mode -1 ne mode 2 lt mode 6 gt or and {
+       /bwipp.maxicodeBadMode (Mode must be 2 to 6) //raiseerror exec
+    } if
+
+    sam -1 ne {
+        true
+        1 {
+            sam dup 12 lt exch 88 gt or { pop false exit } if
+            sam 10 mod dup 2 lt exch 8 gt or { pop false exit } if
+            sam 10 idiv sam 10 mod gt { pop false exit } if
+        } repeat
+        not {
+            /bwipp.maxicodeBadSAM (SAM must be formatted as "NM" for Nth of M symbols, from 2 to 8 symbols) //raiseerror exec
+        } if
+    } if
 
     /maxicode //loadctx exec
 
@@ -20734,18 +21322,67 @@ begin
         /barlen barcode length def
 
         % Normalise messages that begin with a field identifier [)>{RS}01{GS}yy
-        barcode 0 7 getinterval <5b293e1e30311d> eq {
-            /fid barcode 0 9 getinterval def
-            /barcode barcode 9 barlen 9 sub getinterval def
-        } {
-            /fid () def
-        } ifelse
+        /fid () def
+        barlen 7 ge {
+            barcode 0 7 getinterval <5b293e1e30311d> eq {
+                /fid barcode 0 9 getinterval def
+                /barcode barcode 9 barlen 9 sub getinterval def
+            } if
+        } if
 
         % Read the postcode, country code and service code fields separated by GS
-        barcode <1d> search pop /pcode exch def
-        pop <1d> search pop /ccode exch def
-        pop <1d> search pop /scode exch def
-        pop /barcode exch def
+        barcode
+        <1d> search {
+            /pcode exch def pop
+            mode 2 eq {
+                true
+                1 {
+                    pcode length 9 gt { pop false exit } if
+                    pcode { dup 48 lt exch 57 gt or { pop false exit } if } forall
+                } repeat
+                not {
+                    pop /bwipp.maxicodeBadMode2PostCode (A mode 2 postcode must not exceed 9 digits) //raiseerror exec
+                } if
+            } {  % mode=3
+                pcode {
+                         dup     32 eq                    % SP
+                    exch dup dup 34 ge exch 58 le and     % punct, 0-9, :
+                    exch dup 65 ge exch 90 le and         % A-Z
+                    or or not {
+                        pop /bwipp.maxicodeBadMode3PostCode (A mode 3 postcode must not exceed 6 characters) //raiseerror exec
+                    } if
+                } forall
+            } ifelse
+        } {
+            pop /bwipp.maxicodeExpectedPostCode (Expected postcode followed by group separator character) //raiseerror exec
+        } ifelse
+        <1d> search {
+            /ccode exch def pop
+            true
+            1 {
+                ccode length 3 ne { pop false exit } if
+                ccode { dup 48 lt exch 57 gt or { pop false exit } if } forall
+            } repeat
+            not {
+                pop /bwipp.maxicodeBadCountryCode (Country code must be three digits) //raiseerror exec
+            } if
+        } {
+            pop /bwipp.maxicodeExpectedCountryCode (Expected country code followed by group separator character) //raiseerror exec
+        } ifelse
+        <1d> search {
+            /scode exch def pop
+            true
+            1 {
+                scode length 3 ne { pop false exit } if
+                scode { dup 48 lt exch 57 gt or { pop false exit } if } forall
+            } repeat
+            not {
+                pop /bwipp.maxicodeBadServiceClass (Service class must be three digits) //raiseerror exec
+            } if
+        } {
+            pop /bwipp.maxicodeExpectedServiceClass (Expected service class followed by group separator character) //raiseerror exec
+        } ifelse
+        /barcode exch def
 
         % Prepend the field identifier
         barcode length fid length add string dup
@@ -21039,16 +21676,15 @@ begin
     /padval cset load pad get def
 
     % Prefix the encoded message with the structured append insert
-    /sami [] def
-    sam -1 ne {
-        /sami 2 array def
-        sami 0 seta pad get put
-        sami 1 sam 10 idiv 1 sub 8 mul sam 10 mod 1 sub add put
-    } if
+    /sami sam -1 ne { [ seta pad get sam 10 idiv 1 sub 8 mul sam 10 mod 1 sub add ] } { [] } ifelse def
     /encmsg [ sami aload pop encmsg aload pop ] def
 
     % Derive the primary and secondary codewords for modes 2 and 3
     mode 2 eq mode 3 eq or {
+
+        encmsg length 84 gt {
+            /bwipp.maxicodeMode23TooLong (The secondary message is too long) //raiseerror exec
+        } if
 
         % Calculate the fixed-width binary values for the mode, postcode, country code and service
         /mdb (0000) 4 string copy dup mode cvi 2 4 string cvrs dup length 4 exch sub exch putinterval def
@@ -21110,8 +21746,10 @@ begin
             /mode encmsg length 77 le {5} {4} ifelse def
         } if
 
-        % First symbol is the mode and the remainder are the padded message
         /cws [ mode 5 eq {78} {94} ifelse {padval} repeat ] def
+        encmsg length cws length 1 sub gt {
+            /bwipp.maxicodeMode56TooLong (The message is too long) //raiseerror exec
+        } if
         cws 0 mode put
         cws 1 encmsg putinterval
 
@@ -21258,7 +21896,7 @@ begin
             /j j 1 add def
         } if
     } for
-    /pixs [ pixs 0 j getinterval {} forall 28 29 280 281 311 457 488 500 530 670 700 677 707 ] def
+    /pixs [ pixs 0 j getinterval aload pop 28 29 280 281 311 457 488 500 530 670 700 677 707 ] def
 
     % Return the arguments
     <<
@@ -21289,8 +21927,8 @@ end
 % --EXAM: This is Aztec Code
 % --EXOP: format=full
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp azteccode 0.0 2022101900 192925 187819
-%%BeginData:        780 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp azteccode 0.0 2023070500 195169 206938
+%%BeginData:        825 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -21306,7 +21944,7 @@ begin
 
     /ctx null def
     /dontdraw false def
-    /format (unset) def    % full, compact or rune
+    /format (full) def    % full, compact or rune
     /readerinit false def
     /layers -1 def
     /eclevel 23 def
@@ -21320,7 +21958,50 @@ begin
 
     /azteccode //loadctx exec
 
+    barcode () eq {
+        /bwipp.aztecEmptyData (The data must not be empty) //raiseerror exec
+    } if
+
+    eclevel 5 lt eclevel 95 gt or {
+        /bwipp.aztecInvalidEClevel (The EC percentage must be from 5 to 95) //raiseerror exec
+    } if
+
+    ecaddchars 3 lt {
+        /bwipp.aztecInvalidECaddChars (The number of additional EC codewords must be 3 or more) //raiseerror exec
+    } if
+
+    format (full) ne format (compact) ne format (rune) ne and and {
+        /bwipp.aztecInvalidFormat (The format must be either full, compact or rune) //raiseerror exec
+    } if
+
+    format (full) eq {
+        readerinit layers 1 lt layers 22 gt or and {
+            /bwipp.aztecFullInitInvalidLayers (Full-range symbols for reader programming must specify from 1 to 22 layers) //raiseerror exec
+        } if
+        layers -1 ne layers 1 lt layers 32 gt or and {
+            /bwipp.aztecFullInvalidLayers (Layers for full-range symbols must be from 1 to 32) //raiseerror exec
+        } if
+    } if
+
+    format (compact) eq {
+        readerinit {
+            layers -1 ne layers 1 ne and {
+                /bwipp.aztecCompactInitInvalidLayers (Compact symbols for reader programming must have 1 layer) //raiseerror exec
+            } if
+            /layers 1 def
+        } if
+        layers -1 ne layers 1 lt layers 4 gt or and {
+            /bwipp.aztecCompactInvalidLayers (Layers for compact symbols must be from 1 to 4) //raiseerror exec
+        } if
+    } if
+
     format (rune) eq {
+        layers -1 ne {
+            /bwipp.aztecRuneInvalidLayers (It is not valid to specify layers for runes) //raiseerror exec
+        } if
+        readerinit {
+            /bwipp.aztecRuneReaderInit (Reader initialisation is not compactible with Aztec Runes) //raiseerror exec
+        } if
         barcode length 0 eq {
             /bwipp.aztecRuneNotNumeric (Aztec runes must be numeric) //raiseerror exec
         } if
@@ -21759,9 +22440,8 @@ begin
     ] def
 } ctxdef
 
-    /i 0 def
-    { % loop
-        /m metrics i get def
+    metrics {
+        /m exch def
         /frmt m 0 get def                          % Format of the symbol
         /mlyr m 1 get def                          % Data layers
         /icap m 2 get def                          % Reader initialisation capable
@@ -21771,15 +22451,18 @@ begin
         msgbits length 0 eq {/numecw 0 def} if     % Error correction codewords
         /numdcw ncws numecw sub def                % Data codewords
         /okay true def
-        format (unset) ne format frmt ne and {/okay false def} if
+        format frmt ne {/okay false def} if
         readerinit icap 1 ne and {/okay false def} if
         layers -1 ne layers mlyr ne and {/okay false def} if
         msgbits length bpcw div ceiling cvi numdcw gt {/okay false def} if
         okay {exit} if
-        /i i 1 add def
-    } loop
+    } forall
+
+    okay not {
+        /bwipp.qrcodeNoValidSymbol (Maximum length exceeded) //raiseerror exec
+    } if
+
     /layers mlyr def
-    /format frmt def
 
     % Expand message bits into codewords avoiding codewords with all zeros or all ones
     /allzero {dup length (000000000000) 0 3 -1 roll getinterval eq} def
@@ -22081,7 +22764,7 @@ end
 % --EXAM: 1234
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp azteccodecompact 0.0 2022101900 63121 63213
+%%BeginResource: uk.co.terryburton.bwipp azteccodecompact 0.0 2023070500 63121 63085
 %%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -22129,7 +22812,7 @@ end
 % --EXAM: 1
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp aztecrune 0.0 2022101900 63090 63189
+%%BeginResource: uk.co.terryburton.bwipp aztecrune 0.0 2023070500 63090 63061
 %%BeginData:         36 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -22177,8 +22860,8 @@ end
 % --EXAM: Code One
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp codeone 0.0 2022101900 205576 200404
-%%BeginData:        893 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp codeone 0.0 2023070500 205092 223912
+%%BeginData:        914 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -22200,6 +22883,11 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    false [ (unset) (T-16) (T-32) (T-48) (S-10) (S-20) (S-30) (A) (B) (C) (D) (E) (F) (G) (H) ]
+    { version eq or } forall not {
+        /bwipp.codeoneBadVersion (version must be A to H, T-16, T-32, T-48, S-10, S-20 or S-30) //raiseerror exec
+    } if
 
     /codeone //loadctx exec
 
@@ -22364,6 +23052,17 @@ begin
 } ctxdef
 
     stype {
+
+        barcode {
+            dup 48 lt exch 57 gt or {
+                /bwipp.codeoneStypeNonDigit (S-Type symbols can only contain digits) //raiseerror exec
+            } if
+        } forall
+
+        /barlen barcode length def
+        barlen 18 gt {
+            /bwipp.codeoneStypeTooLong (Maximum length exceeded) //raiseerror exec
+        } if
 
         /normalize {
             /base exch def
@@ -22557,6 +23256,9 @@ begin
         } def
 
         /addtocws {
+            dup length j add 1480 gt {
+                pop /bwipp.codeoneTooLong (Maximum length exceeded) //raiseerror exec
+            } if
             dup cws exch j exch putinterval
             /j exch length j add def
         } def
@@ -22850,9 +23552,8 @@ begin
     } ifelse
 
     % Select metrics of an appropriate symbol
-    /i 0 def
-    { % loop
-        /m metrics i get def
+    metrics {
+        /m exch def
         /vers m 0 get def           % Version of symbol
         /rows m 1 get def           % Rows in symbol
         /cols m 2 get def           % Columns in symbol
@@ -22869,8 +23570,11 @@ begin
         version (unset) ne version vers ne and {/okay false def} if  % The version must match that supplied
         cws length dcws gt {/okay false def} if
         okay {exit} if
-        /i i 1 add def
-    } loop
+    } forall
+
+    okay not {
+        /bwipp.codeoneNoValidSymbol (Maximum length exceeded) //raiseerror exec
+    } if
 
     % Extend cws to ncws codewords by addition of pad characters
     stype not {
@@ -23082,8 +23786,8 @@ end
 % --EXAM: This is Han Xin
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp hanxin 0.0 2022101900 308775 338487
-%%BeginData:        851 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp hanxin 0.0 2023070500 313221 359763
+%%BeginData:        878 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -23100,13 +23804,44 @@ begin
     /ctx null def
     /dontdraw false def
     /version (unset) def   % 1-84
-    /eclevel (unset) def   % L1, L2, L3 or L4
+    /eclevel (L2) def   % L1, L2, L3 or L4
     /parse false def
     /parsefnc false def
     /mask -1 def
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.hanxinEmptyData (The data must not be empty) //raiseerror exec
+    } if
+
+    version (unset) ne {
+        version length dup 1 ge exch 2 le and dup {
+            pop
+            true version {dup 48 lt exch 57 gt or { pop false } if } forall dup {
+                pop version cvi dup 1 ge exch 84 le and
+            } if
+        } if
+        not {
+            /bwipp.hanxinInvalidVersion (Valid versions are 1 to 84) //raiseerror exec
+        } if
+    } if
+
+    eclevel length 2 eq dup {
+        pop eclevel 0 1 getinterval (L) dup eq {
+            pop eclevel 1 get 48 sub dup 1 ge exch 4 le and
+        } if
+    } if
+    not {
+        /bwipp.hanxinInvalidErrorCorrectionLevel (Valid error correction levels are L1 to L4) //raiseerror exec
+    } if
+
+    mask -1 ne {
+        mask 1 lt mask 4 gt or {
+            /bwipp.hanxinInvalidErrorCorrectionLevel (The valid masks are 1 to 4) //raiseerror exec
+        } if
+    } if
 
     /hanxin //loadctx exec
 
@@ -23118,9 +23853,6 @@ begin
     >> def
     /msg barcode fncvals //parseinput exec def
     /msglen msg length def
-
-    % Default error correction level
-    eclevel (unset) eq {/eclevel (L2) def} if
 
     /tobin {
         string dup length 1 sub 0 exch 1 exch {1 index exch 48 put} for
@@ -23481,9 +24213,8 @@ begin
 } ctxdef
 
     /eclval eclevel 1 get 49 sub def
-    0 1 83 {
-        /i exch def
-        /m metrics i get def
+    metrics {
+        /m exch def
         /vers m 0 get def                             % Version of symbol
         /size m 1 get def                             % Length of side
         /alnk m 2 get def                             % Regular alignment pattern length
@@ -23500,7 +24231,7 @@ begin
         version (unset) ne version vers ne and {/okay false def} if  % The version must match that supplied
         bits length dmod gt {/okay false def} if      % Bitstream must fit into data modules
         okay {exit} if
-    } for
+    } forall
 
     okay not {
         /bwipp.hanxinNoValidSymbol (Maximum length exceeded or invalid content) //raiseerror exec
@@ -23945,8 +24676,8 @@ end
 % --EXAM: This is DotCode
 % --EXOP: inkspread=0.16
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp dotcode 0.0 2022101900 244588 253024
-%%BeginData:       1052 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp dotcode 0.0 2023070500 242473 271539
+%%BeginData:       1084 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -23974,12 +24705,39 @@ begin
     //processoptions exec /options exch def
     /barcode exch def
 
-    /dotcode //loadctx exec
+    rows -1 ne {
+        rows 5 lt {
+            /bwipp.dotcodeBadRows (There must be at least 5 rows) //raiseerror exec
+        } if
+    } if
+
+    columns -1 ne {
+        columns 5 lt {
+            /bwipp.dotcodeBadColumns (There must be at least 5 columns) //raiseerror exec
+        } if
+    } if
+
+    rows -1 ne columns -1 ne and rows columns add 2 mod 1 ne and {
+        /bwipp.dotcodeRowsColumnsBadParity (Sum of rows and columns must be odd) //raiseerror exec
+    } if
 
     % Set the ratio to 3:2 if no size is specified
     ratio -1 eq rows -1 eq and columns -1 eq and {
         /ratio 3 2 div def
     } if
+    ratio -1 ne {
+        ratio 0 le {
+            /bwipp.dotcodeRatio (The ratio must be greater than 0) //raiseerror exec
+        } if
+    } if
+
+    mask -1 ne {
+        mask 0 lt mask 3 gt or {
+            /bwipp.dotcodeBadMask (Valid mask values are 0 to 3) //raiseerror exec
+        } if
+    } if
+
+    /dotcode //loadctx exec
 
     % Convert input into bytes accounting for FNC characters
 {
@@ -24650,6 +25408,11 @@ begin
 
     options /debugcws known { /bwipp.debugcws cws //raiseerror exec } if
 
+    % Check that the codewords will fit in the symbol
+    nw 9 mul ndots 2 sub gt {
+        /bwipp.dotcodeTooLong (Maximum length exceeded) //raiseerror exec
+    } if
+
     % Create an array containing the character mappings
 {
     /encs [
@@ -25009,8 +25772,8 @@ end
 % --EXAM: Awesome colours!
 % --EXOP: eclevel=EC2
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp ultracode 0.0 2022101900 99945 95791
-%%BeginData:        347 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp ultracode 0.0 2023070500 97738 100438
+%%BeginData:        351 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -25026,14 +25789,13 @@ begin
 
     /ctx null def
     /dontdraw false def
-    /eclevel (EC2) def     % EC0-EC5
-    /encoding (auto) def
+    /eclevel (EC2) def     % EC1-EC5, and EC0 for rev 1
     /parse false def
     /parsefnc false def
     /start 257 def         % 8-bit ISO-8859-1, until we write high-level encoders
     /link1 0 def
     /raw false def
-    /rev 1 def             % Ultracode specification revision
+    /rev 2 def             % Ultracode specification revision
 
     //processoptions exec /options exch def
     /barcode exch def
@@ -25042,11 +25804,19 @@ begin
         /bwipp.ultracodeInvalidRevision (Valid revisions are 1 and 2) //raiseerror exec
     } if
 
+    eclevel length 3 eq dup {
+       pop eclevel 0 2 getinterval (EC) dup eq {
+           pop eclevel 2 get 48 sub dup rev 2 eq {1} {0} ifelse ge exch 5 le and
+       } if
+    } if
+    not {
+        /bwipp.ultracodeInvalidErrorCorrectionLevel (Valid error correction levels are EC1 to EC5, and EC0 for legacy revision 1) //raiseerror exec
+    } if
+
     /ultracode //loadctx exec
 
-    raw {/encoding (raw) def} if
+    raw {
 
-    encoding (raw) eq {
         /dcws barcode length array def
         /i 0 def /j 0 def
         { % loop
@@ -25057,10 +25827,8 @@ begin
             /j j 1 add def
         } loop
         /dcws dcws 0 j getinterval def
-    } if
 
-    % Basic high level encoding
-    encoding (auto) eq {
+    } {
 
         % Parse the input
         /fn1 -1 def  /fn3 -2 def
@@ -25084,7 +25852,7 @@ begin
             } forall
         ] def
 
-    } if
+    } ifelse
 
     options /debugcws known { /bwipp.debugcws dcws //raiseerror exec } if
 
@@ -25110,9 +25878,8 @@ begin
     ] def
 } ctxdef
 
-    0 1 3 {
-        /i exch def
-        /m metrics i get def
+    metrics {
+        /m exch def
         /rows m 0 get def
         /minc m 1 get def  % Minimum permissible codewords
         /maxc m 2 get def  % Maximum permissible codewords
@@ -25120,7 +25887,7 @@ begin
         /okay true def
         tcc minc lt tcc maxc gt or {/okay false def} if
         okay {exit} if
-    } for
+    } forall
 
     okay not {
         /bwipp.ultracodeNoValidSymbol (Maximum length exceeded or invalid content) //raiseerror exec
@@ -25368,7 +26135,7 @@ end
 % --EXAM: This is JAB Code
 % --EXOP: eclevel=6
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp jabcode 0.0 2022101900 256666 270894
+%%BeginResource: uk.co.terryburton.bwipp jabcode 0.0 2023070500 244286 276182
 %%BeginData:       1117 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -26497,8 +27264,8 @@ end
 % --EXAM: (01)09521234543213(3103)000123
 % --EXOP: ccversion=b cccolumns=4
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp gs1-cc 0.0 2022101900 218709 208660
-%%BeginData:        626 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp gs1-cc 0.0 2023070500 225342 208175
+%%BeginData:        651 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -26529,23 +27296,48 @@ begin
 
     /gs1-cc //loadctx exec
 
+    ccversion (a) ne ccversion (b) ne and ccversion (c) ne and {
+        /bwipp.gs1ccBadCCversion (ccversion must be a, b or c) //raiseerror exec
+    } if
+
+    cccolumns 30 gt {
+        /bwipp.gs1ccColumnsTooBig (The maximum number of composite component columns is 30) //raiseerror exec
+    } if
+
+{
+    /lintypecccolumns <<
+        /ean13                  4
+        /upca                   4
+        /ean8                   3
+        /upce                   2
+        /gs1-128                4
+        /databaromni            4
+        /databarstacked         2
+        /databarstackedomni     2
+        /databartruncated       4
+        /databarlimited         3
+        /databarexpanded        4
+        /databarexpandedstacked 4
+    >> def
+} ctxdef
+
+    lintype () ne {
+        lintypecccolumns lintype known not {
+            /bwipp.gs1ccBadLinType (The lintype is not recognised) //raiseerror exec
+        } if
+    } if
+
     % Select columns based on linear type
     cccolumns -1 eq {
-        <<
-            /ean13                  4
-            /upca                   4
-            /ean8                   3
-            /upce                   2
-            /gs1-128
-                ccversion (c) ne {4} {linwidth 52 sub 17 idiv} ifelse
-            /databaromni            4
-            /databarstacked         2
-            /databarstackedomni     2
-            /databartruncated       4
-            /databarlimited         3
-            /databarexpanded        4
-            /databarexpandedstacked 4
-        >> lintype get /cccolumns exch def
+        lintype (gs1-128) eq ccversion (c) eq and {
+            linwidth 0 lt {
+                /bwipp.gs1ccMissingLinWidth (linwidth must be set for a GS1-128 with a CC-C composite component) //raiseerror exec
+            } if
+            linwidth 52 sub 17 idiv
+        } {
+            lintype () ne { lintypecccolumns lintype get } {2} ifelse
+        } ifelse
+        /cccolumns exch def
     } if
 
     barcode /ai //gs1process exec
@@ -27072,7 +27864,7 @@ begin
         /barcode cws length 4 mul string def
         0 1 cws length 1 sub {
             /i exch def
-            (^   ) 4 string copy dup cws i get 10 4 string cvrs
+            (^000) 4 string copy dup cws i get 10 4 string cvrs
             dup length 4 exch sub exch putinterval
             barcode i 4 mul 3 -1 roll putinterval
         } for
@@ -27135,7 +27927,7 @@ end
 % --EXAM: 9520123456788|(99)1234-abcd
 % --EXOP: includetext
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp ean13composite 0.0 2022101900 108891 108586
+%%BeginResource: uk.co.terryburton.bwipp ean13composite 0.0 2023070500 105579 112266
 %%BeginData:        149 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -27222,7 +28014,7 @@ begin
 
         /linpad [ ccpixx 97 sub {0} repeat ] def
 
-        /diff linwidth linpad length add 2 add ccpixx sub def  % An add-on can make linear wider than composite
+        /diff linwidth linpad length add 1 add ccpixx sub def  % An add-on can make linear wider than composite
         diff 0 gt {  % Left align composite
             /ccrpad [ diff {0} repeat ] def
             /pixx ccpixx diff add def
@@ -27256,7 +28048,7 @@ begin
                         sbs i get cvi {0} repeat
                     } ifelse
                 } for
-                0
+                diff 0 lt {0} if  % Allow for middle separator overhang on RHS if no add-on
             } for
         ] def
 
@@ -27296,7 +28088,7 @@ end
 % --EXAM: 95200002|(21)A12345678
 % --EXOP: includetext
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp ean8composite 0.0 2022101900 109232 105496
+%%BeginResource: uk.co.terryburton.bwipp ean8composite 0.0 2023070500 105920 112584
 %%BeginData:        152 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -27386,7 +28178,7 @@ begin
 
         /linpad [ ccpixx 69 sub {0} repeat ] def
 
-        /diff linwidth linpad length add 2 add ccpixx sub def  % An add-on can make linear wider than composite
+        /diff linwidth linpad length add 1 add ccpixx sub def  % An add-on can make linear wider than composite
         diff 0 gt {  % Left align composite
             /ccrpad [ diff {0} repeat ] def
             /pixx ccpixx diff add def
@@ -27420,7 +28212,7 @@ begin
                         sbs i get cvi {0} repeat
                     } ifelse
                 } for
-                0
+                diff 0 lt {0} if  % Allow for middle separator overhang on RHS if no add-on
             } for
         ] def
 
@@ -27460,7 +28252,7 @@ end
 % --EXAM: 012345000058|(99)1234-abcd
 % --EXOP: includetext
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp upcacomposite 0.0 2022101900 108885 108605
+%%BeginResource: uk.co.terryburton.bwipp upcacomposite 0.0 2023070500 109109 108805
 %%BeginData:        149 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -27547,7 +28339,7 @@ begin
 
         /linpad [ ccpixx 97 sub {0} repeat ] def
 
-        /diff linwidth linpad length add 2 add ccpixx sub def  % An add-on can make linear wider than composite
+        /diff linwidth linpad length add 1 add ccpixx sub def  % An add-on can make linear wider than composite
         diff 0 gt {  % Left align composite
             /ccrpad [ diff {0} repeat ] def
             /pixx ccpixx diff add def
@@ -27581,7 +28373,7 @@ begin
                         sbs i get cvi {0} repeat
                     } ifelse
                 } for
-                0
+                diff 0 lt {0} if  % Allow for middle separator overhang on RHS if no add-on
             } for
         ] def
 
@@ -27621,7 +28413,7 @@ end
 % --EXAM: 01234558|(15)021231
 % --EXOP: includetext
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp upcecomposite 0.0 2022101900 112340 105148
+%%BeginResource: uk.co.terryburton.bwipp upcecomposite 0.0 2023070500 105572 108804
 %%BeginData:        149 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -27708,7 +28500,7 @@ begin
 
         /linpad [ ccpixx 53 sub {0} repeat ] def
 
-        /diff linwidth linpad length add 2 add ccpixx sub def  % An add-on can make linear wider than composite
+        /diff linwidth linpad length add 1 add ccpixx sub def  % An add-on can make linear wider than composite
         diff 0 gt {  % Left align composite
             /ccrpad [ diff {0} repeat ] def
             /pixx ccpixx diff add def
@@ -27742,7 +28534,7 @@ begin
                         sbs i get cvi {0} repeat
                     } ifelse
                 } for
-                0
+                diff 0 lt {0} if  % Allow for middle separator overhang on RHS if no add-on
             } for
         ] def
 
@@ -27782,7 +28574,7 @@ end
 % --EXAM: (01)09521234543213|(11)990102
 % --EXOP:
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databaromnicomposite 0.0 2022101900 101161 104471
+%%BeginResource: uk.co.terryburton.bwipp databaromnicomposite 0.0 2023070500 101185 101039
 %%BeginData:        146 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -27940,7 +28732,7 @@ end
 % --EXAM: (01)09521234543213|(17)010200
 % --EXOP:
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databarstackedcomposite 0.0 2022101900 102877 105582
+%%BeginResource: uk.co.terryburton.bwipp databarstackedcomposite 0.0 2023070500 102877 105582
 %%BeginData:        141 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -28093,7 +28885,7 @@ end
 % --EXAM: (01)03612345678904|(11)990102
 % --EXOP:
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databarstackedomnicomposite 0.0 2022101900 102905 105606
+%%BeginResource: uk.co.terryburton.bwipp databarstackedomnicomposite 0.0 2023070500 102905 105606
 %%BeginData:        141 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -28246,7 +29038,7 @@ end
 % --EXAM: (01)09521234543213|(11)990102
 % --EXOP:
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databartruncatedcomposite 0.0 2022101900 104667 107356
+%%BeginResource: uk.co.terryburton.bwipp databartruncatedcomposite 0.0 2023070500 104667 107356
 %%BeginData:        146 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -28404,7 +29196,7 @@ end
 % --EXAM: (01)09521234543213|(21)abcdefghijklmnopqrst
 % --EXOP:
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databarlimitedcomposite 0.0 2022101900 99514 99301
+%%BeginResource: uk.co.terryburton.bwipp databarlimitedcomposite 0.0 2023070500 96082 99301
 %%BeginData:        137 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -28553,7 +29345,7 @@ end
 % --EXAM: (01)09521234543213(3103)001234|(91)1A2B3C4D5E
 % --EXOP:
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp databarexpandedcomposite 0.0 2022101900 101562 104727
+%%BeginResource: uk.co.terryburton.bwipp databarexpandedcomposite 0.0 2023070500 101562 104855
 %%BeginData:        146 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -28711,7 +29503,7 @@ end
 % --EXAM: (01)09521234543213(10)ABCDEF|(21)12345678
 % --EXOP: segments=4
 % --RNDR: renmatrix renlinear
-%%BeginResource: uk.co.terryburton.bwipp databarexpandedstackedcomposite 0.0 2022101900 107020 102814
+%%BeginResource: uk.co.terryburton.bwipp databarexpandedstackedcomposite 0.0 2023070500 107148 102814
 %%BeginData:        136 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -28859,7 +29651,7 @@ end
 % --EXAM: (00)095287654321012346|(02)09521234543213(37)24(10)1234567ABCDEFG
 % --EXOP: ccversion=c
 % --RNDR: renlinear renmatrix
-%%BeginResource: uk.co.terryburton.bwipp gs1-128composite 0.0 2022101900 112095 111275
+%%BeginResource: uk.co.terryburton.bwipp gs1-128composite 0.0 2023070500 112199 111275
 %%BeginData:        163 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -29034,7 +29826,7 @@ end
 % --EXAM: (01)09521234543213(17)120508(10)ABCD1234(410)9501101020917
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp gs1datamatrix 0.0 2022101900 90904 77910
+%%BeginResource: uk.co.terryburton.bwipp gs1datamatrix 0.0 2023070500 78224 77910
 %%BeginData:         81 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -29127,7 +29919,7 @@ end
 % --EXAM: (01)09521234543213(17)120508(10)ABCD1234(410)9501101020917
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp gs1datamatrixrectangular 0.0 2022101900 91123 78118
+%%BeginResource: uk.co.terryburton.bwipp gs1datamatrixrectangular 0.0 2023070500 78443 78118
 %%BeginData:         82 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -29221,7 +30013,7 @@ end
 % --EXAM: https://id.gs1.org/01/09521234543213/22/ABC%2d123?99=XYZ%2f987
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp gs1dldatamatrix 0.0 2022101900 83788 67479
+%%BeginResource: uk.co.terryburton.bwipp gs1dldatamatrix 0.0 2023070500 67780 70911
 %%BeginData:         49 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -29282,7 +30074,7 @@ end
 % --EXAM: (01)09521234543213(8200)http://www.abc.net(10)ABCD1234(410)9501101020917
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp gs1qrcode 0.0 2022101900 78062 77650
+%%BeginResource: uk.co.terryburton.bwipp gs1qrcode 0.0 2023070500 78086 77778
 %%BeginData:         79 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -29373,7 +30165,7 @@ end
 % --EXAM: https://id.gs1.org/01/09521234543213/22/ABC%2d123?99=XYZ%2f987
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp gs1dlqrcode 0.0 2022101900 71188 67459
+%%BeginResource: uk.co.terryburton.bwipp gs1dlqrcode 0.0 2023070500 71212 70891
 %%BeginData:         49 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -29434,7 +30226,7 @@ end
 % --EXAM: (235)5vBZIF%!<B;?oa%(01)09521234543213(8008)19052001
 % --EXOP: rows=16
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp gs1dotcode 0.0 2022101900 90629 77639
+%%BeginResource: uk.co.terryburton.bwipp gs1dotcode 0.0 2023070500 78053 77639
 %%BeginData:         80 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
@@ -29526,8 +30318,8 @@ end
 % --EXAM: A999BJC5D6E71
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp hibccode39 0.0 2022101900 67341 67098
-%%BeginData:         88 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp hibccode39 0.0 2023070500 67608 67460
+%%BeginData:         92 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -29551,6 +30343,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.hibccode39emptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /hibccode39 //loadctx exec
 
@@ -29626,8 +30422,8 @@ end
 % --EXAM: A999BJC5D6E71
 % --EXOP: includetext
 % --RNDR: renlinear
-%%BeginResource: uk.co.terryburton.bwipp hibccode128 0.0 2022101900 70215 69810
-%%BeginData:         87 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp hibccode128 0.0 2023070500 70507 70300
+%%BeginData:         91 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -29651,6 +30447,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.hibccode128emptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /hibccode128 //loadctx exec
 
@@ -29725,8 +30525,8 @@ end
 % --EXAM: A999BJC5D6E71
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp hibcdatamatrix 0.0 2022101900 69406 69082
-%%BeginData:         75 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp hibcdatamatrix 0.0 2023070500 68385 68150
+%%BeginData:         79 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -29746,6 +30546,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.hibcdatamatrixEmptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /hibcdatamatrix //loadctx exec
 
@@ -29812,8 +30616,8 @@ end
 % --EXAM: A999BJC5D6E71
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp hibcdatamatrixrectangular 0.0 2022101900 69655 69298
-%%BeginData:         76 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp hibcdatamatrixrectangular 0.0 2023070500 68645 68366
+%%BeginData:         80 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -29833,6 +30637,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.hibcdatamatrixrectangularEmptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /hibcdatamatrixrectangular //loadctx exec
 
@@ -29900,8 +30708,8 @@ end
 % --EXAM: A999BJC5D6E71
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp hibcpdf417 0.0 2022101900 68017 67861
-%%BeginData:         77 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp hibcpdf417 0.0 2023070500 68644 68455
+%%BeginData:         81 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -29922,6 +30730,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.hibcpdf417EmptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /hibcpdf417 //loadctx exec
 
@@ -29989,8 +30801,8 @@ end
 % --EXAM: A999BJC5D6E71
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp hibcmicropdf417 0.0 2022101900 68067 67896
-%%BeginData:         77 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp hibcmicropdf417 0.0 2023070500 68571 68362
+%%BeginData:         81 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -30011,6 +30823,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.hibcmicropdf417EmptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /hibcmicropdf417 //loadctx exec
 
@@ -30078,8 +30894,8 @@ end
 % --EXAM: A999BJC5D6E71
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp hibcqrcode 0.0 2022101900 69062 72430
-%%BeginData:         75 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp hibcqrcode 0.0 2023070500 72857 69096
+%%BeginData:         79 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -30099,6 +30915,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.hibcqrcodeEmptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /hibcqrcode //loadctx exec
 
@@ -30165,8 +30985,8 @@ end
 % --EXAM: A999BJC5D6E71
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp hibccodablockf 0.0 2022101900 67862 67708
-%%BeginData:         75 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp hibccodablockf 0.0 2023070500 68497 68150
+%%BeginData:         79 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -30187,6 +31007,10 @@ begin
     //processoptions exec /options exch def
     /barcode exch def
 
+    barcode () eq {
+        /bwipp.hibccodablockfEmptyData (The data must not be empty) //raiseerror exec
+    } if
+
     /hibccodablockf //loadctx exec
 
     % Create a string of the available characters
@@ -30199,7 +31023,7 @@ begin
     % Validate the input
     0 1 barcode length 1 sub {
         barcode exch 1 getinterval charvals exch known not {
-            /bwipp.codablockfBadCharacter (HIBC Codablock F must contain only digits, capital letters, spaces and the symbols -.$/+%) //raiseerror exec
+            /bwipp.hibccodablockfBadCharacter (HIBC Codablock F must contain only digits, capital letters, spaces and the symbols -.$/+%) //raiseerror exec
         } if
     } for
 
@@ -30252,8 +31076,8 @@ end
 % --EXAM: A999BJC5D6E71
 % --EXOP:
 % --RNDR: renmatrix
-%%BeginResource: uk.co.terryburton.bwipp hibcazteccode 0.0 2022101900 67856 67677
-%%BeginData:         75 ASCII Lines
+%%BeginResource: uk.co.terryburton.bwipp hibcazteccode 0.0 2023070500 68358 68143
+%%BeginData:         79 ASCII Lines
 /setpacking where {pop currentpacking true setpacking} if
 10 dict
 dup /loadctx dup /uk.co.terryburton.bwipp findresource put
@@ -30273,6 +31097,10 @@ begin
 
     //processoptions exec /options exch def
     /barcode exch def
+
+    barcode () eq {
+        /bwipp.hibcazteccodeEmptyData (The data must not be empty) //raiseerror exec
+    } if
 
     /hibcazteccode //loadctx exec
 
