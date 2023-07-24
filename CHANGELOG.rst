@@ -2,7 +2,8 @@
 Changelog
 =========
 
-* Added an option ``scale`` to treepoem, that allows to increase or decrease the dimensions of the generated EpsImageFile proportionally.
+* Added ``scale`` parameter to ``generate_barcode()`` and ``-s``/``--scale`` option to the command line.
+  Changing the scale changes the pixels in the output image.
 
 3.21.0 (2023-07-24)
 -------------------
