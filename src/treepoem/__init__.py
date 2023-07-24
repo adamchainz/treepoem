@@ -156,7 +156,8 @@ def generate_barcode(
         raise NotImplementedError(f"unsupported barcode type {barcode_type!r}")
     if options is None:
         options = {}
-    scale = scale or 2
+    if scale < 1:
+        raise ValueError("scale must be at least 1")
 
     code = _format_code(barcode_type, data, options)
     bbox_lines = _get_bbox(code, scale)

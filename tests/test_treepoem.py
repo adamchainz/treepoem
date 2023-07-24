@@ -45,6 +45,13 @@ def test_barcode(barcode_type, barcode_data):
     actual.close()
 
 
+def test_scale_0():
+    with pytest.raises(ValueError) as excinfo:
+        treepoem.generate_barcode("code39", "hello", scale=0)
+
+    assert str(excinfo.value) == "scale must be at least 1"
+
+
 @pytest.mark.parametrize(
     "barcode_type,barcode_data",
     [
