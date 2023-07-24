@@ -69,7 +69,7 @@ API
 ===
 
 ``generate_barcode(barcode_type: str, data: str | bytes, options: dict[str, str | bool] | None=None, scale: int = 2) -> EpsImageFile``
-----------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
 
 Generates a barcode and returns it as a PIL image file object (specifically, a
 ``PIL.EpsImagePlugin.EpsImageFile``).
@@ -81,6 +81,9 @@ that can be embedded varies by type.
 
 ``options`` is a dictionary of strings-to-strings of extra options to be passed
 to BWIPP_, as per its docs.
+
+``scale`` controls the output image size.
+Use ``1`` for the smallest image and larger values for larger images.
 
 For example, this generates a QR code image, and saves it to a file using
 standard PIL ``Image.save()``:
