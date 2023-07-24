@@ -48,7 +48,7 @@ parser.add_argument(
     "-s",
     "--scale",
     type=check_scale,
-    default="2",
+    default=2,
     help="Factor scaling the output image size (default is 2).",
 )
 parser.add_argument("data", help="Barcode data")
@@ -62,7 +62,7 @@ def main() -> None:
     type_: str = args.type
     format_: str | None = args.format
     output: str | None | BinaryIO = args.output
-    scale: int | None = args.scale
+    scale: int = args.scale
     data: str = args.data
     options: dict[str, str | bool] = dict(args.options)
 
@@ -81,7 +81,7 @@ def main() -> None:
     if output is stdout_binary and format_ is None:
         format_ = "xbm"
 
-    image = generate_barcode(type_, data, options, scale)
+    image = generate_barcode(type_, data, options, scale=scale)
 
     try:
         image.convert("1").save(output, format_)

@@ -150,6 +150,7 @@ def generate_barcode(
     barcode_type: str,
     data: str | bytes,
     options: dict[str, str | bool] | None = None,
+    *,
     scale: int = 2,
 ) -> EpsImagePlugin.EpsImageFile:
     if barcode_type not in barcode_types:
