@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import math
 import sys
 from os import path
 
@@ -47,28 +46,24 @@ def test_barcode(barcode_type, barcode_data):
 
 def test_scale_0():
     with pytest.raises(ValueError) as excinfo:
-        treepoem.generate_barcode("code39", "hello", scale=0)
+        treepoem.generate_barcode("code39", "HELLO", scale=0)
 
     assert str(excinfo.value) == "scale must be at least 1"
 
 
-@pytest.mark.parametrize(
-    "barcode_type,barcode_data",
-    [
-        ("qrcode", "This is qrcode barcode."),
-        ("azteccode", "This is azteccode barcode."),
-        ("azteccode", b"This is azteccode barcode."),
-        ("pdf417", "This is pdf417 barcode."),
-        ("interleaved2of5", "0123456789"),
-        ("code128", "This is code128 barcode."),
-        ("code39", "THIS IS CODE39 BARCODE."),
-    ],
-)
-def test_scale(barcode_type, barcode_data):
-    actual = treepoem.generate_barcode(barcode_type, barcode_data)
-    actual_resized = treepoem.generate_barcode(barcode_type, barcode_data, scale=4)
-    assert math.ceil(actual.size[0] / 2) == math.ceil(actual_resized.size[0] / 4)
-    assert math.ceil(actual.size[1] / 2) == math.ceil(actual_resized.size[1] / 4)
+def test_scale_1():
+    out = treepoem.generate_barcode("code39", "HELLO", scale=1)
+    assert out.size == (111, 74)
+
+
+def test_scale_2():
+    out = treepoem.generate_barcode("code39", "HELLO")
+    assert out.size == (222, 146)
+
+
+def test_scale_4():
+    out = treepoem.generate_barcode("code39", "HELLO", scale=4)
+    assert out.size == (444, 290)
 
 
 @pytest.fixture
