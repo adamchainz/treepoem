@@ -2,6 +2,10 @@
 Changelog
 =========
 
+* Upgrade vendored BWIPP to its 2023-07-23 release.
+  This version includes several improvements, including removing borders on some barcode types.
+  You can read its changelog in the `treepoem repo <https://github.com/adamchainz/treepoem/blob/main/src/treepoem/postscriptbarcode/CHANGES>`__.
+
 3.20.0 (2023-07-10)
 -------------------
 

@@ -1,3 +1,19 @@
+2023-07-23
+
+* A showbearer option was added to the linear encoder to render bearer bars above and below the symbol.
+* The ITF-14 encoder was amended to ensure that border and bearers in their default position will touch the bars when default inkspread is used.
+
+
+2023-07-12
+
+* The Aztec Code encoder was fixed to allow encoding of long messages that end with binary data.
+* The GS1 AI linter was realigned with the latest release of the GS1 Syntax Dictionary.
+* The EAN and UPC encoder variants were amended so that exterior digits and guard symbols better protect the quiet zone.
+* The default options for the border positions were amended to align with the symbology-specfic quiet zones, where appropriate.
+* The border options were enabled for the Maxicode symbology.
+* The matrix and maximatrix renderer were altered to provide a small amount of inkspread compensation by default.
+
+
 2023-07-05
 
 * The renlinear renderer was changed so that any border is plotted outside of the zone defined by the border{left,right,top,bottom} options and so that inkspread is applied to the border.
