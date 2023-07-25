@@ -22,7 +22,7 @@ BASE_PS = """\
 /Helvetica findfont 10 scalefont setfont
 gsave
 {scale} {scale} scale
-10 10 moveto
+11 11 moveto
 
 {code}
 /uk.co.terryburton.bwipp findresource exec
