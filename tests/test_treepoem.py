@@ -12,19 +12,20 @@ import treepoem
 
 
 @pytest.mark.parametrize(
-    "barcode_type,barcode_data",
+    "barcode_type,barcode_data,options",
     [
-        ("qrcode", "This is qrcode barcode."),
-        ("azteccode", "This is azteccode barcode."),
-        ("azteccode", b"This is azteccode barcode."),
-        ("pdf417", "This is pdf417 barcode."),
-        ("interleaved2of5", "0123456789"),
-        ("code128", "This is code128 barcode."),
-        ("code39", "THIS IS CODE39 BARCODE."),
+        ("qrcode", "This is qrcode barcode.", None),
+        ("azteccode", "This is azteccode barcode.", None),
+        ("azteccode", b"This is azteccode barcode.", None),
+        ("pdf417", "This is pdf417 barcode.", None),
+        ("interleaved2of5", "0123456789", None),
+        ("code128", "This is code128 barcode.", None),
+        ("code39", "THIS IS CODE39 BARCODE.", None),
+        ("ean13", "012345678912", {"includetext": True}),
     ],
 )
-def test_barcode(barcode_type, barcode_data):
-    actual = treepoem.generate_barcode(barcode_type, barcode_data)
+def test_barcode(barcode_type, barcode_data, options):
+    actual = treepoem.generate_barcode(barcode_type, barcode_data, options)
 
     fixture_path = "{dirname}/fixtures/{barcode_type}.png".format(
         dirname=path.dirname(__file__), barcode_type=barcode_type
