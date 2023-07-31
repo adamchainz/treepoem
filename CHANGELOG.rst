@@ -2,6 +2,10 @@
 Changelog
 =========
 
+* Fixed text positioning to avoid cropping after upgrade to BWIPP 2023-07-23.
+
+  Thanks to Nico Hein in `PR #496 <https://github.com/adamchainz/treepoem/pull/496>`__.
+
 3.22.0 (2023-07-24)
 -------------------
 
