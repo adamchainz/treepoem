@@ -6,6 +6,8 @@ Changelog
 
   Thanks to Nico Hein in `PR #496 <https://github.com/adamchainz/treepoem/pull/496>`__.
 
+* Update EPS generation to match `BWIPP recommendations <https://github.com/bwipp/postscriptbarcode/wiki/Developing-a-Frontend-to-BWIPP>`__.
+
 3.22.0 (2023-07-24)
 -------------------
 

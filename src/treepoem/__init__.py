@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-import codecs
 import io
 import os
 import subprocess
 import sys
+from binascii import hexlify
+from textwrap import TextWrapper
 
 from PIL import EpsImagePlugin
 
@@ -117,10 +118,14 @@ def _get_ghostscript_binary() -> str:
     return binary
 
 
-def _encode(data: str | bytes) -> str:
+# Argument passing per:
+# https://github.com/bwipp/postscriptbarcode/wiki/Developing-a-Frontend-to-BWIPP#safe-argument-passing  # noqa: E501
+def _hexify(data: str | bytes) -> str:
     if isinstance(data, str):
         data = data.encode("utf-8")
-    return codecs.encode(data, "hex_codec").decode("ascii")
+    return TextWrapper(subsequent_indent=" ", width=72).fill(
+        f"<{hexlify(data).decode('ascii')}>"
+    )
 
 
 def _format_options(options: dict[str, str | bool]) -> str:
@@ -139,10 +144,9 @@ def _format_code(
     data: str | bytes,
     options: dict[str, str | bool],
 ) -> str:
-    return "<{data}> <{options}> <{barcode_type}> cvn".format(
-        data=_encode(data),
-        options=_encode(_format_options(options)),
-        barcode_type=_encode(barcode_type),
+    return (
+        f"{_hexify(data)}\n{_hexify(_format_options(options))}\n"
+        f"{_hexify(barcode_type)}\ncvn"
     )
 
 
