@@ -92,12 +92,9 @@ def test_get_ghostscript_binary_windows(uncache_ghostscript_binary):
 
 
 def test_get_ghostscript_binary_windows_missing(uncache_ghostscript_binary):
-    with (
-        pytest.raises(treepoem.TreepoemError) as excinfo,
-        pretend_windows,
-        mock.patch.object(shutil, "which", return_value=None),
-    ):
-        treepoem._ghostscript_binary()
+    with pretend_windows, mock.patch.object(shutil, "which", return_value=None):
+        with pytest.raises(treepoem.TreepoemError) as excinfo:
+            treepoem._ghostscript_binary()
     assert "Cannot determine path to ghostscript" in str(excinfo.value)
 
 
