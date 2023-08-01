@@ -2,13 +2,15 @@ from __future__ import annotations
 
 import io
 import os
+import shutil
 import subprocess
 import sys
 from binascii import hexlify
+from functools import lru_cache
 from textwrap import indent
 from textwrap import TextWrapper
 
-from PIL import EpsImagePlugin
+from PIL import Image
 
 from .data import barcode_types
 from .data import BarcodeType
@@ -54,7 +56,7 @@ BBOX_TEMPLATE = """\
 
 EPS_TEMPLATE = """\
 %!PS-Adobe-3.0 EPSF-3.0
-%%BoundingBox: 0 0 {width} {height}
+%%HiResBoundingBox: 0 0 {width} {height}
 %%Pages: 1
 %%LanguageLevel: 2
 %%EndComments
@@ -76,17 +78,18 @@ class TreepoemError(RuntimeError):
     pass
 
 
-def _get_bbox(data_options_encoder: str, scale: int) -> tuple[int, int, int, int]:
+def _get_bbox(
+    data_options_encoder: str, scale: int
+) -> tuple[float, float, float, float]:
     bbox_code = BBOX_TEMPLATE.format(
         bwipp=BWIPP,
         scale=scale,
         data_options_encoder=indent(data_options_encoder, "  "),
     )
-    ghostscript = _get_ghostscript_binary()
     page_offset = 3000
     gs_process = subprocess.run(
         [
-            ghostscript,
+            _ghostscript_binary(),
             "-dSAFER",
             "-dQUIET",
             "-dNOPAUSE",
@@ -110,30 +113,29 @@ def _get_bbox(data_options_encoder: str, scale: int) -> tuple[int, int, int, int
         if err_output.startswith("BWIPP ERROR: "):
             err_output = err_output.replace("BWIPP ERROR: ", "", 1)
         raise TreepoemError(err_output)
-    first_line = err_output.split("\n", 1)[0]
-    assert first_line.startswith("%%BoundingBox: ")
-    numbers = first_line[len("%%BoundingBox: ") :].split(" ")
+    second_line = err_output.split("\n", 2)[1]
+    assert second_line.startswith("%%HiResBoundingBox: ")
+    numbers = second_line[len("%%HiResBoundingBox: ") :].split(" ")
     assert len(numbers) == 4
-    bbx1, bby1, bbx2, bby2 = (int(n) for n in numbers)
+    bbx1, bby1, bbx2, bby2 = (float(n) for n in numbers)
 
     width = bbx2 - bbx1
     height = bby2 - bby1
-    translate_x = page_offset - bbx1
-    translate_y = page_offset - bby1
+    translate_x = (page_offset - bbx1) / 2
+    translate_y = (page_offset - bby1) / 2
     return width, height, translate_x, translate_y
 
 
-def _get_ghostscript_binary() -> str:
-    binary = "gs"
-
+@lru_cache(maxsize=None)
+def _ghostscript_binary() -> str:
     if sys.platform.startswith("win"):
-        binary = EpsImagePlugin.gs_windows_binary
-        if not binary:
-            raise TreepoemError(
-                "Cannot determine path to ghostscript, is it installed?"
-            )
-
-    return binary
+        options = ("gswin32c", "gswin64c", "gs")
+    else:
+        options = ("gs",)
+    for name in options:
+        if shutil.which(name) is not None:
+            return name
+    raise TreepoemError("Cannot determine path to ghostscript, is it installed?")
 
 
 # Argument passing per:
@@ -174,7 +176,7 @@ def generate_barcode(
     options: dict[str, str | bool] | None = None,
     *,
     scale: int = 2,
-) -> EpsImagePlugin.EpsImageFile:
+) -> Image.Image:
     if barcode_type not in barcode_types:
         raise NotImplementedError(f"unsupported barcode type {barcode_type!r}")
     if options is None:
@@ -193,5 +195,25 @@ def generate_barcode(
         translate_y=translate_y,
         data_options_encoder=data_options_encoder,
     )
-    print(barcode_type, translate_x, translate_y)
-    return EpsImagePlugin.EpsImageFile(io.BytesIO(full_code.encode()))
+
+    gs_process = subprocess.run(
+        [
+            _ghostscript_binary(),
+            "-dSAFER",
+            "-dQUIET",
+            "-dNOPAUSE",
+            "-dBATCH",
+            "-sDEVICE=png16m",
+            f"-dDEVICEWIDTHPOINTS={width}",
+            f"-dDEVICEHEIGHTPOINTS={height}",
+            "-r72",
+            "-dTextAlphaBits=4",
+            "-dGraphicsAlphaBits=1",
+            "-sOutputFile=-",
+            "-",
+        ],
+        capture_output=True,
+        check=True,
+        input=full_code.encode(),
+    )
+    return Image.open(io.BytesIO(gs_process.stdout))

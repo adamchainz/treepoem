@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+import shutil
 import sys
 from os import path
+from unittest import mock
 
 import pytest
-from PIL import EpsImagePlugin
 from PIL import Image
 from PIL import ImageChops
 
@@ -54,48 +55,49 @@ def test_scale_0():
 
 def test_scale_1():
     out = treepoem.generate_barcode("code39", "HELLO", scale=1)
-    assert out.size == (111, 74)
+    assert out.size == (111, 72)
 
 
 def test_scale_2():
     out = treepoem.generate_barcode("code39", "HELLO")
-    assert out.size == (222, 146)
+    assert out.size == (222, 144)
 
 
 def test_scale_4():
     out = treepoem.generate_barcode("code39", "HELLO", scale=4)
-    assert out.size == (444, 290)
+    assert out.size == (443, 288)
+
+
+pretend_linux = mock.patch.object(sys, "platform", "linux")
+pretend_windows = mock.patch.object(sys, "platform", "win32")
 
 
 @pytest.fixture
-def pretend_windows():
-    real_platform = sys.platform
-    try:
-        sys.platform = "win32"
-        yield
-    finally:
-        sys.platform = real_platform
+def uncache_ghostscript_binary():
+    treepoem._ghostscript_binary.cache_clear()
+    yield
+    treepoem._ghostscript_binary.cache_clear()
 
 
-@pytest.fixture
-def pretend_have_windows_ghostscript():
-    real_bin = EpsImagePlugin.gs_windows_binary
-    try:
-        EpsImagePlugin.gs_windows_binary = "gswin32c"
-        yield
-    finally:
-        EpsImagePlugin.gs_windows_binary = real_bin
+def test_ghostscript_binary_linux(uncache_ghostscript_binary):
+    with pretend_linux, mock.patch.object(shutil, "which", return_value=True):
+        result = treepoem._ghostscript_binary()
+    assert result == "gs"
 
 
-def test_get_ghostscript_binary_windows(
-    pretend_windows, pretend_have_windows_ghostscript
-):
-    assert treepoem._get_ghostscript_binary() == "gswin32c"
+def test_get_ghostscript_binary_windows(uncache_ghostscript_binary):
+    with pretend_windows, mock.patch.object(shutil, "which", return_value=True):
+        result = treepoem._ghostscript_binary()
+    assert result == "gswin32c"
 
 
-def test_get_ghostscript_binary_windows_missing(pretend_windows):
-    with pytest.raises(treepoem.TreepoemError) as excinfo:
-        treepoem._get_ghostscript_binary()
+def test_get_ghostscript_binary_windows_missing(uncache_ghostscript_binary):
+    with (
+        pytest.raises(treepoem.TreepoemError) as excinfo,
+        pretend_windows,
+        mock.patch.object(shutil, "which", return_value=None),
+    ):
+        treepoem._ghostscript_binary()
     assert "Cannot determine path to ghostscript" in str(excinfo.value)
 
 

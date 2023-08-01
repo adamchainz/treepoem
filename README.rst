@@ -68,11 +68,10 @@ Improve your skills with `one of my books <https://adamj.eu/books/>`__.
 API
 ===
 
-``generate_barcode(barcode_type: str, data: str | bytes, options: dict[str, str | bool] | None=None, *, scale: int = 2) -> EpsImageFile``
------------------------------------------------------------------------------------------------------------------------------------------
+``generate_barcode(barcode_type: str, data: str | bytes, options: dict[str, str | bool] | None=None, *, scale: int = 2) -> Image``
+----------------------------------------------------------------------------------------------------------------------------------
 
-Generates a barcode and returns it as a PIL image file object (specifically, a
-``PIL.EpsImagePlugin.EpsImageFile``).
+Generates a barcode and returns it as a `PIL Image object <https://pillow.readthedocs.io/en/stable/reference/Image.html#the-image-class>`__
 
 ``barcode_type`` is the name of the barcode type to generate (see below).
 

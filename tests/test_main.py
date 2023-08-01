@@ -33,8 +33,8 @@ def test_stdout(monkeypatch, capsys):
     out_lines = out.splitlines()
     assert out_lines[:3] == [
         # xbm format
-        "#define im_width 84",
-        "#define im_height 84",
+        "#define im_width 83",
+        "#define im_height 83",
         "static char im_bits[] = {",
     ]
     assert err == ""
