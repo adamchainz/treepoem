@@ -78,54 +78,6 @@ class TreepoemError(RuntimeError):
     pass
 
 
-def _get_bbox(
-    data_options_encoder: str, scale: int
-) -> tuple[float, float, float, float]:
-    bbox_code = BBOX_TEMPLATE.format(
-        bwipp=BWIPP,
-        scale=scale,
-        data_options_encoder=indent(data_options_encoder, "  "),
-    )
-    page_offset = 3000
-    gs_process = subprocess.run(
-        [
-            _ghostscript_binary(),
-            "-dSAFER",
-            "-dQUIET",
-            "-dNOPAUSE",
-            "-dBATCH",
-            "-sDEVICE=bbox",
-            "-c",
-            f"<</PageOffset [{page_offset} {page_offset}]>> setpagedevice",
-            "-f",
-            "-",
-        ],
-        text=True,
-        capture_output=True,
-        check=True,
-        input=bbox_code,
-    )
-    err_output = gs_process.stderr.strip()
-    # Unfortunately the error-handling in the postscript means that
-    # returncode is 0 even if there was an error, but this gives
-    # better error messages.
-    if gs_process.returncode != 0 or "BWIPP ERROR:" in err_output:
-        if err_output.startswith("BWIPP ERROR: "):
-            err_output = err_output.replace("BWIPP ERROR: ", "", 1)
-        raise TreepoemError(err_output)
-    second_line = err_output.split("\n", 2)[1]
-    assert second_line.startswith("%%HiResBoundingBox: ")
-    numbers = second_line[len("%%HiResBoundingBox: ") :].split(" ")
-    assert len(numbers) == 4
-    bbx1, bby1, bbx2, bby2 = (float(n) for n in numbers)
-
-    width = bbx2 - bbx1
-    height = bby2 - bby1
-    translate_x = (page_offset - bbx1) / 2
-    translate_y = (page_offset - bby1) / 2
-    return width, height, translate_x, translate_y
-
-
 @lru_cache(maxsize=None)
 def _ghostscript_binary() -> str:
     if sys.platform.startswith("win"):
@@ -184,8 +136,51 @@ def generate_barcode(
     if scale < 1:
         raise ValueError("scale must be at least 1")
 
+    # https://github.com/bwipp/postscriptbarcode/wiki/Developing-a-Frontend-to-BWIPP#generating-cropped-images-via-eps
     data_options_encoder = _format_data_options_encoder(data, options, barcode_type)
-    width, height, translate_x, translate_y = _get_bbox(data_options_encoder, scale)
+    bbox_code = BBOX_TEMPLATE.format(
+        bwipp=BWIPP,
+        scale=scale,
+        data_options_encoder=indent(data_options_encoder, "  "),
+    )
+    page_offset = 3000
+    gs_process = subprocess.run(
+        [
+            _ghostscript_binary(),
+            "-dSAFER",
+            "-dQUIET",
+            "-dNOPAUSE",
+            "-dBATCH",
+            "-sDEVICE=bbox",
+            "-c",
+            f"<</PageOffset [{page_offset} {page_offset}]>> setpagedevice",
+            "-f",
+            "-",
+        ],
+        text=True,
+        capture_output=True,
+        check=True,
+        input=bbox_code,
+    )
+    err_output = gs_process.stderr.strip()
+    # Unfortunately the error-handling in the postscript means that
+    # returncode is 0 even if there was an error, but this gives
+    # better error messages.
+    if gs_process.returncode != 0 or "BWIPP ERROR:" in err_output:
+        if err_output.startswith("BWIPP ERROR: "):
+            err_output = err_output.replace("BWIPP ERROR: ", "", 1)
+        raise TreepoemError(err_output)
+    hiresbbox_line = err_output.split("\n", 2)[1]
+    assert hiresbbox_line.startswith("%%HiResBoundingBox: ")
+    numbers = hiresbbox_line[len("%%HiResBoundingBox: ") :].split(" ")
+    assert len(numbers) == 4
+    bbx1, bby1, bbx2, bby2 = (float(n) for n in numbers)
+
+    width = bbx2 - bbx1
+    height = bby2 - bby1
+    translate_x = (page_offset - bbx1) / 2
+    translate_y = (page_offset - bby1) / 2
+
     full_code = EPS_TEMPLATE.format(
         width=width,
         height=height,
@@ -196,7 +191,7 @@ def generate_barcode(
         data_options_encoder=data_options_encoder,
     )
 
-    gs_process = subprocess.run(
+    gs_process2 = subprocess.run(
         [
             _ghostscript_binary(),
             "-dSAFER",
@@ -216,4 +211,4 @@ def generate_barcode(
         check=True,
         input=full_code.encode(),
     )
-    return Image.open(io.BytesIO(gs_process.stdout))
+    return Image.open(io.BytesIO(gs_process2.stdout))
