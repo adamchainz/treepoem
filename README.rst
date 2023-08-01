@@ -84,21 +84,22 @@ to BWIPP_, as per its docs.
 ``scale`` controls the output image size.
 Use ``1`` for the smallest image and larger values for larger images.
 
-For example, this generates a QR code image, and saves it to a file using
-standard PIL ``Image.save()``:
+For example, this generates a QR code image, and saves it to a file using |Image.save()|__:
 
-.. code-block:: pycon
+.. |Image.save()| replace:: ``Image.save()``
+__ https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.save
 
-   >>> import treepoem
-   >>> image = treepoem.generate_barcode(
-   ...     barcode_type="qrcode",  # One of the BWIPP supported codes.
-   ...     data="barcode payload",
-   ... )
-   >>> image.convert("1").save("barcode.png")
+.. code-block:: python
 
-If your barcode image is monochrome, with no additional text or
-coloring, converting the ``Image`` object to monochrome as shown above
-(``image.convert('1')``) will likely reduce its file size.
+   import treepoem
+
+   image = treepoem.generate_barcode(
+       barcode_type="qrcode",  # One of the BWIPP supported codes.
+       data="barcode payload",
+   )
+   image.convert("1").save("barcode.png")
+
+If your barcode image is monochrome, with no additional text or colouring, converting the ``Image`` object to monochrome (``image.convert("1")``) will likely reduce its file size.
 
 ``barcode_types: dict[str, BarcodeType]``
 -----------------------------------------
