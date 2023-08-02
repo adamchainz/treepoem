@@ -32,7 +32,6 @@ BBOX_TEMPLATE = """\
 
 {bwipp}
 /Helvetica findfont 10 scalefont setfont
-{scale} {scale} scale
 {{
   0 0 moveto
   {data_options_encoder}
@@ -65,7 +64,6 @@ EPS_TEMPLATE = """\
 %%EndProlog
 %%Page: 1 1
 /Helvetica findfont 10 scalefont setfont
-{scale} {scale} scale
 {translate_x} {translate_y} moveto
 {data_options_encoder} /uk.co.terryburton.bwipp findresource exec
 showpage
@@ -140,7 +138,6 @@ def generate_barcode(
     data_options_encoder = _format_data_options_encoder(data, options, barcode_type)
     bbox_code = BBOX_TEMPLATE.format(
         bwipp=BWIPP,
-        scale=scale,
         data_options_encoder=indent(data_options_encoder, "  "),
     )
     page_offset = 3000
@@ -178,14 +175,13 @@ def generate_barcode(
 
     width = bbx2 - bbx1
     height = bby2 - bby1
-    translate_x = (page_offset - bbx1) / 2
-    translate_y = (page_offset - bby1) / 2
+    translate_x = page_offset - bbx1
+    translate_y = page_offset - bby1
 
     full_code = EPS_TEMPLATE.format(
         width=width,
         height=height,
         bwipp=BWIPP,
-        scale=scale,
         translate_x=translate_x,
         translate_y=translate_y,
         data_options_encoder=data_options_encoder,
@@ -201,7 +197,7 @@ def generate_barcode(
             "-sDEVICE=png16m",
             f"-dDEVICEWIDTHPOINTS={width}",
             f"-dDEVICEHEIGHTPOINTS={height}",
-            "-r72",
+            f"-r{72 * scale}",
             "-dTextAlphaBits=4",
             "-dGraphicsAlphaBits=1",
             "-sOutputFile=-",

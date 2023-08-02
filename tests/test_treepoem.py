@@ -65,7 +65,7 @@ def test_scale_2():
 
 def test_scale_4():
     out = treepoem.generate_barcode("code39", "HELLO", scale=4)
-    assert out.size == (443, 288)
+    assert out.size == (444, 288)
 
 
 pretend_linux = mock.patch.object(sys, "platform", "linux")
