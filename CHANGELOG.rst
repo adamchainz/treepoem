@@ -7,10 +7,12 @@ Changelog
   Thanks to Nico Hein in `PR #496 <https://github.com/adamchainz/treepoem/pull/496>`__.
 
 * Update EPS generation to follow the `BWIPP recommendation <https://github.com/bwipp/postscriptbarcode/wiki/Developing-a-Frontend-to-BWIPP>`__.
-  This change improves image quality but slightly changes image dimensions for some barcode types.
+  This change improves image quality including anti-aliased text, but slightly changes image dimensions for some barcode types.
 
   This change also modifies the return type of ``generate_barcode()`` from ``PIL.EpsImagePlugin.EpsImageFile`` to its superclass ``PIL.Image.Image``.
   In most cases, this change will be transparent, as most methods on ``EpsImageFile``, such as ``save()``, are inherited from ``Image``.
+
+  Done with guidance from BWIPP creator Terry Burton in `PR #499 <https://github.com/adamchainz/treepoem/pull/499>`__.
 
 3.22.0 (2023-07-24)
 -------------------
