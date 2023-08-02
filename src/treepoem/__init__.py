@@ -7,6 +7,7 @@ import subprocess
 import sys
 from binascii import hexlify
 from functools import lru_cache
+from math import ceil
 from textwrap import indent
 from textwrap import TextWrapper
 
@@ -55,6 +56,7 @@ BBOX_TEMPLATE = """\
 
 EPS_TEMPLATE = """\
 %!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 {ceilwidth} {ceilheight}
 %%HiResBoundingBox: 0 0 {width} {height}
 %%Pages: 1
 %%LanguageLevel: 2
@@ -179,6 +181,8 @@ def generate_barcode(
     translate_y = page_offset - bby1
 
     full_code = EPS_TEMPLATE.format(
+        ceilwidth=int(ceil(width)),
+        ceilheight=int(ceil(height)),
         width=width,
         height=height,
         bwipp=BWIPP,
@@ -186,7 +190,6 @@ def generate_barcode(
         translate_y=translate_y,
         data_options_encoder=data_options_encoder,
     )
-
     gs_process2 = subprocess.run(
         [
             _ghostscript_binary(),
