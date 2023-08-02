@@ -18,13 +18,17 @@ from .data import BarcodeType
 
 __all__ = ["generate_barcode", "TreepoemError", "BarcodeType", "barcode_types"]
 
+
 # Inline the BWIPP code rather than using the run operator to execute
 # it because the EpsImagePlugin runs Ghostscript with the SAFER flag,
 # which disables file operations in the PS code.
-BASE_DIR = os.path.normpath(os.path.abspath(os.path.dirname(__file__)))
-BWIPP_PATH = os.path.join(BASE_DIR, "postscriptbarcode", "barcode.ps")
-with open(BWIPP_PATH) as f:
-    BWIPP = f.read()
+@lru_cache(maxsize=None)
+def load_bwipp() -> str:
+    base_dir = os.path.normpath(os.path.abspath(os.path.dirname(__file__)))
+    bwipp_path = os.path.join(base_dir, "postscriptbarcode", "barcode.ps")
+    with open(bwipp_path) as fp:
+        return fp.read()
+
 
 # Error handling from:
 # https://github.com/bwipp/postscriptbarcode/wiki/Developing-a-Frontend-to-BWIPP#use-bwipps-error-reporting  # noqa: E501
@@ -137,9 +141,10 @@ def generate_barcode(
         raise ValueError("scale must be at least 1")
 
     # https://github.com/bwipp/postscriptbarcode/wiki/Developing-a-Frontend-to-BWIPP#generating-cropped-images-via-eps
+    bwipp = load_bwipp()
     data_options_encoder = _format_data_options_encoder(data, options, barcode_type)
     bbox_code = BBOX_TEMPLATE.format(
-        bwipp=BWIPP,
+        bwipp=bwipp,
         data_options_encoder=indent(data_options_encoder, "  "),
     )
     page_offset = 3000
@@ -185,7 +190,7 @@ def generate_barcode(
         ceilheight=int(ceil(height)),
         width=width,
         height=height,
-        bwipp=BWIPP,
+        bwipp=bwipp,
         translate_x=translate_x,
         translate_y=translate_y,
         data_options_encoder=data_options_encoder,
