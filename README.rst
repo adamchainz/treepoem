@@ -18,6 +18,12 @@ Treepoem
 A cleverly named, but very simple python barcode renderer wrapping the
 BWIPP_ library and ``ghostscript`` command line tool.
 
+----
+
+**Improve your Django and Git skills** with `one of my books <https://adamj.eu/books/>`__.
+
+----
+
 Installation
 ============
 
@@ -57,13 +63,6 @@ You can check your Ghostscript version with:
 .. code-block:: sh
 
     gs --version
-
-----
-
-**Working on a Django project?**
-Improve your skills with `one of my books <https://adamj.eu/books/>`__.
-
-----
 
 API
 ===
