@@ -4,6 +4,41 @@ requires = [
   "setuptools",
 ]
 
+[project]
+name = "treepoem"
+version = "3.23.0"
+description = "Barcode rendering for Python supporting QRcode, Aztec, PDF417, I25, Code128, Code39 and many more types."
+readme = {file = "README.rst", content-type = "text/x-rst"}
+keywords = [
+  "barcode bwipp postscript ghostscript qr qrcode aztec azteccode pdf417 interleaved2of5 i25 code128 code39",
+]
+license = {text = "MIT"}
+maintainers = [{name = "Adam Johnson", email = "me@adamj.eu"}]
+authors = [{name = "Christian Muirhead", email = "xtian@babbageclunk.com"}]
+requires-python = ">=3.8"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Typing :: Typed",
+]
+dependencies = [
+  "Pillow",
+]
+[project.urls]
+Changelog = "https://github.com/adamchainz/treepoem/blob/main/CHANGELOG.rst"
+Funding = "https://adamj.eu/books/"
+Repository = "https://github.com/adamchainz/treepoem"
+[project.scripts]
+treepoem = "treepoem.__main__:main"
+
 [tool.black]
 target-version = ['py38']
 
