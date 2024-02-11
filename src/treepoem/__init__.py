@@ -8,13 +8,13 @@ import sys
 from binascii import hexlify
 from functools import lru_cache
 from math import ceil
-from textwrap import indent
 from textwrap import TextWrapper
+from textwrap import indent
 
 from PIL import Image
 
-from .data import barcode_types
 from .data import BarcodeType
+from .data import barcode_types
 
 __all__ = ["generate_barcode", "TreepoemError", "BarcodeType", "barcode_types"]
 

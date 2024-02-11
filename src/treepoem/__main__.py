@@ -4,8 +4,8 @@ import argparse
 import sys
 from textwrap import fill
 from typing import BinaryIO
-from typing import cast
 from typing import Tuple
+from typing import cast
 
 from . import generate_barcode
 from .data import barcode_types
