@@ -2,6 +2,13 @@
 Changelog
 =========
 
+* Use |importlib.resources|__ on Python 3.9+, which should allow treepoem to work when installed in different packaging scenarios like with zipimport or PyInstaller apps.
+
+  .. |importlib.resources| replace:: ``importlib.resources``
+  __ https://docs.python.org/3/library/importlib.resources.html
+
+  Thanks to HemantShrimali1982 for the initial report in `Issue #273 <https://github.com/adamchainz/treepoem/issues/273>`__.
+
 3.23.0 (2023-08-02)
 -------------------
 
