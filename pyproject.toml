@@ -6,7 +6,7 @@ requires = [
 
 [project]
 name = "treepoem"
-version = "3.23.0"
+version = "3.24.0"
 description = "Barcode rendering for Python supporting QRcode, Aztec, PDF417, I25, Code128, Code39 and many more types."
 readme = {file = "README.rst", content-type = "text/x-rst"}
 keywords = [
