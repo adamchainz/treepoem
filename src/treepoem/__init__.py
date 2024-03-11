@@ -7,6 +7,7 @@ import subprocess
 import sys
 from binascii import hexlify
 from functools import lru_cache
+from importlib import resources
 from math import ceil
 from textwrap import TextWrapper
 from textwrap import indent
@@ -24,10 +25,16 @@ __all__ = ["generate_barcode", "TreepoemError", "BarcodeType", "barcode_types"]
 # which disables file operations in the PS code.
 @lru_cache(maxsize=None)
 def load_bwipp() -> str:
-    base_dir = os.path.normpath(os.path.abspath(os.path.dirname(__file__)))
-    bwipp_path = os.path.join(base_dir, "postscriptbarcode", "barcode.ps")
-    with open(bwipp_path) as fp:
-        return fp.read()
+    if sys.version_info >= (3, 9):
+        with resources.files("treepoem").joinpath(
+            "postscriptbarcode/barcode.ps"
+        ).open() as fp:
+            return fp.read()
+    else:
+        base_dir = os.path.normpath(os.path.abspath(os.path.dirname(__file__)))
+        bwipp_path = os.path.join(base_dir, "postscriptbarcode", "barcode.ps")
+        with open(bwipp_path) as fp:
+            return fp.read()
 
 
 # Error handling from:
