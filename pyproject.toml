@@ -8,11 +8,10 @@ requires = [
 name = "treepoem"
 version = "3.24.0"
 description = "Barcode rendering for Python supporting QRcode, Aztec, PDF417, I25, Code128, Code39 and many more types."
-readme = { file = "README.rst", content-type = "text/x-rst" }
+readme = "README.rst"
 keywords = [
   "barcode bwipp postscript ghostscript qr qrcode aztec azteccode pdf417 interleaved2of5 i25 code128 code39",
 ]
-license = { text = "MIT" }
 maintainers = [
   { name = "Adam Johnson", email = "me@adamj.eu" },
 ]
