@@ -161,7 +161,7 @@ Updating BWIPP
 
 For development of treepoem, when there's a new BWIPP release:
 
-1. Run ``./download_bwipp.py`` with the version of BWIPP to download.
+1. Run ``./download_bwipp.py`` with the `version of BWIPP <https://github.com/bwipp/postscriptbarcode/tags>`__ to download.
 2. Run ``./make_data.py`` to update the barcode types that treepoem knows about.
 3. Add a note in ``CHANGELOG.rst`` about the upgrade, adapting from the previous one.
 4. Commit and make a pull request, `adapting from previous examples <https://github.com/adamchainz/treepoem/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aclosed+upgrade+bwipp>`__.
