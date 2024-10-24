@@ -1,3 +1,84 @@
+2024-08-17
+
+* Support for HRI text was added to the GS1 Digital Link variant symbologies.
+
+
+2024-08-15
+
+* Support for extra text was added to the renlinear and renmatrix renderers.
+
+
+2024-07-20
+
+* The QR Code encoder was amended to opportunistically raise the error correction level when better fit to the matrix possible.
+
+
+2024-07-07
+
+* The renders were amended to lookup default colours from the global context when unset and available.
+
+
+2024-07-06
+
+* The renlinear render was amened to not apply inkspread compensation in the vertical direction.
+* The composite encoders were amended to not clobber the separator pattern when a background colour is set.
+
+
+2024-07-05
+
+* The renderers were amended to apply inkspread compensation to the no-border background.
+
+
+2024-07-04
+
+* The renderers were amended to not stretch the background when no border or bearer is present.
+
+
+2024-06-18
+
+* The QR Code encoder was amended to avoid encoding certain double byte pairs using Kanji Mode encoding.
+
+
+2024-06-14
+
+* The QR Code was fixed so that certain message characters will not be erroneously adopted as the low-order byte of a Kanji Mode pair.
+
+
+2024-06-05
+
+* Hex digit evaluation via data as code constructions were removed from the GS1 linter and renderers.
+
+
+2024-04-31
+
+* Support for named colours was added to the renderers.
+
+
+2024-04-23
+
+* The GS1 DL URI linter now permits an uppercase scheme.
+
+
+2024-01-03
+
+* The default whitespace guard position, test position and border positions for standalone EAN/UPC add ons was amended to align with their use alongside EAN/UPC symbols.
+
+
+2023-12-25
+
+* The GS1 Digital Link validation no longer allows an AI to be specified as a regular attribute (within query parameters) if it would be a valid key qualifier (within path information).
+
+
+2023-12-11
+
+* The GS1-128 Composite, GS1 Expanded Stacked Composite and GS1 North American Coupon Code symbologies were fixed to honour the parse options for their 2D component.
+
+
+2023-12-07
+
+* A workaround was introduced to address an issue with the packager creating a broken resource due to improper binarisation of large integers.
+
+
 2023-07-23
 
 * A showbearer option was added to the linear encoder to render bearer bars above and below the symbol.
