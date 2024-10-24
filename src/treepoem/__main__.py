@@ -4,7 +4,6 @@ import argparse
 import sys
 from textwrap import fill
 from typing import BinaryIO
-from typing import Tuple
 from typing import cast
 
 from . import generate_barcode
@@ -17,7 +16,7 @@ supported_barcode_types = "Supported barcode types are:\n" + fill(
 
 def parse_opt(x: str) -> tuple[str, str | bool]:
     if "=" in x:
-        return cast(Tuple[str, str], tuple(x.split("=", 1)))
+        return cast(tuple[str, str], tuple(x.split("=", 1)))
     else:
         # binary option
         return (x, True)

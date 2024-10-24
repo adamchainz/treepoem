@@ -2,6 +2,8 @@
 Changelog
 =========
 
+* Drop Python 3.8 support.
+
 * Support Python 3.13.
 
 3.24.0 (2024-03-11)
