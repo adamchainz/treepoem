@@ -2,8 +2,8 @@
 Changelog
 =========
 
-Unreleased
-----------
+3.25.0 (2024-10-24)
+-------------------
 
 * Upgrade vendored BWIPP to its 2024-08-17 release.
   This version includes many small improvements.
