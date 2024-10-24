@@ -46,9 +46,9 @@ jobs:
     - name: Install Ghostscript
       run: |
         # From binary on https://www.ghostscript.com/download/gsdnld.html
-        wget --quiet https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostscript-10.0.0-linux-x86_64.tgz
-        tar xvf ghostscript-10.0.0-linux-x86_64.tgz
-        sudo mv ghostscript-10.0.0-linux-x86_64/gs-1000-linux-x86_64 /usr/local/bin/gs
+        wget --quiet https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/gs_10.04.0_amd64_snap.tgz
+        tar xvf gs_10.04.0_amd64_snap.tgz
+        sudo snap install --devmode gs_10.04.0_amd64_snap/gs_10.04.0_amd64.snap
 
     - name: Run tox targets for ${{ matrix.python-version }}
       run: tox run -f py$(echo ${{ matrix.python-version }} | tr -d .)
