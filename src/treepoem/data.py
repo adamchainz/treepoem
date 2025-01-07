@@ -72,7 +72,7 @@ barcode_types: dict[str, BarcodeType] = {
     "dotcode": BarcodeType("dotcode", "DotCode"),
     "ean13": BarcodeType("ean13", "EAN-13"),
     "ean13composite": BarcodeType("ean13composite", "EAN-13 Composite"),
-    "ean14": BarcodeType("ean14", "GS1-14"),
+    "ean14": BarcodeType("ean14", "EAN-14"),
     "ean2": BarcodeType("ean2", "EAN-2 (2 digit addon)"),
     "ean5": BarcodeType("ean5", "EAN-5 (5 digit addon)"),
     "ean8": BarcodeType("ean8", "EAN-8"),

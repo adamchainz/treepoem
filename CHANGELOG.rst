@@ -2,6 +2,10 @@
 Changelog
 =========
 
+* Upgrade vendored BWIPP to its 2024-11-16 release.
+  This version includes a couple of small improvements.
+  You can read its changelog in the `treepoem repo <https://github.com/adamchainz/treepoem/blob/main/src/treepoem/postscriptbarcode/CHANGES>`__.
+
 3.25.0 (2024-10-24)
 -------------------
 
