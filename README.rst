@@ -72,33 +72,38 @@ API
 
 Generates a barcode and returns it as a `PIL Image object <https://pillow.readthedocs.io/en/stable/reference/Image.html#the-image-class>`__
 
-``barcode_type`` is the name of the barcode type to generate (see below).
+``barcode_type`` is the name of the barcode type to generate from BWIPP’s `list of supported types <https://github.com/bwipp/postscriptbarcode/wiki/Symbologies-Reference>`__.
+The ``barcode_types`` dictionary, described below, contains the names of the supported types.
 
-``data`` is a ``str`` or ``bytes`` of data to embed in the barcode - the amount
-that can be embedded varies by type.
+``data`` is a ``str`` or ``bytes`` of data to embed in the barcode.
+The amount of data that can be embedded varies by type.
 
-``options`` is a dictionary of strings-to-strings of extra options to be passed
-to BWIPP_, as per its docs.
+``options`` is a dictionary of strings-to-strings of BWIPP options, per `its documentation <https://github.com/bwipp/postscriptbarcode/wiki/Options-Reference>`__.
 
 ``scale`` controls the output image size.
 Use ``1`` for the smallest image and larger values for larger images.
 
-For example, this generates a QR code image, and saves it to a file using |Image.save()|__:
+For example, this generates a QR code image, adds a border with |ImageOps.expand()|__, and saves it to a file using |Image.save()|__:
+
+.. |ImageOps.expand()| replace:: ``ImageOps.expand()``
+__ https://pillow.readthedocs.io/en/stable/reference/ImageOps.html#PIL.ImageOps.expand
 
 .. |Image.save()| replace:: ``Image.save()``
 __ https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.save
 
 .. code-block:: python
 
-   import treepoem
+    import treepoem
+    from PIL import ImageOps
 
-   image = treepoem.generate_barcode(
-       barcode_type="qrcode",  # One of the BWIPP supported codes.
-       data="barcode payload",
-   )
-   image.convert("1").save("barcode.png")
+    image = treepoem.generate_barcode(
+        barcode_type="qrcode",
+        data="https://example.com",
+    )
+    image = ImageOps.expand(image, border=10, fill="white")
+    image.convert("1").save("barcode.png")
 
-If your barcode image is monochrome, with no additional text or colouring, converting the ``Image`` object to monochrome (``image.convert("1")``) will likely reduce its file size.
+For greyscale barcodes, the conversion to monochrome (``image.convert("1")``) will likely reduce its file size.
 
 ``barcode_types: dict[str, BarcodeType]``
 -----------------------------------------
