@@ -2,6 +2,10 @@
 Changelog
 =========
 
+* Prevent GhostScript popup windows on Windows.
+
+  Thanks to shablam in `PR #595 <https://github.com/adamchainz/treepoem/pull/595>`__.
+
 3.27.0 (2025-03-21)
 -------------------
 

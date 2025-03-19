@@ -150,6 +150,12 @@ def generate_barcode(
         data_options_encoder=indent(data_options_encoder, "  "),
     )
     page_offset = 3000
+
+    # Prevent GhostScript popup windows on Windows
+    creationflags = 0
+    if hasattr(subprocess, "CREATE_NO_WINDOW"):  # pragma: no cover
+        creationflags |= subprocess.CREATE_NO_WINDOW
+
     gs_process = subprocess.run(
         [
             _ghostscript_binary(),
@@ -167,6 +173,7 @@ def generate_barcode(
         capture_output=True,
         check=True,
         input=bbox_code,
+        creationflags=creationflags,
     )
     err_output = gs_process.stderr.strip()
     # Unfortunately the error-handling in the postscript means that
@@ -216,5 +223,6 @@ def generate_barcode(
         capture_output=True,
         check=True,
         input=full_code.encode(),
+        creationflags=creationflags,
     )
     return Image.open(io.BytesIO(gs_process2.stdout))
