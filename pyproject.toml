@@ -1,7 +1,7 @@
 [build-system]
 build-backend = "setuptools.build_meta"
 requires = [
-  "setuptools",
+  "setuptools>=77",
 ]
 
 [project]
@@ -12,6 +12,8 @@ readme = "README.rst"
 keywords = [
   "barcode bwipp postscript ghostscript qr qrcode aztec azteccode pdf417 interleaved2of5 i25 code128 code39",
 ]
+license = "MIT"
+license-files = [ "LICENSE" ]
 maintainers = [
   { name = "Adam Johnson", email = "me@adamj.eu" },
 ]
@@ -22,7 +24,6 @@ requires-python = ">=3.9"
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Natural Language :: English",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.9",
