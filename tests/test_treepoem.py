@@ -6,8 +6,7 @@ from os import path
 from unittest import mock
 
 import pytest
-from PIL import Image
-from PIL import ImageChops
+from PIL import Image, ImageChops
 
 import treepoem
 
@@ -28,9 +27,7 @@ import treepoem
 def test_barcode(barcode_type, barcode_data, options):
     actual = treepoem.generate_barcode(barcode_type, barcode_data, options)
 
-    fixture_path = "{dirname}/fixtures/{barcode_type}.png".format(
-        dirname=path.dirname(__file__), barcode_type=barcode_type
-    )
+    fixture_path = f"{path.dirname(__file__)}/fixtures/{barcode_type}.png"
 
     # Uncomment to rebuild fixtures:
     # actual.save(fixture_path)
@@ -92,9 +89,12 @@ def test_get_ghostscript_binary_windows(uncache_ghostscript_binary):
 
 
 def test_get_ghostscript_binary_windows_missing(uncache_ghostscript_binary):
-    with pretend_windows, mock.patch.object(shutil, "which", return_value=None):
-        with pytest.raises(treepoem.TreepoemError) as excinfo:
-            treepoem._ghostscript_binary()
+    with (
+        pretend_windows,
+        mock.patch.object(shutil, "which", return_value=None),
+        pytest.raises(treepoem.TreepoemError) as excinfo,
+    ):
+        treepoem._ghostscript_binary()
     assert "Cannot determine path to ghostscript" in str(excinfo.value)
 
 

@@ -3,8 +3,7 @@ from __future__ import annotations
 import argparse
 import sys
 from textwrap import fill
-from typing import BinaryIO
-from typing import cast
+from typing import BinaryIO, cast
 
 from . import generate_barcode
 from .data import barcode_types
@@ -67,9 +66,7 @@ def main() -> None:
 
     if type_ not in barcode_types:
         parser.error(
-            'Barcode type "{}" is not supported. {}'.format(
-                type_, supported_barcode_types
-            )
+            f'Barcode type "{type_}" is not supported. {supported_barcode_types}'
         )
 
     stdout_binary = sys.stdout.buffer
