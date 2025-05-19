@@ -32,9 +32,12 @@ def main(argv: Sequence[str] | None = None) -> int:
             "unzip",
             "-o",  # overwrite existing files
             "psbc.zip",
-            "-d", "src/treepoem/postscriptbarcode",
+            "-d",
+            "src/treepoem/postscriptbarcode",
             # exclude:
-            "-x", "docs/", "barcode_with_sample.ps",
+            "-x",
+            "docs/",
+            "barcode_with_sample.ps",
             # fmt: on
         ],
         check=True,

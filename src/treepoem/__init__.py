@@ -5,16 +5,14 @@ import shutil
 import subprocess
 import sys
 from binascii import hexlify
-from functools import lru_cache
+from functools import cache
 from importlib import resources
 from math import ceil
-from textwrap import TextWrapper
-from textwrap import indent
+from textwrap import TextWrapper, indent
 
 from PIL import Image
 
-from .data import BarcodeType
-from .data import barcode_types
+from .data import BarcodeType, barcode_types
 
 __all__ = ["generate_barcode", "TreepoemError", "BarcodeType", "barcode_types"]
 
@@ -22,7 +20,7 @@ __all__ = ["generate_barcode", "TreepoemError", "BarcodeType", "barcode_types"]
 # Inline the BWIPP code rather than using the run operator to execute
 # it because the EpsImagePlugin runs Ghostscript with the SAFER flag,
 # which disables file operations in the PS code.
-@lru_cache(maxsize=None)
+@cache
 def load_bwipp() -> str:
     with (
         resources.files("treepoem")
@@ -84,7 +82,7 @@ class TreepoemError(RuntimeError):
     pass
 
 
-@lru_cache(maxsize=None)
+@cache
 def _ghostscript_binary() -> str:
     if sys.platform.startswith("win"):
         options = ("gswin32c", "gswin64c", "gs")

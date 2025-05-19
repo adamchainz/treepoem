@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 import subprocess
-from functools import lru_cache
+from functools import cache
 
 from treepoem import _ghostscript_binary
 
 
-@lru_cache(maxsize=None)
+@cache
 def ghostscript_version() -> str:
     return subprocess.run(
         [_ghostscript_binary(), "--version"],
