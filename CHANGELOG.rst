@@ -7,6 +7,10 @@ Unreleased
 
 * Support Python 3.14.
 
+* Upgrade vendored BWIPP to its 2025-06-16 release.
+  This version includes a few small improvements.
+  You can read its changelog in the `treepoem repo <https://github.com/adamchainz/treepoem/blob/main/src/treepoem/postscriptbarcode/CHANGES>`__.
+
 3.27.1 (2025-03-22)
 -------------------
 
