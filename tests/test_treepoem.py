@@ -12,22 +12,22 @@ import treepoem
 
 
 @pytest.mark.parametrize(
-    "barcode_type,barcode_data,options",
+    "fixture_name,barcode_type,barcode_data,options",
     [
-        ("qrcode", "This is qrcode barcode.", None),
-        ("azteccode", "This is azteccode barcode.", None),
-        ("azteccode", b"This is azteccode barcode.", None),
-        ("pdf417", "This is pdf417 barcode.", None),
-        ("interleaved2of5", "0123456789", None),
-        ("code128", "This is code128 barcode.", None),
-        ("code39", "THIS IS CODE39 BARCODE.", None),
-        ("ean13", "012345678912", {"includetext": True}),
+        ("qrcode", "qrcode", "This is qrcode barcode.", None),
+        ("azteccode-text", "azteccode", "some text", None),
+        ("azteccode-bytes", "azteccode", b"some bytes.", None),
+        ("pdf417", "pdf417", "This is pdf417 barcode.", None),
+        ("interleaved2of5", "interleaved2of5", "0123456789", None),
+        ("code128", "code128", "This is code128 barcode.", None),
+        ("code39", "code39", "THIS IS CODE39 BARCODE.", None),
+        ("ean13", "ean13", "012345678912", {"includetext": True}),
     ],
 )
-def test_barcode(barcode_type, barcode_data, options):
+def test_barcode(fixture_name, barcode_type, barcode_data, options):
     actual = treepoem.generate_barcode(barcode_type, barcode_data, options)
 
-    fixture_path = f"{path.dirname(__file__)}/fixtures/{barcode_type}.png"
+    fixture_path = f"{path.dirname(__file__)}/fixtures/{fixture_name}.png"
 
     # Uncomment to rebuild fixtures:
     # actual.save(fixture_path)
