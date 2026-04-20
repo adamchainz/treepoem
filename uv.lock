@@ -262,7 +262,7 @@ requires-dist = [{ name = "pillow" }]
 [package.metadata.requires-dev]
 test = [
     { name = "pillow" },
-    { name = "pytest" },
+    { name = "pytest", specifier = ">=9" },
     { name = "pytest-randomly" },
 ]
 
