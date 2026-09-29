@@ -28,6 +28,7 @@ barcode_types: dict[str, BarcodeType] = {
     "code93ext": BarcodeType("code93ext", "Code 93 Extended"),
     "codeone": BarcodeType("codeone", "Code One"),
     "coop2of5": BarcodeType("coop2of5", "COOP 2 of 5"),
+    "d3aqr": BarcodeType("d3aqr", "D3 AQR (beta)"),
     "daft": BarcodeType("daft", "Custom 4 state symbology"),
     "databarexpanded": BarcodeType("databarexpanded", "GS1 DataBar Expanded"),
     "databarexpandedcomposite": BarcodeType(
@@ -112,7 +113,6 @@ barcode_types: dict[str, BarcodeType] = {
     "ismn": BarcodeType("ismn", "ISMN"),
     "issn": BarcodeType("issn", "ISSN"),
     "itf14": BarcodeType("itf14", "ITF-14"),
-    "jabcode": BarcodeType("jabcode", "JAB Code (Beta)"),
     "japanpost": BarcodeType("japanpost", "Japan Post 4 State Customer Code"),
     "kix": BarcodeType("kix", "Royal Dutch TPG Post KIX"),
     "leitcode": BarcodeType("leitcode", "Deutsche Post Leitcode"),
@@ -137,7 +137,7 @@ barcode_types: dict[str, BarcodeType] = {
     "rationalizedCodabar": BarcodeType("rationalizedCodabar", "Codabar"),
     "raw": BarcodeType("raw", "Custom 1D symbology"),
     "rectangularmicroqrcode": BarcodeType(
-        "rectangularmicroqrcode", "Rectangular Micro QR Code"
+        "rectangularmicroqrcode", "Rectangular Micro QR Code (rMQR)"
     ),
     "royalmail": BarcodeType("royalmail", "Royal Mail 4 State Customer Code"),
     "sscc18": BarcodeType("sscc18", "SSCC-18"),
