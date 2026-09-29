@@ -1,3 +1,293 @@
+2026-09-28
+
+* The metadata for MaxiCode was fixed.
+
+
+2026-09-17
+
+* The performance of the Aztec Code, PDF417, MicroPDF417, QR Code, Data Matrix, Han Xin Code, MaxiCode, Code One and Ultracode encoders was improved by multiplying the Reed-Solomon generator polynomial coefficients as sums of logarithms, which most benefits large Aztec Code symbols and PDF417 symbols with high error correction levels.
+* Fixed the Aztec Code encoder failing with a rangecheck error for data whose bit stuffing adds more codewords than the selected symbol holds.
+* Fixed the Aztec Code encoder producing symbols with fewer error correction codewords than the eclevel requires for data whose bit stuffing adds codewords.
+* Fixed the Aztec Code encoder producing compact symbols with more than 64 data codewords, whose mode message misstates the symbol size.
+
+
+2026-09-16
+
+* The MaxiCode renderer now draws hexagons at their specified size, applies inkspread as for other symbologies, and renders pixel-exact symbols under gridfit; strictspec now rejects symbols outside the permitted size.
+* Dotty symbols, including DotCode, now render uniform round dots under gridfit that keep diagonal neighbours apart and apply inkspread.
+
+
+2026-09-06
+
+* The Data Matrix encoder was fixed to always emit the Macro 05/06 codeword in the first position.
+* The performance of the QR Code encoder was improved for data that mixes character classes, such as mixed-case text and URLs, by materialising each mode segment once when the mode changes rather than extending it character by character.
+* The Data Matrix encoder's encodation mode selection now accumulates its look-ahead scores in exact integer arithmetic so that the chosen encodation no longer depends on the precision of the interpreter's real number arithmetic.
+* Fixed the Data Matrix encoder emitting an empty Base 256 segment when the encodation look-ahead reverses immediately after latching, which produced symbols whose remaining codewords a reader would misinterpret as Base 256 data.
+* The DotCode encoder now determines the symbol size for a requested aspect ratio using exact integer arithmetic so that the symbol shape no longer depends on the precision of the interpreter's real number arithmetic.
+
+
+2026-07-06
+
+* The performance of the DotCode encoder was improved by sharing a single codeword placement walk between the mask candidates, by deriving each candidate's error correction codewords from those of the unmasked message, and by scoring each candidate together with its lit-edge variant in a single evaluation pass.
+
+
+2026-07-04
+
+* The QR Code, Han Xin Code and Aztec Code encoders were optimised.
+* The performance of QR Code, Aztec Code, MaxiCode, Data Matrix, Code One and the Han Xin Code symbologies was optimised by preparing log-domain coefficients and two-period anti-log tables once in advance of Reed Solomon computation.
+* The performance of punctuation compression in the Aztec Code encoder was improved via using lookahead.
+
+
+2026-06-13
+
+* The bearer bars were reworked to render as filled paths rather than stroked lines, matching the border and the data bars for consistent rendering at small scales.
+* The hooks framework was amended so that hook procedures are activated by the presence of a hooks dictionary in the global context, without requiring the enabledebug option.
+
+
+2026-05-31
+
+* The PDF417, MicroPDF417 and Aztec Code encoding was optimised.
+* Reed-Solomon error correction for the QR Code, Aztec Code, MaxiCode, Data Matrix, Code One and Han Xin Code symbologies was made more efficient.
+
+
+2026-05-29
+
+* The GS1 Application Identifier element string parsing and validation was made more efficient.
+
+
+2026-05-28
+
+* The QR Code, Aztec Code, Ultracode, PDF417, MicroPDF417, MaxiCode, Data Matrix, Han Xin Code, Code One and Codablock F encoders were amended to bound their parsed message length.
+* The DotCode encoder was amedned to cap the rows and columns options at 200.
+* The renmatrix intermediate dictionary key for per-row module heights was renamed from rowmult (a per-row array) to rowheights, eliminating a collision with the public scalar rowmult option of the PDF417 and MicroPDF417 encoders.
+* The Code 128, Codablock F and Code 16K encoders were amended to avoid quadratic-time encoding of long digit runs.
+
+
+2026-05-06
+
+* The D3 AQR encoder was amended to invert the p0 parity module.
+
+
+2026-05-05
+
+* A provisional encoder for the D3 AQR symbology was added based on a draft specification. Details are likely to change if it is standardised.
+* The Han Xin Code encoder was expanded with support for GS1 mode and numeric compaction.
+* The JAB Code encoder was removed since the standard is unstable.
+
+
+2026-04-26
+
+* The ISBN, ISMN, ISSN and GS1 North American Coupon encoders were amended so that all regular text processing options work.
+* The textsubspace and textsplit options were added as aliases of text1subspace and text1split, complementing the other text* aliases. The legacy alttextsubspace and alttextsplit aliases continue to work.
+
+
+2026-04-22
+
+* The DataBar variants were fixed to honour the mandatory 1X LHS guard space and 5X RHS guard space for DataBar Limited.
+
+
+2026-04-21
+
+* An addondescent option was added to EAN/UPC symbols to control the descent of add-on bars independently of guarddescent. It defaults to the value of guarddescent so the add-on matches the primary unless overridden.
+
+
+2026-04-17
+
+* Reed-Solomon encoding was harmonised and factored into shared rsecbinary and rsecprime helpers.
+
+
+2026-04-16
+
+* The renderer was changed to gridfit in the same direction when fitting independent axes.
+
+
+2026-04-15
+
+* The modunit option may now only be set within global context.
+
+
+2026-04-09
+
+* A guarddescent option was added to specify the descent of EAN/UPC guard bars in multiples of the X-dimension.
+* EAN/UPC guards now correctly descend below the baseline so that height relates to the nominal bars.
+
+
+2026-04-08
+
+* Under propspec, the height option now acts as a multiplier on the spec-derived bar height.
+
+
+2026-04-07
+
+* The spec-based options were renamed to propspec, strictspec and loosespec and can be set via global_ctx.
+* The hdim option now correctly sets bar height under strictspec and loosespec.
+* EAN/UPC guard bar descent is now 5X.
+
+
+2026-04-05
+
+* Text alignment options for composite symbols was fixed.
+* The primary symbol height option for composite symbols was fixed.
+
+
+2026-04-03
+
+* Text group support was added to the MaxiCode symbology.
+* A new physspec option was added to simplify the generation of vector symbols with specification-compliant physical dimensions.
+* Nominal and bounding metrics can be looked up in per-symbology application specific tables with the new ast option.
+* In physspec mode the gridfit option validates the effective X-dimension against specification bounds, trying alternate rounding directions when the initial snap falls outside the allowed range.
+
+
+2026-03-31
+
+* gridfit and griddpi options were added to the renderers to snap module boundaries to device pixel grid.
+
+
+2026-03-30
+
+* Alias option handling was simplified and improved.
+
+
+2026-03-29
+
+* The text rendering system was generalised to support up to 9 independent text groups. The existing text and extratext options are retained as aliases.
+
+
+2026-03-28
+
+* The position of the whitespace guards for EAN/UPC symbols was simplified and better aligned with the text.
+
+
+2026-03-27
+
+* The position of the whitespace guards for standalone EAN/UPC addons was fixed.
+
+
+2026-03-26
+
+* The text{x,y}align=justify options were fixed for the linear and matrix renderers.
+
+
+2026-03-25
+
+* The text processing for the Code 39 Extended and Code 93 Extended encoders was fixed.
+
+
+2026-03-24
+
+* The text renderer now centres each character using stringwidth and pathbbox for font-independent alignment in the direct text positioning path.
+* Text offsets were adjusted for EAN/UPC-based symbologies and addons to account for ink-centre anchoring. Non-EAN encoders with per-character text placement were converted to use centre-aligned single string rendering.
+
+
+2026-03-13
+
+* FMLY was added to the encoder metadata.
+* The C API and SWIG bindings were expanded with support for lazy loading of resource bodies.
+
+
+2026-03-03
+
+* Input validation was hardened across all encoders, including data length checks, empty data rejection, and implementation limit guards for large allocations.
+* The renderers now validate their input structures and the text renderer handles single-character justify alignment correctly.
+* All resources now clean up the dictionary stack when an error is raised, preventing dict stack leaks in caller contexts.
+* Renderer error handling was improved: correct graphics state restoration, operand stack cleanup for invalid colors, and redundant gsave/grestore removal from composite rendering paths.
+* Raw mode input validation was improved for Code 128, Code 16K, Data Matrix, PosiCode, Ultracode, PDF417 and Micro PDF417, including ^NNN format and codeword range checks.
+* Data exceeding the maximum symbol capacity is now rejected during encoding for QR Code, Data Matrix, Code One, PDF417 and JAB Code.
+* Codablock F, Code 16K and the matrix renderer now handle large symbols without overflowing the operand stack.
+* GS1 input validation was improved for DataBar Expanded, DataBar Stacked Omnidirectional, GS1 Composite Component and GS1 North American Coupon.
+* JAB Code now validates eclevel, mask, colors, rows and columns options. PRNG constants now avoid integer literals exceeding the signed 32-bit range.
+* PDF417 and Micro PDF417: Fixed text submode optimizer crash with long all-text inputs by increasing the sentinel value used in the Viterbi cost comparison.
+* JAB Code: Fixed crash in slave symbol mode where metadata encoding referenced an undefined variable.
+
+
+2026-02-27
+
+* The AusPost encoder now supports FCC 87 (Routing) and FCC 92 (Redirection) barcodes.
+* The renderers now support a `default_inkspread` global context setting.
+
+
+2026-02-01
+
+* The GS1 AI linter was realigned with the latest release of the GS1 Syntax Dictionary.
+* User option validation was improved for the Codablock F, Code 16K, Code 49, Micro PDF417 and PDF417 encoders.
+* User option validation was improved for the linear, matrix and maximatrix renderers.
+
+
+2026-01-21
+
+* The encoder for DotCode was fixed to ensure a minimum symbol dimension when the opposite dimension is large.
+* The performance of the PDF417, Micro PDF417, Code One, OneCode, Data Matrix and GS1 Composite Component encoders was improved.
+
+
+2026-01-15
+
+* The time to generate error correction polynomials was improved using a FIFO cache for the QR Code, Data Matrix, PDF47, Micro PDF417, MaxiCode, Dot Code, Han Xin and Ultracode symbologies.
+* The performance of the Code 128, Codablock F, Posicode and Code 16K encoders was improved.
+
+
+2026-01-13
+
+* Stack leaks during error handling were fixed for the Data Matrix, PDF417, Micro PDF417, ISBN, ISMN, AusPost and Telepen symbologies.
+
+
+2026-01-12
+
+* The performance of generating the error correction codewords for AusPost symbols was improved.
+* Several stack leaks were fixed for GS1 AI and DL data processing.
+* The debug and dontdraw options of all encoders must now be enabled using a pair of global switches.
+
+
+2026-01-09
+
+* The performance of generating the error correction codewords for Aztec Code, Han Xin Code, QR Code, Data Matrix, Code One, Maxicode, PDF417, Micro PDF417, Ultracode symbols was improved.
+
+
+2026-01-07
+
+* The Ultracode encoder was fixed so that colours are correctly selected for rendering.
+
+
+2026-01-06
+
+* The performance of the matrix renderer was further improved.
+* Common colour handling code was factored out of the renderers into its own resource.
+
+
+2026-01-05
+
+* The performance of the matrix renderer was significantly improved.
+
+
+2026-01-04
+
+* The QR Code encoder performance was enhanced by precalculating the mask function patterns and applying them simultaneously to the data bitstream.
+* A mechanism to "preload" the lazy variables via global context was added.
+
+
+2026-01-02
+
+* Switch from loadctx/unloadctx mechanism to a more direct method of preloading static state, with lazy initialisation.
+* The Two-Track Pharmacode encoder's text positioning was fixed.
+* The USPS Intelligent Mail encoder's text positioning was fixed.
+
+
+2025-11-18
+
+* Common text rendering code was factored out of the linear and matrix renderers into its own resource.
+
+
+2025-10-24
+
+* The ITF-14 encoder's text positioning was fixed.
+
+
+2025-10-16
+
+* The Code 128 encoder's raw mode was fixed.
+* The linear and matrix renderers were enhanced to accept top and bottom for the textyalign option.
+* The linear and matrix renderers were enhanced with a textdirection option.
+
+
 2025-06-16
 
 * The linear and matrix renderer were enhanced with support for extratextsubspace, extratextsplit and extratextlinegaps options corresponding to the alttext equivalents.
@@ -1596,7 +1886,7 @@
 * The encoders were amended to automatically invoke the appropriate renderer.
 * The dispatcher procedure was removed.
 * A dontdraw option was added to each encoder to suppress automatic rendering.
-* The encoders were reordered by their dependency chain and references to dependant procedures were changed to use immediately evaluated name syntax.
+* The encoders were reordered by their dependency chain and references to dependent procedures were changed to use immediately evaluated name syntax.
 
 
 2009-02-26

@@ -7,11 +7,23 @@ Unreleased
 
 * Support Python 3.15.
 
+* Drop Python 3.9 support.
+
+* Upgrade vendored BWIPP to its 2026-09-28 release.
+  This version includes:
+
+  * performance improvements to several encoders, including Aztec Code, PDF417, QR Code, Data Matrix, MaxiCode, and DotCode
+  * fixes for several Aztec Code encoder bugs involving bit stuffing and compact symbol mode messages
+  * a reworked MaxiCode renderer that draws hexagons at their specified size and validates symbol size under strictspec
+  * uniform round dot rendering for DotCode and other dotty symbologies under gridfit
+  * new gridfit and griddpi renderer options to snap module boundaries to the device pixel grid
+  * hardened input validation across all encoders and renderers
+
+  You can read its changelog in the `treepoem repo <https://github.com/adamchainz/treepoem/blob/main/src/treepoem/postscriptbarcode/CHANGES>`__.
+
 * Switch package build backend from setuptools to `uv_build <https://docs.astral.sh/uv/concepts/build-backend/>`__.
   This makes builds with uv about nine times faster, since uv runs the backend natively, without creating a build environment or spawning a Python process.
   Additionally, source distributions no longer include test files, which setuptools previously included incompletely, missing the files needed to actually run them.
-
-* Drop Python 3.9 support.
 
 3.28.0 (2025-09-09)
 -------------------
